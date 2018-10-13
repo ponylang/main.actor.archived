@@ -1,4 +1,4 @@
-# actor.main
+# main.actor
 
 ## Contributing
 
