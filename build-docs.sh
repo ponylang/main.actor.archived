@@ -17,8 +17,16 @@ if ! [ -d "${DOCS_DIR}" ]; then
   exit 1
 fi
 
+# Package name from CODE_DIR
+PKG_NAME=$(basename $CODE_DIR)
+# Create a temporary directory to do our work in
+TMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'tmp.XXXXXX')
 # Go to the desired documentation directory and build the docs.
-cd $CODE_DIR
-echo $CODE_DIR
+cd $TMPDIR
+echo $TMPDIR
 ponyc --docs=. --pass=docs $CODE_DIR
-# TODO: do the entire mkdocs stuff here and clean up output structure
+# We now have a directory call "PKG_NAME-docs" in our temporary directory
+cd "$PKG_NAME-docs"
+mkdocs build
+# We now have our built mkdocs site in `site` directory in our current directory
+cp -r site/* $DOCS_DIR/
