@@ -18,6 +18,7 @@ if ! [ -d "${DOCS_DIR}" ]; then
 fi
 
 # Go to the desired documentation directory and build the docs.
-cd $DOCS_DIR
+cd $CODE_DIR
+echo $CODE_DIR
 ponyc --docs=. --pass=docs $CODE_DIR
 # TODO: do the entire mkdocs stuff here and clean up output structure
