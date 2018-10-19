@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build-missing-docs:
+    docker:
+      - image: ponylang/main.actor-ci:standard
+    steps:
+      - checkout
+      - run: bash build-missing-docs.sh
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build-missing-docs
+  nightly:
+    triggers:
+      - schedule:
+          cron: "* */3 * * *"
+          filters:
+            branches:
+              only: master
