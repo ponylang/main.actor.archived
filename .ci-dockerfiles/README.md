@@ -1,7 +1,7 @@
 # Build image
 
 ```bash
-docker build -t ponylang/ponyc-ci:main.actor .
+docker build -t ponylang/main.actor-ci:standard .
 ```
 
 # Run image to test
@@ -9,7 +9,7 @@ docker build -t ponylang/ponyc-ci:main.actor .
 Will get you a bash shell in the image to try cloning Pony into where you can test a build to make sure everything will work before pushing:
 
 ```bash
-docker run --name ponyc-ci-main-actor --rm -i -t ponylang/ponyc-ci:main.actor bash
+docker run --name main-actor-ci --rm -i -t ponylang/main.actor-ci:standard bash
 ```
 
 # Push to dockerhub
@@ -17,5 +17,5 @@ docker run --name ponyc-ci-main-actor --rm -i -t ponylang/ponyc-ci:main.actor ba
 You'll need credentials for the ponylang dockerhub account. Talk to @jemc or @seantallen for access
 
 ```bash
-docker push ponylang/ponyc-ci:main.actor
+docker push ponylang/main.actor-ci:standard
 ```
