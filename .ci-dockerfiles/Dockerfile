@@ -12,4 +12,4 @@ RUN  apt-get update && \
 
 RUN pip install --upgrade pip
 RUN pip install mkdocs
-#RUN pip install mkdocs mkdocs-ponylang
+RUN pip install mkdocs mkdocs-ponylang
