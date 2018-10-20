@@ -18,3 +18,5 @@ workflows:
           filters:
             branches:
               only: master
+    jobs:
+      - build-missing-docs
