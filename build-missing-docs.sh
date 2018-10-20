@@ -29,6 +29,10 @@ MAX_RELEASES='20'
 # Create a temporary directory that we can download source repositories into.
 TMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'tmp.XXXXXX')
 
+# Who we are for git
+git config --global user.email "main@ponylang.io"
+git config --global user.name "ponylang-main"
+
 # Loop over each manifest in the './manifests' subdirectory.
 for manifest in $(find manifests -type f); do
   # Collect the data we need from the manifest into local vars.
