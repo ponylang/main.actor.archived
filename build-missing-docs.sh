@@ -68,6 +68,9 @@ for manifest in $(find manifests -type f); do
       # Call the next script, responsible for building the docs.
       mkdir -p $docs_dir
       ./build-docs.sh $code_dir $docs_dir
+      git add .
+      git commit -m "Add docs for ${name} version ${tag}"
+      git push
     fi
   done< <(
     curl -fsS -H "${GITHUB_API_AUTH}" "${GITHUB_API}/repos/${github}/tags?per_page=${MAX_RELEASES}" |
