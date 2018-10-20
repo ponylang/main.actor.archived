@@ -24,7 +24,8 @@ TMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'tmp.XXXXXX')
 # Go to the desired documentation directory and build the docs.
 cd $TMPDIR
 echo $TMPDIR
-ponyc --docs=. --pass=docs $CODE_DIR
+# This is a little janky. Right now
+ponyc --docs=${PKG_NAME} --pass=docs $CODE_DIR
 # We now have a directory call "PKG_NAME-docs" in our temporary directory
 cd "$PKG_NAME-docs"
 mkdocs build
