@@ -6,7 +6,7 @@ docker build -t ponylang/main.actor-ci:standard .
 
 # Run image to test
 
-Will get you a bash shell in the image to try cloning Pony into where you can test a build to make sure everything will work before pushing:
+Will get you a bash shell in the image to try cloning main.actor into where you can test a build to make sure everything will work before pushing. This really is useful when trying to craft a new container for use by our
 
 ```bash
 docker run --name main-actor-ci --rm -i -t ponylang/main.actor-ci:standard bash
