@@ -31,10 +31,10 @@ TMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'tmp.XXXXXX')
 
 
 # Who we are for git
-git config --global user.email "main@ponylang.io"
-git config --global user.name "ponylang-main"
+#git config --global user.email "main@ponylang.io"
+#git config --global user.name "ponylang-main"
 # Other git setup
-git config --global push.default simple
+#git config --global push.default simple
 
 # Loop over each manifest in the './manifests' subdirectory.
 for manifest in $(find manifests -type f); do
@@ -55,6 +55,7 @@ for manifest in $(find manifests -type f); do
     root_dir="${TMPDIR}/${name}/${tag}"
     code_dir="${TMPDIR}/${name}/${tag}/${subdir}"
     docs_dir="$(pwd)/docs/${name}/${tag}"
+    docs_md_dir="$(pwd)/docs-raw-md/${name}/${tag}"
 
     if [ -d "${docs_dir}" ] && ! [ -z "$(ls -A ${docs_dir})" ]; then
       # Print the name of the tag that we've determined we already have.
@@ -74,10 +75,11 @@ for manifest in $(find manifests -type f); do
 
       # Call the next script, responsible for building the docs.
       mkdir -p $docs_dir
-      ./build-docs.sh $code_dir $docs_dir
-      git add .
-      git commit -m "Add docs for ${name} version ${tag}"
-      git push "https://${PUSH_TOKEN}@github.com/ponylang/main.actor"
+      mkdir -p $docs_md_dir
+      ./build-docs.sh $code_dir $docs_dir $docs_md_dir
+#      git add .
+#      git commit -m "Add docs for ${name} version ${tag}"
+#      git push "https://${PUSH_TOKEN}@github.com/ponylang/main.actor"
     fi
   done< <(
     curl -fsS -H "${GITHUB_API_AUTH}" "${GITHUB_API}/repos/${github}/tags?per_page=${MAX_RELEASES}" |

@@ -6,6 +6,7 @@ set -e
 # Gather expected arguments.
 CODE_DIR=$1
 DOCS_DIR=$2
+DOCS_RAW_DIR=$3
 if ! [ -d "${CODE_DIR}" ]; then
   echo "The CODE_DIR argument was not given or is not a directory: ${CODE_DIR}"
   echo "USAGE: $0 CODE_DIR DOCS_DIR"
@@ -28,6 +29,8 @@ echo $TMPDIR
 ponyc --docs=${PKG_NAME} --pass=docs $CODE_DIR
 # We now have a directory call "PKG_NAME-docs" in our temporary directory
 cd "$PKG_NAME-docs"
-mkdocs build
+ls 
+#mkdocs build
 # We now have our built mkdocs site in `site` directory in our current directory
-cp -r site/* $DOCS_DIR/
+cp -r docs/* $DOCS_RAW_DIR/
+cp -r mkdocs.yml $DOCS_RAW_DIR/
