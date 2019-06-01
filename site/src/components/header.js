@@ -4,13 +4,13 @@ import React from "react"
 
 const Header = ({ siteTitle }) => (
   <header
-    style={{
-      background: `rebeccapurple`,
+    css={({ colors }) => ({
+      background: colors.brown[0],
       marginBottom: `1.45rem`,
-    }}
+    })}
   >
     <div
-      style={{
+      css={{
         margin: `0 auto`,
         maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
