@@ -1,4 +1,5 @@
 const path = require("path")
+const processPath = require('./src/process-path')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -37,20 +38,8 @@ exports.createPages = ({ graphql, actions }) => {
         // Create pages for each markdown file.
         result.data.allMarkdownRemark.edges.forEach(({ node }) => {
           const { relativePath } = node.parent
-          let processedPath = relativePath
-
-          // process filepaths into usable URLs
-          if (processedPath.endsWith("--index.md")) {
-            processedPath = processedPath.slice(0, -"--index.md".length)
-          } else if (processedPath.endsWith("index.md")) {
-            processedPath = processedPath.slice(0, -"index.md".length)
-          } else {
-            processedPath = processedPath.slice(0, -".md".length)
-          }
-
-          processedPath = processedPath
-            .replace(/(.*)-(.*)$/, "$1/$2")
-            .toLowerCase()
+          
+          const processedPath = processPath(relativePath)
 
           createPage({
             path: `/packages/${processedPath}`,
