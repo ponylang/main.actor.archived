@@ -20,6 +20,7 @@
     "gatsby-source-filesystem": "^2.0.27",
     "gatsby-transformer-remark": "^2.3.5",
     "gatsby-transformer-sharp": "^2.1.17",
+    "highlight.js": "^9.15.8",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

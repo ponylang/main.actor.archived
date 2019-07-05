@@ -17,6 +17,7 @@ const Breadcrumbs = ({pathname}) => {
     listStyleType: 'none',
     display: 'flex',
         margin:'0 auto',
+        marginTop: '-26px',
     maxWidth: '960px',
     padding: '1.45rem 1.0875rem',
     alignItems: 'center',

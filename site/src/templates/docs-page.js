@@ -4,6 +4,11 @@ import rehypeReact from "rehype-react"
 import processPath from '../process-path'
 import Layout from "../components/layout"
 
+import hljs from 'highlight.js/lib/highlight';
+import pony from 'highlight.js/lib/languages/pony';
+hljs.registerLanguage('pony', pony)
+hljs.registerLanguage('pony-full-source', pony)
+
 export default ({ data, location }) => {
 
   const renderAst = new rehypeReact({
@@ -17,8 +22,32 @@ export default ({ data, location }) => {
         return <Link to={href} {...props}/>
       }
       return <a {...props}/>
-    }
+    },
+    pre: ({children, ...props}) => {
+      if(children && children.length === 1){
+        const codeElement = children[0]
+        const codeLanguage = codeElement.props.className.match(/language-([\0-\uFFFF]*)/);
+
+        if(codeLanguage !== null) {
+          console.log('codeLanguage', codeLanguage[1], codeElement.props.children)
+          const codeString = hljs.highlight(codeLanguage[1], codeElement.props.children.toString()).value
+          return <pre {...props}>
+            <code dangerouslySetInnerHTML={{__html: codeString}}></code>
+          </pre>
+          //highlight
+        } else {
+          const codeString = hljs.highlightAuto(codeElement.props.children.toString()).value
+          return <pre {...props}>
+            <code dangerouslySetInnerHTML={{__html: codeString}}></code>
+          </pre>          // highlightAuto
+        }
+
+      } else {
+          return <pre {...props}/>
+      }
+  }
   },
+  
 }).Compiler
 
   return <Layout pathname={location.pathname}>{renderAst(data.doc.htmlAst)}</Layout>
