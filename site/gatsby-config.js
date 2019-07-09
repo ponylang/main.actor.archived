@@ -21,8 +21,6 @@ module.exports = {
         path: `../docs-raw-md`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
