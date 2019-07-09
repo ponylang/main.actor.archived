@@ -24,8 +24,9 @@ export default ({ data, location }) => {
       return <a {...props}/>
     },
     pre: ({children, ...props}) => {
-      if(children && children.length === 1){
+      if(children && children.length === 1 && Boolean(children[0].props.className)){
         const codeElement = children[0]
+
         const codeLanguage = codeElement.props.className.match(/language-([\0-\uFFFF]*)/);
 
         if(codeLanguage !== null) {
