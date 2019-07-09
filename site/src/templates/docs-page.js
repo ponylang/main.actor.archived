@@ -30,10 +30,17 @@ export default ({ data, location }) => {
         const codeLanguage = codeElement.props.className.match(/language-([\0-\uFFFF]*)/);
 
         if(codeLanguage !== null) {
-          const codeString = hljs.highlight(codeLanguage[1], codeElement.props.children.toString()).value
+          try {
+                    const codeString = hljs.highlight(codeLanguage[1], codeElement.props.children.toString()).value
+                    return <pre {...props}>
+                      <code dangerouslySetInnerHTML={{__html: codeString}}></code>
+                    </pre>}
+                    catch (e) {
+                                const codeString = hljs.highlightAuto(codeElement.props.children.toString()).value
           return <pre {...props}>
             <code dangerouslySetInnerHTML={{__html: codeString}}></code>
           </pre>
+                    }
         } else {
           const codeString = hljs.highlightAuto(codeElement.props.children.toString()).value
           return <pre {...props}>
