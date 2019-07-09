@@ -546,6 +546,158 @@ fun box shr(
 
 ---
 
+### fld
+
+
+
+```pony
+fun box fld(
+  y: USize val)
+: USize val
+```
+#### Parameters
+
+*   y: [USize](builtin-USize.md) val
+
+#### Returns
+
+* [USize](builtin-USize.md) val
+
+---
+
+### fldc
+
+
+
+```pony
+fun box fldc(
+  y: USize val)
+: (USize val , Bool val)
+```
+#### Parameters
+
+*   y: [USize](builtin-USize.md) val
+
+#### Returns
+
+* ([USize](builtin-USize.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### fld_partial
+
+
+
+```pony
+fun box fld_partial(
+  y: USize val)
+: USize val ?
+```
+#### Parameters
+
+*   y: [USize](builtin-USize.md) val
+
+#### Returns
+
+* [USize](builtin-USize.md) val ?
+
+---
+
+### fld_unsafe
+
+
+
+```pony
+fun box fld_unsafe(
+  y: USize val)
+: USize val
+```
+#### Parameters
+
+*   y: [USize](builtin-USize.md) val
+
+#### Returns
+
+* [USize](builtin-USize.md) val
+
+---
+
+### mod
+
+
+
+```pony
+fun box mod(
+  y: USize val)
+: USize val
+```
+#### Parameters
+
+*   y: [USize](builtin-USize.md) val
+
+#### Returns
+
+* [USize](builtin-USize.md) val
+
+---
+
+### modc
+
+
+
+```pony
+fun box modc(
+  y: USize val)
+: (USize val , Bool val)
+```
+#### Parameters
+
+*   y: [USize](builtin-USize.md) val
+
+#### Returns
+
+* ([USize](builtin-USize.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### mod_partial
+
+
+
+```pony
+fun box mod_partial(
+  y: USize val)
+: USize val ?
+```
+#### Parameters
+
+*   y: [USize](builtin-USize.md) val
+
+#### Returns
+
+* [USize](builtin-USize.md) val ?
+
+---
+
+### mod_unsafe
+
+
+
+```pony
+fun box mod_unsafe(
+  y: USize val)
+: USize val
+```
+#### Parameters
+
+*   y: [USize](builtin-USize.md) val
+
+#### Returns
+
+* [USize](builtin-USize.md) val
+
+---
+
 ### shl_unsafe
 
 

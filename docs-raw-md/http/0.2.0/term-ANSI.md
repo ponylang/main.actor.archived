@@ -37,12 +37,12 @@ Move the cursor up n lines. 0 is the same as 1.
 
 ```pony
 fun box up(
-  n: U32 val = seq)
+  n: U32 val = 0)
 : String val
 ```
 #### Parameters
 
-*   n: [U32](builtin-U32.md) val = seq
+*   n: [U32](builtin-U32.md) val = 0
 
 #### Returns
 
@@ -59,12 +59,12 @@ Move the cursor down n lines. 0 is the same as 1.
 
 ```pony
 fun box down(
-  n: U32 val = seq)
+  n: U32 val = 0)
 : String val
 ```
 #### Parameters
 
-*   n: [U32](builtin-U32.md) val = seq
+*   n: [U32](builtin-U32.md) val = 0
 
 #### Returns
 
@@ -81,12 +81,12 @@ Move the cursor right n columns. 0 is the same as 1.
 
 ```pony
 fun box right(
-  n: U32 val = seq)
+  n: U32 val = 0)
 : String val
 ```
 #### Parameters
 
-*   n: [U32](builtin-U32.md) val = seq
+*   n: [U32](builtin-U32.md) val = 0
 
 #### Returns
 
@@ -103,12 +103,12 @@ Move the cursor left n columns. 0 is the same as 1.
 
 ```pony
 fun box left(
-  n: U32 val = seq)
+  n: U32 val = 0)
 : String val
 ```
 #### Parameters
 
-*   n: [U32](builtin-U32.md) val = seq
+*   n: [U32](builtin-U32.md) val = 0
 
 #### Returns
 
@@ -126,14 +126,14 @@ the top left corner of the screen.
 
 ```pony
 fun box cursor(
-  x: U32 val = seq,
-  y: U32 val = seq)
+  x: U32 val = 0,
+  y: U32 val = 0)
 : String val
 ```
 #### Parameters
 
-*   x: [U32](builtin-U32.md) val = seq
-*   y: [U32](builtin-U32.md) val = seq
+*   x: [U32](builtin-U32.md) val = 0
+*   y: [U32](builtin-U32.md) val = 0
 
 #### Returns
 
@@ -204,12 +204,12 @@ Bold text. Does nothing on Windows.
 
 ```pony
 fun box bold(
-  state: Bool val = seq)
+  state: Bool val = true)
 : String val
 ```
 #### Parameters
 
-*   state: [Bool](builtin-Bool.md) val = seq
+*   state: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 
@@ -226,12 +226,12 @@ Underlined text. Does nothing on Windows.
 
 ```pony
 fun box underline(
-  state: Bool val = seq)
+  state: Bool val = true)
 : String val
 ```
 #### Parameters
 
-*   state: [Bool](builtin-Bool.md) val = seq
+*   state: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 
@@ -248,12 +248,12 @@ Blinking text. Does nothing on Windows.
 
 ```pony
 fun box blink(
-  state: Bool val = seq)
+  state: Bool val = true)
 : String val
 ```
 #### Parameters
 
-*   state: [Bool](builtin-Bool.md) val = seq
+*   state: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 
@@ -270,12 +270,12 @@ Swap foreground and background colour.
 
 ```pony
 fun box reverse(
-  state: Bool val = seq)
+  state: Bool val = true)
 : String val
 ```
 #### Parameters
 
-*   state: [Bool](builtin-Bool.md) val = seq
+*   state: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 

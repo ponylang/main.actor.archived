@@ -33,4 +33,10 @@ actor FileStream is OutStream
     """
     _file.writev(data)
 
+  be flush() =>
+    """
+    Flush pending data to write.
+    """
+    _file.flush()
+
 ```````

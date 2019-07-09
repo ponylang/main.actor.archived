@@ -1,5 +1,5 @@
 # StringRunes
-<span class="source-link">[[Source]](src/builtin/string.md#L1540)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1656)</span>
 ```pony
 class ref StringRunes is
   Iterator[U32 val] ref
@@ -14,7 +14,7 @@ class ref StringRunes is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/builtin/string.md#L1544)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1660)</span>
 
 
 ```pony
@@ -35,7 +35,7 @@ new ref create(
 ## Public Functions
 
 ### has_next
-<span class="source-link">[[Source]](src/builtin/string.md#L1548)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1664)</span>
 
 
 ```pony
@@ -50,7 +50,7 @@ fun box has_next()
 ---
 
 ### next
-<span class="source-link">[[Source]](src/builtin/string.md#L1551)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1667)</span>
 
 
 ```pony

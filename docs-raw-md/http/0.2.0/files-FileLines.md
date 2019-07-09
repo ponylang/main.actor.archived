@@ -44,13 +44,13 @@ will never read less than `min_read_size`.
 ```pony
 new ref create(
   file: File ref,
-  min_read_size: USize val = seq)
+  min_read_size: USize val = 256)
 : FileLines ref^
 ```
 #### Parameters
 
 *   file: [File](files-File.md) ref
-*   min_read_size: [USize](builtin-USize.md) val = seq
+*   min_read_size: [USize](builtin-USize.md) val = 256
 
 #### Returns
 

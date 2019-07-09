@@ -22,12 +22,12 @@ resize. Defaults to 6.
 
 ```pony
 new ref create(
-  prealloc: USize val = seq)
+  prealloc: USize val = 6)
 : HashMap[K, V, H] ref^
 ```
 #### Parameters
 
-*   prealloc: [USize](builtin-USize.md) val = seq
+*   prealloc: [USize](builtin-USize.md) val = 6
 
 #### Returns
 
@@ -374,12 +374,12 @@ Raise an error if there is no next populated index.
 
 ```pony
 fun box next_index(
-  prev: USize val = seq)
+  prev: USize val = call)
 : USize val ?
 ```
 #### Parameters
 
-*   prev: [USize](builtin-USize.md) val = seq
+*   prev: [USize](builtin-USize.md) val = call
 
 #### Returns
 

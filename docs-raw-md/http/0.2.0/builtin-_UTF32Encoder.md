@@ -1,5 +1,5 @@
 # _UTF32Encoder
-<span class="source-link">[[Source]](src/builtin/string.md#L1556)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1672)</span>
 ```pony
 primitive val _UTF32Encoder
 ```
@@ -7,7 +7,7 @@ primitive val _UTF32Encoder
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/builtin/string.md#L1556)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1672)</span>
 
 
 ```pony
@@ -24,7 +24,7 @@ new val create()
 ## Public Functions
 
 ### encode
-<span class="source-link">[[Source]](src/builtin/string.md#L1557)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1673)</span>
 
 
 Encode the code point into UTF-8. It returns a tuple with the size of the
@@ -49,7 +49,7 @@ fun box encode(
 ---
 
 ### eq
-<span class="source-link">[[Source]](src/builtin/string.md#L1557)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1673)</span>
 
 
 ```pony
@@ -68,7 +68,7 @@ fun box eq(
 ---
 
 ### ne
-<span class="source-link">[[Source]](src/builtin/string.md#L1557)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1673)</span>
 
 
 ```pony

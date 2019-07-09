@@ -224,12 +224,12 @@ Set `keep_line_breaks` to `true` to keep the line breaks in the returned line.
 
 ```pony
 fun ref line(
-  keep_line_breaks: Bool val = seq)
+  keep_line_breaks: Bool val = false)
 : String iso^ ?
 ```
 #### Parameters
 
-*   keep_line_breaks: [Bool](builtin-Bool.md) val = seq
+*   keep_line_breaks: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -643,12 +643,12 @@ data.
 
 ```pony
 fun box peek_u8(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U8 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -665,12 +665,12 @@ Peek at an I8.
 
 ```pony
 fun box peek_i8(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I8 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -687,12 +687,12 @@ Peek at a big-endian U16.
 
 ```pony
 fun box peek_u16_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U16 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -709,12 +709,12 @@ Peek at a little-endian U16.
 
 ```pony
 fun box peek_u16_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U16 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -731,12 +731,12 @@ Peek at a big-endian I16.
 
 ```pony
 fun box peek_i16_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I16 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -753,12 +753,12 @@ Peek at a little-endian I16.
 
 ```pony
 fun box peek_i16_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I16 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -775,12 +775,12 @@ Peek at a big-endian U32.
 
 ```pony
 fun box peek_u32_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U32 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -797,12 +797,12 @@ Peek at a little-endian U32.
 
 ```pony
 fun box peek_u32_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U32 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -819,12 +819,12 @@ Peek at a big-endian I32.
 
 ```pony
 fun box peek_i32_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I32 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -841,12 +841,12 @@ Peek at a little-endian I32.
 
 ```pony
 fun box peek_i32_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I32 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -863,12 +863,12 @@ Peek at a big-endian U64.
 
 ```pony
 fun box peek_u64_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U64 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -885,12 +885,12 @@ Peek at a little-endian U64.
 
 ```pony
 fun box peek_u64_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U64 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -907,12 +907,12 @@ Peek at a big-endian I64.
 
 ```pony
 fun box peek_i64_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I64 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -929,12 +929,12 @@ Peek at a little-endian I64.
 
 ```pony
 fun box peek_i64_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I64 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -951,12 +951,12 @@ Peek at a big-endian U128.
 
 ```pony
 fun box peek_u128_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U128 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -973,12 +973,12 @@ Peek at a little-endian U128.
 
 ```pony
 fun box peek_u128_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U128 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -995,12 +995,12 @@ Peek at a big-endian I129.
 
 ```pony
 fun box peek_i128_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I128 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -1017,12 +1017,12 @@ Peek at a little-endian I128.
 
 ```pony
 fun box peek_i128_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : I128 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -1039,12 +1039,12 @@ Peek at a big-endian F32.
 
 ```pony
 fun box peek_f32_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : F32 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -1061,12 +1061,12 @@ Peek at a little-endian F32.
 
 ```pony
 fun box peek_f32_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : F32 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -1083,12 +1083,12 @@ Peek at a big-endian F64.
 
 ```pony
 fun box peek_f64_be(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : F64 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -1105,12 +1105,12 @@ Peek at a little-endian F64.
 
 ```pony
 fun box peek_f64_le(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : F64 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -1148,12 +1148,12 @@ Raise an error if the given offset is not yet available.
 
 ```pony
 fun box _peek_byte(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : U8 val ?
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 

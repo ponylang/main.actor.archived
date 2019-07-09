@@ -82,13 +82,13 @@ concurrent tests.
 ```pony
 fun box log(
   msg: String val,
-  verbose: Bool val = seq)
+  verbose: Bool val = false)
 : None val
 ```
 #### Parameters
 
 *   msg: [String](builtin-String.md) val
-*   verbose: [Bool](builtin-Bool.md) val = seq
+*   verbose: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -105,12 +105,12 @@ Flag the test as having failed.
 
 ```pony
 fun box fail(
-  msg: String val = seq)
+  msg: String val = "Test failed")
 : None val
 ```
 #### Parameters
 
-*   msg: [String](builtin-String.md) val = seq
+*   msg: [String](builtin-String.md) val = "Test failed"
 
 #### Returns
 
@@ -128,15 +128,15 @@ Assert that the given expression is true.
 ```pony
 fun box assert_true(
   actual: Bool val,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   actual: [Bool](builtin-Bool.md) val
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -154,15 +154,15 @@ Assert that the given expression is false.
 ```pony
 fun box assert_false(
   actual: Bool val,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   actual: [Bool](builtin-Bool.md) val
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -180,15 +180,15 @@ Assert that the given test function throws an error when run.
 ```pony
 fun box assert_error(
   test: ITest box,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   test: [ITest](ponytest-ITest.md) box
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -206,15 +206,15 @@ Assert that the gived test function does not throw an error when run.
 ```pony
 fun box assert_no_error(
   test: ITest box,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   test: [ITest](ponytest-ITest.md) box
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -233,16 +233,16 @@ Assert that the 2 given expressions resolve to the same instance
 fun box assert_is[A: A](
   expect: A,
   actual: A,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   expect: A
 *   actual: A
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -261,16 +261,16 @@ Assert that the 2 given expressions are equal.
 fun box assert_eq[A: (Equatable[A] #read & Stringable #read)](
   expect: A,
   actual: A,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   expect: A
 *   actual: A
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -289,16 +289,16 @@ Assert that the 2 given expressions resolve to different instances.
 fun box assert_isnt[A: A](
   not_expect: A,
   actual: A,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   not_expect: A
 *   actual: A
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -317,16 +317,16 @@ Assert that the 2 given expressions are not equal.
 fun box assert_ne[A: (Equatable[A] #read & Stringable #read)](
   not_expect: A,
   actual: A,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   not_expect: A
 *   actual: A
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -340,21 +340,32 @@ fun box assert_ne[A: (Equatable[A] #read & Stringable #read)](
 
 Assert that the contents of the 2 given ReadSeqs are equal.
 
+The type parameter of this function is the type parameter of the
+elements in both ReadSeqs. For instance, when comparing two `Array[U8]`,
+you should call this method as follows:
+
+```pony
+fun apply(h: TestHelper) =>
+  let a: Array[U8] = [1; 2; 3]
+  let b: Array[U8] = [1; 2; 3]
+  h.assert_array_eq[U8](a, b)
+```
+
 
 ```pony
 fun box assert_array_eq[A: (Equatable[A] #read & Stringable #read)](
   expect: ReadSeq[A] box,
   actual: ReadSeq[A] box,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   expect: [ReadSeq](builtin-ReadSeq.md)\[A\] box
 *   actual: [ReadSeq](builtin-ReadSeq.md)\[A\] box
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -363,26 +374,37 @@ fun box assert_array_eq[A: (Equatable[A] #read & Stringable #read)](
 ---
 
 ### assert_array_eq_unordered\[A: ([Equatable](builtin-Equatable.md)\[A\] #read & [Stringable](builtin-Stringable.md) #read)\]
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L286)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L297)</span>
 
 
 Assert that the contents of the 2 given ReadSeqs are equal ignoring order.
+
+The type parameter of this function is the type parameter of the
+elements in both ReadSeqs. For instance, when comparing two `Array[U8]`,
+you should call this method as follows:
+
+```pony
+fun apply(h: TestHelper) =>
+  let a: Array[U8] = [1; 2; 3]
+  let b: Array[U8] = [1; 3; 2]
+  h.assert_array_eq_unordered[U8](a, b)
+```
 
 
 ```pony
 fun box assert_array_eq_unordered[A: (Equatable[A] #read & Stringable #read)](
   expect: ReadSeq[A] box,
   actual: ReadSeq[A] box,
-  msg: String val = seq,
-  loc: SourceLoc val = seq)
+  msg: String val = "",
+  loc: SourceLoc val = __loc)
 : Bool val
 ```
 #### Parameters
 
 *   expect: [ReadSeq](builtin-ReadSeq.md)\[A\] box
 *   actual: [ReadSeq](builtin-ReadSeq.md)\[A\] box
-*   msg: [String](builtin-String.md) val = seq
-*   loc: [SourceLoc](builtin-SourceLoc.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
+*   loc: [SourceLoc](builtin-SourceLoc.md) val = __loc
 
 #### Returns
 
@@ -391,7 +413,7 @@ fun box assert_array_eq_unordered[A: (Equatable[A] #read & Stringable #read)](
 ---
 
 ### long_test
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L350)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L375)</span>
 
 
 Indicate that this is a long running test that may continue after the
@@ -417,7 +439,7 @@ fun box long_test(
 ---
 
 ### complete
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L360)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L385)</span>
 
 
 MUST be called by each long test to indicate the test has finished, unless
@@ -446,7 +468,7 @@ fun box complete(
 ---
 
 ### expect_action
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L373)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L398)</span>
 
 
 Can be called in a long test to set up expectations for one or more actions
@@ -476,7 +498,7 @@ fun box expect_action(
 ---
 
 ### complete_action
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L387)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L412)</span>
 
 
 MUST be called for each action expectation that was set up in a long test
@@ -506,7 +528,7 @@ fun box complete_action(
 ---
 
 ### fail_action
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L401)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L426)</span>
 
 
 Call to fail an action, which will also cause the entire test to fail
@@ -534,7 +556,7 @@ fun box fail_action(
 ---
 
 ### dispose_when_done
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L413)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L438)</span>
 
 
 Pass a disposable actor to be disposed of when the test is complete.
@@ -681,7 +703,7 @@ fun box _check_ne[A: (Equatable[A] #read & Stringable)](
 ---
 
 ### _format_loc
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L340)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L362)</span>
 
 
 ```pony
@@ -700,11 +722,14 @@ fun box _format_loc(
 ---
 
 ### _print_array\[A: [Stringable](builtin-Stringable.md) #read\]
-<span class="source-link">[[Source]](src/ponytest/test_helper.md#L343)</span>
+<span class="source-link">[[Source]](src/ponytest/test_helper.md#L365)</span>
 
 
 Generate a printable string of the contents of the given readseq to use in
 error messages.
+
+The type parameter of this function is the type parameter of the
+elements in the ReadSeq.
 
 
 ```pony

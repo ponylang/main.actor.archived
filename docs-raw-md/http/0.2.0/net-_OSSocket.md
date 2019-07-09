@@ -170,7 +170,7 @@ fun box getsockopt(
   fd: U32 val,
   level: I32 val,
   option_name: I32 val,
-  option_max_size: USize val = seq)
+  option_max_size: USize val = 4)
 : (U32 val , Array[U8 val] iso^)
 ```
 #### Parameters
@@ -178,7 +178,7 @@ fun box getsockopt(
 *   fd: [U32](builtin-U32.md) val
 *   level: [I32](builtin-I32.md) val
 *   option_name: [I32](builtin-I32.md) val
-*   option_max_size: [USize](builtin-USize.md) val = seq
+*   option_max_size: [USize](builtin-USize.md) val = 4
 
 #### Returns
 

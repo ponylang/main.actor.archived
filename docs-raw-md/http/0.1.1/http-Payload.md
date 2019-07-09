@@ -79,14 +79,14 @@ Create an HTTP `request` message.
 
 ```pony
 new iso request(
-  method': String val = seq,
-  url': URL val = seq)
+  method': String val = "GET",
+  url': URL val = reference)
 : Payload iso^
 ```
 #### Parameters
 
-*   method': [String](builtin-String.md) val = seq
-*   url': [URL](http-URL.md) val = seq
+*   method': [String](builtin-String.md) val = "GET"
+*   url': [URL](http-URL.md) val = reference
 
 #### Returns
 
@@ -103,12 +103,12 @@ Create an HTTP `response` message.
 
 ```pony
 new iso response(
-  status': Status val = seq)
+  status': Status val = reference)
 : Payload iso^
 ```
 #### Parameters
 
-*   status': [Status](http-Status.md) val = seq
+*   status': [Status](http-Status.md) val = reference
 
 #### Returns
 
@@ -125,12 +125,12 @@ Create an empty HTTP payload.
 
 ```pony
 new iso _empty(
-  response': Bool val = seq)
+  response': Bool val = true)
 : Payload iso^
 ```
 #### Parameters
 
-*   response': [Bool](builtin-Bool.md) val = seq
+*   response': [Bool](builtin-Bool.md) val = true
 
 #### Returns
 
@@ -529,13 +529,13 @@ only in the first line of text - everything after that is the same format.
 
 ```pony
 fun val _write(
-  keepalive: Bool val = seq,
+  keepalive: Bool val = true,
   conn: TCPConnection tag)
 : None val
 ```
 #### Parameters
 
-*   keepalive: [Bool](builtin-Bool.md) val = seq
+*   keepalive: [Bool](builtin-Bool.md) val = true
 *   conn: [TCPConnection](net-TCPConnection.md) tag
 
 #### Returns

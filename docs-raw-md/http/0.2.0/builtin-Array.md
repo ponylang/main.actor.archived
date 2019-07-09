@@ -106,12 +106,12 @@ Create an array with zero elements, but space for len elements.
 
 ```pony
 new ref create(
-  len: USize val = seq)
+  len: USize val = 0)
 : Array[A] ref^
 ```
 #### Parameters
 
-*   len: [USize](builtin-USize.md) val = seq
+*   len: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -155,14 +155,14 @@ copied.
 new ref from_cpointer(
   ptr: Pointer[A] ref,
   len: USize val,
-  alloc: USize val = seq)
+  alloc: USize val = 0)
 : Array[A] ref^
 ```
 #### Parameters
 
 *   ptr: [Pointer](builtin-Pointer.md)\[A\] ref
 *   len: [USize](builtin-USize.md) val
-*   alloc: [USize](builtin-USize.md) val = seq
+*   alloc: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -181,12 +181,12 @@ Return the underlying C-style pointer.
 
 ```pony
 fun box cpointer(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : Pointer[A] tag
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -660,14 +660,14 @@ Unlike slice, the operation does not allocate a new array nor copy elements.
 
 ```pony
 fun ref trim_in_place(
-  from: USize val = seq,
-  to: USize val = seq)
+  from: USize val = 0,
+  to: USize val = call)
 : None val
 ```
 #### Parameters
 
-*   from: [USize](builtin-USize.md) val = seq
-*   to: [USize](builtin-USize.md) val = seq
+*   from: [USize](builtin-USize.md) val = 0
+*   to: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -686,14 +686,14 @@ The operation does not allocate a new array pointer nor copy elements.
 
 ```pony
 fun val trim(
-  from: USize val = seq,
-  to: USize val = seq)
+  from: USize val = 0,
+  to: USize val = call)
 : Array[A] val
 ```
 #### Parameters
 
-*   from: [USize](builtin-USize.md) val = seq
-*   to: [USize](builtin-USize.md) val = seq
+*   from: [USize](builtin-USize.md) val = 0
+*   to: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -707,7 +707,7 @@ fun val trim(
 
 Chops the array in half at the split point requested and returns both
 the left and right portions. The original array is trimmed in place and
-returned as the right portion. If the split point is larger than the
+returned as the left portion. If the split point is larger than the
 array, the left portion is the original array and the right portion
 is a new empty array.
 Both arrays are isolated and mutable, as they do not share memory.
@@ -729,8 +729,36 @@ fun iso chop(
 
 ---
 
+### unchop
+<span class="source-link">[[Source]](src/builtin/array.md#L451)</span>
+
+
+Unchops two iso arrays to return the original array they were chopped from.
+Both input arrays are isolated and mutable and were originally chopped from
+a single array. This function checks that they are indeed two arrays chopped
+from the same original array and can be unchopped before doing the
+unchopping and returning the unchopped array. If the two arrays cannot be
+unchopped it returns both arrays without modifying them.
+The operation does not allocate a new array pointer nor copy elements.
+
+
+```pony
+fun iso unchop(
+  b: Array[A] iso)
+: ((Array[A] iso^ , Array[A] iso^) | Array[A] iso^)
+```
+#### Parameters
+
+*   b: [Array](builtin-Array.md)\[A\] iso
+
+#### Returns
+
+* (([Array](builtin-Array.md)\[A\] iso^ , [Array](builtin-Array.md)\[A\] iso^) | [Array](builtin-Array.md)\[A\] iso^)
+
+---
+
 ### copy_from\[optional B: (A & [Real](builtin-Real.md)\[B\] val & [U8](builtin-U8.md) val)\]
-<span class="source-link">[[Source]](src/builtin/array.md#L450)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L495)</span>
 
 
 Copy len elements from src(src_idx) to this(dst_idx).
@@ -759,7 +787,7 @@ fun ref copy_from[optional B: (A & Real[B] val & U8 val)](
 ---
 
 ### copy_to
-<span class="source-link">[[Source]](src/builtin/array.md#L467)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L512)</span>
 
 
 Copy len elements from this(src_idx) to dst(dst_idx).
@@ -787,7 +815,7 @@ fun box copy_to(
 ---
 
 ### remove
-<span class="source-link">[[Source]](src/builtin/array.md#L483)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L528)</span>
 
 
 Remove n elements from the array, beginning at index i.
@@ -811,7 +839,7 @@ fun ref remove(
 ---
 
 ### clear
-<span class="source-link">[[Source]](src/builtin/array.md#L493)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L538)</span>
 
 
 Remove all elements from the array.
@@ -829,7 +857,7 @@ fun ref clear()
 ---
 
 ### push_u8\[optional B: (A & [Real](builtin-Real.md)\[B\] val & [U8](builtin-U8.md) val)\]
-<span class="source-link">[[Source]](src/builtin/array.md#L499)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L544)</span>
 
 
 Add a U8 to the end of the array. This is only allowed for an array of U8s.
@@ -851,7 +879,7 @@ fun ref push_u8[optional B: (A & Real[B] val & U8 val)](
 ---
 
 ### push_u16\[optional B: (A & [Real](builtin-Real.md)\[B\] val & [U8](builtin-U8.md) val)\]
-<span class="source-link">[[Source]](src/builtin/array.md#L508)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L553)</span>
 
 
 Add a U16 to the end of the array. This is only allowed for an array of U8s.
@@ -873,7 +901,7 @@ fun ref push_u16[optional B: (A & Real[B] val & U8 val)](
 ---
 
 ### push_u32\[optional B: (A & [Real](builtin-Real.md)\[B\] val & [U8](builtin-U8.md) val)\]
-<span class="source-link">[[Source]](src/builtin/array.md#L517)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L562)</span>
 
 
 Add a U32 to the end of the array. This is only allowed for an array of U8s.
@@ -895,7 +923,7 @@ fun ref push_u32[optional B: (A & Real[B] val & U8 val)](
 ---
 
 ### push_u64\[optional B: (A & [Real](builtin-Real.md)\[B\] val & [U8](builtin-U8.md) val)\]
-<span class="source-link">[[Source]](src/builtin/array.md#L526)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L571)</span>
 
 
 Add a U64 to the end of the array. This is only allowed for an array of U8s.
@@ -917,7 +945,7 @@ fun ref push_u64[optional B: (A & Real[B] val & U8 val)](
 ---
 
 ### push_u128\[optional B: (A & [Real](builtin-Real.md)\[B\] val & [U8](builtin-U8.md) val)\]
-<span class="source-link">[[Source]](src/builtin/array.md#L535)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L580)</span>
 
 
 Add a U128 to the end of the array. This is only allowed for an array of U8s.
@@ -939,7 +967,7 @@ fun ref push_u128[optional B: (A & Real[B] val & U8 val)](
 ---
 
 ### push
-<span class="source-link">[[Source]](src/builtin/array.md#L544)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L589)</span>
 
 
 Add an element to the end of the array.
@@ -961,7 +989,7 @@ fun ref push(
 ---
 
 ### pop
-<span class="source-link">[[Source]](src/builtin/array.md#L552)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L597)</span>
 
 
 Remove an element from the end of the array.
@@ -980,7 +1008,7 @@ fun ref pop()
 ---
 
 ### unshift
-<span class="source-link">[[Source]](src/builtin/array.md#L559)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L604)</span>
 
 
 Add an element to the beginning of the array.
@@ -1002,7 +1030,7 @@ fun ref unshift(
 ---
 
 ### shift
-<span class="source-link">[[Source]](src/builtin/array.md#L567)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L612)</span>
 
 
 Remove an element from the beginning of the array.
@@ -1021,7 +1049,7 @@ fun ref shift()
 ---
 
 ### append
-<span class="source-link">[[Source]](src/builtin/array.md#L574)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L619)</span>
 
 
 Append the elements from a sequence, starting from the given offset.
@@ -1030,15 +1058,15 @@ Append the elements from a sequence, starting from the given offset.
 ```pony
 fun ref append(
   seq: (ReadSeq[A] box & ReadElement[A^] box),
-  offset: USize val = seq,
-  len: USize val = seq)
+  offset: USize val = 0,
+  len: USize val = call)
 : None val
 ```
 #### Parameters
 
 *   seq: ([ReadSeq](builtin-ReadSeq.md)\[A\] box & [ReadElement](builtin-ReadElement.md)\[A^\] box)
-*   offset: [USize](builtin-USize.md) val = seq
-*   len: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   len: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -1047,7 +1075,7 @@ fun ref append(
 ---
 
 ### concat
-<span class="source-link">[[Source]](src/builtin/array.md#L601)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L646)</span>
 
 
 Add len iterated elements to the end of the array, starting from the given
@@ -1057,15 +1085,15 @@ offset.
 ```pony
 fun ref concat(
   iter: Iterator[A^] ref,
-  offset: USize val = seq,
-  len: USize val = seq)
+  offset: USize val = 0,
+  len: USize val = call)
 : None val
 ```
 #### Parameters
 
 *   iter: [Iterator](builtin-Iterator.md)\[A^\] ref
-*   offset: [USize](builtin-USize.md) val = seq
-*   len: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   len: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -1074,7 +1102,7 @@ fun ref concat(
 ---
 
 ### find
-<span class="source-link">[[Source]](src/builtin/array.md#L657)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L702)</span>
 
 
 Find the `nth` appearance of `value` from the beginning of the array,
@@ -1090,17 +1118,17 @@ comparison.
 ```pony
 fun box find(
   value: A!,
-  offset: USize val = seq,
-  nth: USize val = seq,
-  predicate: {(box->A!, box->A!): Bool}[A] val = seq)
+  offset: USize val = 0,
+  nth: USize val = 0,
+  predicate: {(box->A!, box->A!): Bool}[A] val = lambda)
 : USize val ?
 ```
 #### Parameters
 
 *   value: A!
-*   offset: [USize](builtin-USize.md) val = seq
-*   nth: [USize](builtin-USize.md) val = seq
-*   predicate: {(box->A!, box->A!): Bool}[A] val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   nth: [USize](builtin-USize.md) val = 0
+*   predicate: {(box->A!, box->A!): Bool}[A] val = lambda
 
 #### Returns
 
@@ -1109,7 +1137,7 @@ fun box find(
 ---
 
 ### contains
-<span class="source-link">[[Source]](src/builtin/array.md#L691)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L736)</span>
 
 
 Returns true if the array contains `value`, false otherwise.
@@ -1121,13 +1149,13 @@ by structural equality, pass an object literal such as `{(l, r) => l == r}`.
 ```pony
 fun box contains(
   value: A!,
-  predicate: {(box->A!, box->A!): Bool}[A] val = seq)
+  predicate: {(box->A!, box->A!): Bool}[A] val = lambda)
 : Bool val
 ```
 #### Parameters
 
 *   value: A!
-*   predicate: {(box->A!, box->A!): Bool}[A] val = seq
+*   predicate: {(box->A!, box->A!): Bool}[A] val = lambda
 
 #### Returns
 
@@ -1136,7 +1164,7 @@ fun box contains(
 ---
 
 ### rfind
-<span class="source-link">[[Source]](src/builtin/array.md#L714)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L759)</span>
 
 
 Find the `nth` appearance of `value` from the end of the array, starting at
@@ -1151,17 +1179,17 @@ first instance of `value` found, and uses object identity for comparison.
 ```pony
 fun box rfind(
   value: A!,
-  offset: USize val = seq,
-  nth: USize val = seq,
-  predicate: {(box->A!, box->A!): Bool}[A] val = seq)
+  offset: USize val = call,
+  nth: USize val = 0,
+  predicate: {(box->A!, box->A!): Bool}[A] val = lambda)
 : USize val ?
 ```
 #### Parameters
 
 *   value: A!
-*   offset: [USize](builtin-USize.md) val = seq
-*   nth: [USize](builtin-USize.md) val = seq
-*   predicate: {(box->A!, box->A!): Bool}[A] val = seq
+*   offset: [USize](builtin-USize.md) val = call
+*   nth: [USize](builtin-USize.md) val = 0
+*   predicate: {(box->A!, box->A!): Bool}[A] val = lambda
 
 #### Returns
 
@@ -1170,7 +1198,7 @@ fun box rfind(
 ---
 
 ### clone
-<span class="source-link">[[Source]](src/builtin/array.md#L749)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L794)</span>
 
 
 Clone the array.
@@ -1190,7 +1218,7 @@ fun box clone()
 ---
 
 ### slice
-<span class="source-link">[[Source]](src/builtin/array.md#L760)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L805)</span>
 
 
 Create a new array that is a clone of a portion of this array. The range is
@@ -1201,16 +1229,16 @@ contains, the elements themselves are not cloned.
 
 ```pony
 fun box slice(
-  from: USize val = seq,
-  to: USize val = seq,
-  step: USize val = seq)
+  from: USize val = 0,
+  to: USize val = call,
+  step: USize val = 1)
 : Array[this->A!] ref^
 ```
 #### Parameters
 
-*   from: [USize](builtin-USize.md) val = seq
-*   to: [USize](builtin-USize.md) val = seq
-*   step: [USize](builtin-USize.md) val = seq
+*   from: [USize](builtin-USize.md) val = 0
+*   to: [USize](builtin-USize.md) val = call
+*   step: [USize](builtin-USize.md) val = 1
 
 #### Returns
 
@@ -1219,7 +1247,7 @@ fun box slice(
 ---
 
 ### permute
-<span class="source-link">[[Source]](src/builtin/array.md#L795)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L840)</span>
 
 
 Create a new array with the elements permuted.
@@ -1245,7 +1273,7 @@ fun box permute(
 ---
 
 ### reverse
-<span class="source-link">[[Source]](src/builtin/array.md#L809)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L854)</span>
 
 
 Create a new array with the elements in reverse order.
@@ -1265,7 +1293,7 @@ fun box reverse()
 ---
 
 ### reverse_in_place
-<span class="source-link">[[Source]](src/builtin/array.md#L817)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L862)</span>
 
 
 Reverse the array in place.
@@ -1283,7 +1311,7 @@ fun ref reverse_in_place()
 ---
 
 ### swap_elements
-<span class="source-link">[[Source]](src/builtin/array.md#L834)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L879)</span>
 
 
 Swap the element at index i with the element at index j.
@@ -1308,7 +1336,7 @@ fun ref swap_elements(
 ---
 
 ### keys
-<span class="source-link">[[Source]](src/builtin/array.md#L845)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L890)</span>
 
 
 Return an iterator over the indices in the array.
@@ -1326,7 +1354,7 @@ fun box keys()
 ---
 
 ### values
-<span class="source-link">[[Source]](src/builtin/array.md#L851)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L896)</span>
 
 
 Return an iterator over the values in the array.
@@ -1344,7 +1372,7 @@ fun box values()
 ---
 
 ### pairs
-<span class="source-link">[[Source]](src/builtin/array.md#L857)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L902)</span>
 
 
 Return an iterator over the (index, value) pairs in the array.
@@ -1374,16 +1402,16 @@ Copy copy_len elements from this to that at specified offsets.
 fun box _copy_to(
   ptr: Pointer[this->A!] ref,
   copy_len: USize val,
-  from_offset: USize val = seq,
-  to_offset: USize val = seq)
+  from_offset: USize val = 0,
+  to_offset: USize val = 0)
 : None val
 ```
 #### Parameters
 
 *   ptr: [Pointer](builtin-Pointer.md)\[this->A!\] ref
 *   copy_len: [USize](builtin-USize.md) val
-*   from_offset: [USize](builtin-USize.md) val = seq
-*   to_offset: [USize](builtin-USize.md) val = seq
+*   from_offset: [USize](builtin-USize.md) val = 0
+*   to_offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 

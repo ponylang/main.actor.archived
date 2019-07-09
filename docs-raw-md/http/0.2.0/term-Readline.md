@@ -29,16 +29,16 @@ initial prompt on the ANSITerm to begin processing.
 new iso create(
   notify: ReadlineNotify iso,
   out: OutStream tag,
-  path: (FilePath val | None val) = seq,
-  maxlen: USize val = seq)
+  path: (FilePath val | None val) = reference,
+  maxlen: USize val = 0)
 : Readline iso^
 ```
 #### Parameters
 
 *   notify: [ReadlineNotify](term-ReadlineNotify.md) iso
 *   out: [OutStream](builtin-OutStream.md) tag
-*   path: ([FilePath](files-FilePath.md) val | [None](builtin-None.md) val) = seq
-*   maxlen: [USize](builtin-USize.md) val = seq
+*   path: ([FilePath](files-FilePath.md) val | [None](builtin-None.md) val) = reference
+*   maxlen: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -123,16 +123,16 @@ Previous line.
 
 ```pony
 fun ref up(
-  ctrl: Bool val = seq,
-  alt: Bool val = seq,
-  shift: Bool val = seq)
+  ctrl: Bool val = false,
+  alt: Bool val = false,
+  shift: Bool val = false)
 : None val
 ```
 #### Parameters
 
-*   ctrl: [Bool](builtin-Bool.md) val = seq
-*   alt: [Bool](builtin-Bool.md) val = seq
-*   shift: [Bool](builtin-Bool.md) val = seq
+*   ctrl: [Bool](builtin-Bool.md) val = false
+*   alt: [Bool](builtin-Bool.md) val = false
+*   shift: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -149,16 +149,16 @@ Next line.
 
 ```pony
 fun ref down(
-  ctrl: Bool val = seq,
-  alt: Bool val = seq,
-  shift: Bool val = seq)
+  ctrl: Bool val = false,
+  alt: Bool val = false,
+  shift: Bool val = false)
 : None val
 ```
 #### Parameters
 
-*   ctrl: [Bool](builtin-Bool.md) val = seq
-*   alt: [Bool](builtin-Bool.md) val = seq
-*   shift: [Bool](builtin-Bool.md) val = seq
+*   ctrl: [Bool](builtin-Bool.md) val = false
+*   alt: [Bool](builtin-Bool.md) val = false
+*   shift: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -175,16 +175,16 @@ Move left.
 
 ```pony
 fun ref left(
-  ctrl: Bool val = seq,
-  alt: Bool val = seq,
-  shift: Bool val = seq)
+  ctrl: Bool val = false,
+  alt: Bool val = false,
+  shift: Bool val = false)
 : None val
 ```
 #### Parameters
 
-*   ctrl: [Bool](builtin-Bool.md) val = seq
-*   alt: [Bool](builtin-Bool.md) val = seq
-*   shift: [Bool](builtin-Bool.md) val = seq
+*   ctrl: [Bool](builtin-Bool.md) val = false
+*   alt: [Bool](builtin-Bool.md) val = false
+*   shift: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -201,16 +201,16 @@ Move right.
 
 ```pony
 fun ref right(
-  ctrl: Bool val = seq,
-  alt: Bool val = seq,
-  shift: Bool val = seq)
+  ctrl: Bool val = false,
+  alt: Bool val = false,
+  shift: Bool val = false)
 : None val
 ```
 #### Parameters
 
-*   ctrl: [Bool](builtin-Bool.md) val = seq
-*   alt: [Bool](builtin-Bool.md) val = seq
-*   shift: [Bool](builtin-Bool.md) val = seq
+*   ctrl: [Bool](builtin-Bool.md) val = false
+*   alt: [Bool](builtin-Bool.md) val = false
+*   shift: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -227,16 +227,16 @@ Beginning of the line.
 
 ```pony
 fun ref home(
-  ctrl: Bool val = seq,
-  alt: Bool val = seq,
-  shift: Bool val = seq)
+  ctrl: Bool val = false,
+  alt: Bool val = false,
+  shift: Bool val = false)
 : None val
 ```
 #### Parameters
 
-*   ctrl: [Bool](builtin-Bool.md) val = seq
-*   alt: [Bool](builtin-Bool.md) val = seq
-*   shift: [Bool](builtin-Bool.md) val = seq
+*   ctrl: [Bool](builtin-Bool.md) val = false
+*   alt: [Bool](builtin-Bool.md) val = false
+*   shift: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -253,16 +253,16 @@ End of the line.
 
 ```pony
 fun ref end_key(
-  ctrl: Bool val = seq,
-  alt: Bool val = seq,
-  shift: Bool val = seq)
+  ctrl: Bool val = false,
+  alt: Bool val = false,
+  shift: Bool val = false)
 : None val
 ```
 #### Parameters
 
-*   ctrl: [Bool](builtin-Bool.md) val = seq
-*   alt: [Bool](builtin-Bool.md) val = seq
-*   shift: [Bool](builtin-Bool.md) val = seq
+*   ctrl: [Bool](builtin-Bool.md) val = false
+*   alt: [Bool](builtin-Bool.md) val = false
+*   shift: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -279,16 +279,16 @@ Forward delete.
 
 ```pony
 fun ref delete(
-  ctrl: Bool val = seq,
-  alt: Bool val = seq,
-  shift: Bool val = seq)
+  ctrl: Bool val = false,
+  alt: Bool val = false,
+  shift: Bool val = false)
 : None val
 ```
 #### Parameters
 
-*   ctrl: [Bool](builtin-Bool.md) val = seq
-*   alt: [Bool](builtin-Bool.md) val = seq
-*   shift: [Bool](builtin-Bool.md) val = seq
+*   ctrl: [Bool](builtin-Bool.md) val = false
+*   alt: [Bool](builtin-Bool.md) val = false
+*   shift: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 

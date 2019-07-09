@@ -40,12 +40,12 @@ side certificate must be valid for that hostname.
 
 ```pony
 fun box client(
-  hostname: String val = seq)
+  hostname: String val = "")
 : SSL iso^ ?
 ```
 #### Parameters
 
-*   hostname: [String](builtin-String.md) val = seq
+*   hostname: [String](builtin-String.md) val = ""
 
 #### Returns
 
@@ -109,13 +109,13 @@ aren't valid, or if both are None.
 ```pony
 fun ref set_authority(
   file: (FilePath val | None val),
-  path: (FilePath val | None val) = seq)
+  path: (FilePath val | None val) = reference)
 : None val ?
 ```
 #### Parameters
 
 *   file: ([FilePath](files-FilePath.md) val | [None](builtin-None.md) val)
-*   path: ([FilePath](files-FilePath.md) val | [None](builtin-None.md) val) = seq
+*   path: ([FilePath](files-FilePath.md) val | [None](builtin-None.md) val) = reference
 
 #### Returns
 

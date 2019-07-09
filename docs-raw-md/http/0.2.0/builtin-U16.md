@@ -546,6 +546,158 @@ fun box shr(
 
 ---
 
+### fld
+
+
+
+```pony
+fun box fld(
+  y: U16 val)
+: U16 val
+```
+#### Parameters
+
+*   y: [U16](builtin-U16.md) val
+
+#### Returns
+
+* [U16](builtin-U16.md) val
+
+---
+
+### fldc
+
+
+
+```pony
+fun box fldc(
+  y: U16 val)
+: (U16 val , Bool val)
+```
+#### Parameters
+
+*   y: [U16](builtin-U16.md) val
+
+#### Returns
+
+* ([U16](builtin-U16.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### fld_partial
+
+
+
+```pony
+fun box fld_partial(
+  y: U16 val)
+: U16 val ?
+```
+#### Parameters
+
+*   y: [U16](builtin-U16.md) val
+
+#### Returns
+
+* [U16](builtin-U16.md) val ?
+
+---
+
+### fld_unsafe
+
+
+
+```pony
+fun box fld_unsafe(
+  y: U16 val)
+: U16 val
+```
+#### Parameters
+
+*   y: [U16](builtin-U16.md) val
+
+#### Returns
+
+* [U16](builtin-U16.md) val
+
+---
+
+### mod
+
+
+
+```pony
+fun box mod(
+  y: U16 val)
+: U16 val
+```
+#### Parameters
+
+*   y: [U16](builtin-U16.md) val
+
+#### Returns
+
+* [U16](builtin-U16.md) val
+
+---
+
+### modc
+
+
+
+```pony
+fun box modc(
+  y: U16 val)
+: (U16 val , Bool val)
+```
+#### Parameters
+
+*   y: [U16](builtin-U16.md) val
+
+#### Returns
+
+* ([U16](builtin-U16.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### mod_partial
+
+
+
+```pony
+fun box mod_partial(
+  y: U16 val)
+: U16 val ?
+```
+#### Parameters
+
+*   y: [U16](builtin-U16.md) val
+
+#### Returns
+
+* [U16](builtin-U16.md) val ?
+
+---
+
+### mod_unsafe
+
+
+
+```pony
+fun box mod_unsafe(
+  y: U16 val)
+: U16 val
+```
+#### Parameters
+
+*   y: [U16](builtin-U16.md) val
+
+#### Returns
+
+* [U16](builtin-U16.md) val
+
+---
+
 ### shl_unsafe
 
 

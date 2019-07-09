@@ -91,18 +91,18 @@ Listens for both IPv4 and IPv6 datagrams.
 new tag create(
   auth: (AmbientAuth val | NetAuth val | UDPAuth val),
   notify: UDPNotify iso,
-  host: String val = seq,
-  service: String val = seq,
-  size: USize val = seq)
+  host: String val = "",
+  service: String val = "0",
+  size: USize val = 1024)
 : UDPSocket tag^
 ```
 #### Parameters
 
 *   auth: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [UDPAuth](net-UDPAuth.md) val)
 *   notify: [UDPNotify](net-UDPNotify.md) iso
-*   host: [String](builtin-String.md) val = seq
-*   service: [String](builtin-String.md) val = seq
-*   size: [USize](builtin-USize.md) val = seq
+*   host: [String](builtin-String.md) val = ""
+*   service: [String](builtin-String.md) val = "0"
+*   size: [USize](builtin-USize.md) val = 1024
 
 #### Returns
 
@@ -121,18 +121,18 @@ Listens for IPv4 datagrams.
 new tag ip4(
   auth: (AmbientAuth val | NetAuth val | UDPAuth val),
   notify: UDPNotify iso,
-  host: String val = seq,
-  service: String val = seq,
-  size: USize val = seq)
+  host: String val = "",
+  service: String val = "0",
+  size: USize val = 1024)
 : UDPSocket tag^
 ```
 #### Parameters
 
 *   auth: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [UDPAuth](net-UDPAuth.md) val)
 *   notify: [UDPNotify](net-UDPNotify.md) iso
-*   host: [String](builtin-String.md) val = seq
-*   service: [String](builtin-String.md) val = seq
-*   size: [USize](builtin-USize.md) val = seq
+*   host: [String](builtin-String.md) val = ""
+*   service: [String](builtin-String.md) val = "0"
+*   size: [USize](builtin-USize.md) val = 1024
 
 #### Returns
 
@@ -151,18 +151,18 @@ Listens for IPv6 datagrams.
 new tag ip6(
   auth: (AmbientAuth val | NetAuth val | UDPAuth val),
   notify: UDPNotify iso,
-  host: String val = seq,
-  service: String val = seq,
-  size: USize val = seq)
+  host: String val = "",
+  service: String val = "0",
+  size: USize val = 1024)
 : UDPSocket tag^
 ```
 #### Parameters
 
 *   auth: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [UDPAuth](net-UDPAuth.md) val)
 *   notify: [UDPNotify](net-UDPNotify.md) iso
-*   host: [String](builtin-String.md) val = seq
-*   service: [String](builtin-String.md) val = seq
-*   size: [USize](builtin-USize.md) val = seq
+*   host: [String](builtin-String.md) val = ""
+*   service: [String](builtin-String.md) val = "0"
+*   size: [USize](builtin-USize.md) val = 1024
 
 #### Returns
 
@@ -255,11 +255,11 @@ revert to allowing the OS to choose, call with an empty string.
 
 ```pony
 be set_multicast_interface(
-  from: String val = seq)
+  from: String val = "")
 ```
 #### Parameters
 
-*   from: [String](builtin-String.md) val = seq
+*   from: [String](builtin-String.md) val = ""
 
 ---
 
@@ -310,12 +310,12 @@ specific interface.
 ```pony
 be multicast_join(
   group: String val,
-  to: String val = seq)
+  to: String val = "")
 ```
 #### Parameters
 
 *   group: [String](builtin-String.md) val
-*   to: [String](builtin-String.md) val = seq
+*   to: [String](builtin-String.md) val = ""
 
 ---
 
@@ -331,12 +331,12 @@ previously added this group.
 ```pony
 be multicast_leave(
   group: String val,
-  to: String val = seq)
+  to: String val = "")
 ```
 #### Parameters
 
 *   group: [String](builtin-String.md) val
-*   to: [String](builtin-String.md) val = seq
+*   to: [String](builtin-String.md) val = ""
 
 ---
 
@@ -418,14 +418,14 @@ fun ref listening(sock: UDPSocket ref) =>
 fun ref getsockopt(
   level: I32 val,
   option_name: I32 val,
-  option_max_size: USize val = seq)
+  option_max_size: USize val = 4)
 : (U32 val , Array[U8 val] iso^)
 ```
 #### Parameters
 
 *   level: [I32](builtin-I32.md) val
 *   option_name: [I32](builtin-I32.md) val
-*   option_max_size: [USize](builtin-USize.md) val = seq
+*   option_max_size: [USize](builtin-USize.md) val = 4
 
 #### Returns
 

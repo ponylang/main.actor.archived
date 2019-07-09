@@ -1,5 +1,5 @@
 # Float
-<span class="source-link">[[Source]](src/builtin/float.md#L433)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L485)</span>
 ```pony
 type Float is
   (F32 val | F64 val)

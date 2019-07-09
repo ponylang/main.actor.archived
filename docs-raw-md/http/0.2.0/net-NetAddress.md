@@ -102,15 +102,15 @@ Internally this method uses the POSIX C function `getnameinfo`.
 ```pony
 fun box name(
   reversedns: (AmbientAuth val | NetAuth val | DNSAuth val | 
-    None val) = seq,
-  servicename: Bool val = seq)
+    None val) = reference,
+  servicename: Bool val = false)
 : (String val , String val) ?
 ```
 #### Parameters
 
 *   reversedns: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [DNSAuth](net-DNSAuth.md) val | 
-    [None](builtin-None.md) val) = seq
-*   servicename: [Bool](builtin-Bool.md) val = seq
+    [None](builtin-None.md) val) = reference
+*   servicename: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 

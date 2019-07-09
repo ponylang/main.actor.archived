@@ -23,14 +23,14 @@ given seed.
 
 ```pony
 new ref create(
-  x: U64 val = seq,
-  y: U64 val = seq)
+  x: U64 val = 5489,
+  y: U64 val = 0)
 : Random ref^
 ```
 #### Parameters
 
-*   x: [U64](builtin-U64.md) val = seq
-*   y: [U64](builtin-U64.md) val = seq
+*   x: [U64](builtin-U64.md) val = 5489
+*   y: [U64](builtin-U64.md) val = 0
 
 #### Returns
 
@@ -328,11 +328,38 @@ fun ref isize()
 
 ---
 
-### int\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
+### int_fp_mult\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
 <span class="source-link">[[Source]](src/random/random.md#L137)</span>
 
 
 A random integer in [0, n)
+
+
+```pony
+fun ref int_fp_mult[optional N: ((U8 val | U16 val | U32 val | 
+    U64 val | U128 val | ULong val | 
+    USize val) & Real[N] val)](
+  n: N)
+: N
+```
+#### Parameters
+
+*   n: N
+
+#### Returns
+
+* N
+
+---
+
+### int\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
+<span class="source-link">[[Source]](src/random/random.md#L143)</span>
+
+
+A random integer in [0, n)
+
+Uses fixed-point inversion if platform supports native 128 bit operations
+otherwise uses floating-point multiplication.
 
 
 ```pony
@@ -352,8 +379,34 @@ fun ref int[optional N: ((U8 val | U16 val | U32 val |
 
 ---
 
+### int_unbiased\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
+<span class="source-link">[[Source]](src/random/random.md#L159)</span>
+
+
+A random integer in [0, n)
+
+Not biased with small values of `n` like `int`.
+
+
+```pony
+fun ref int_unbiased[optional N: ((U8 val | U16 val | U32 val | 
+    U64 val | U128 val | ULong val | 
+    USize val) & Real[N] val)](
+  n: N)
+: N
+```
+#### Parameters
+
+*   n: N
+
+#### Returns
+
+* N
+
+---
+
 ### real
-<span class="source-link">[[Source]](src/random/random.md#L143)</span>
+<span class="source-link">[[Source]](src/random/random.md#L195)</span>
 
 
 A random number in [0, 1)
@@ -371,7 +424,7 @@ fun ref real()
 ---
 
 ### shuffle\[A: A\]
-<span class="source-link">[[Source]](src/random/random.md#L149)</span>
+<span class="source-link">[[Source]](src/random/random.md#L201)</span>
 
 
 Shuffle the elements of the array into a random order, mutating the array.
@@ -389,6 +442,35 @@ fun ref shuffle[A: A](
 #### Returns
 
 * [None](builtin-None.md) val
+
+---
+
+## Private Functions
+
+### _u64_unbiased
+<span class="source-link">[[Source]](src/random/random.md#L167)</span>
+
+
+Generates a U64 in the range `[0, n)`
+while avoiding bias.
+
+See:
+- https://arxiv.org/abs/1805.10941
+- http://www.pcg-random.org/posts/bounded-rands.html
+
+
+```pony
+fun ref _u64_unbiased(
+  range: U64 val)
+: U64 val
+```
+#### Parameters
+
+*   range: [U64](builtin-U64.md) val
+
+#### Returns
+
+* [U64](builtin-U64.md) val
 
 ---
 

@@ -91,14 +91,14 @@ class ref Range[optional A: (Real[A] val & (I8 val | I16 val | I32 val |
 new ref create(
   min: A,
   max: A,
-  inc: A = seq)
+  inc: A = 1)
 : Range[A] ref^
 ```
 #### Parameters
 
 *   min: A
 *   max: A
-*   inc: A = seq
+*   inc: A = 1
 
 #### Returns
 

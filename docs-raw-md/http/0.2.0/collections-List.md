@@ -3,6 +3,120 @@
 
 A doubly linked list.
 
+(The following is paraphrased from [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list).)
+
+A doubly linked list is a linked data structure that consists of a set of sequentially
+linked records called nodes. (Implemented in Ponylang via the collections.ListNode class.) Each
+node contains four fields: two link fields (references to the previous and to the next node in
+the sequence of nodes), one data field, and the reference to the in which it resides.  A doubly
+linked list can be conceptualized as two singly linked lists formed from the same data items, but
+in opposite sequential orders.
+
+As you would expect. functions are provided to perform all the common list operations such as
+creation, traversal, node addition and removal, iteration, mapping, filtering, etc.
+
+## Example program
+There are a _lot_ of functions in List. The following code picks out a few common examples.
+
+It outputs:
+
+    A new empty list has 0 nodes.
+    Adding one node to our empty list means it now has a size of 1.
+    The first (index 0) node has the value: A single String
+    A list created by appending our second single-node list onto our first has size: 2
+    The List nodes of our first list are now:
+      A single String
+      Another String
+    Append *moves* the nodes from the second list so that now has 0 nodes.
+    A list created from an array of three strings has size: 3
+      First
+      Second
+      Third
+    Mapping over our three-node list produces a new list of size: 3
+    Each node-value in the resulting list is now far more exciting:
+      First BOOM!
+      Second BOOM!
+      Third BOOM!
+    Filtering our three-node list produces a new list of size: 2
+      Second BOOM!
+      Third BOOM!
+    The size of our first partitioned list (matches predicate): 1
+    The size of our second partitioned list (doesn't match predicate): 1
+    Our matching partition elements are:
+      Second BOOM!
+
+```pony
+  use "collections"
+
+  actor Main
+    new create(env:Env) =>
+      
+      // Create a new empty List of type String
+      let my_list = List[String]()
+      
+      env.out.print("A new empty list has " + my_list.size().string() + " nodes.") // 0
+      
+      // Push a String literal onto our empty List
+      my_list.push("A single String")
+      env.out.print("Adding one node to our empty list means it now has a size of "
+                    + my_list.size().string() + ".") // 1
+      
+      // Get the first element of our List
+      try env.out.print("The first (index 0) node has the value: "
+                        + my_list.index(0)?()?.string()) end // A single String
+      
+      // Create a second List from a single String literal
+      let my_second_list = List[String].unit("Another String")
+      
+      // Append the second List to the first
+      my_list.append_list(my_second_list)
+      env.out.print("A list created by appending our second single-node list onto our first has size: "
+                    + my_list.size().string()) // 2
+      env.out.print("The List nodes of our first list are now:")
+      for n in my_list.values() do
+        env.out.print("\t" + n.string())
+      end
+      // NOTE: this _moves_ the elements so second_list consequently ends up empty
+      env.out.print("Append *moves* the nodes from the second list so that now has "
+                    + my_second_list.size().string() + " nodes.") // 0
+      
+      // Create a third List from a Seq(ence)
+      // (In this case a literal array of Strings)
+      let my_third_list = List[String].from(["First"; "Second"; "Third"])
+      env.out.print("A list created from an array of three strings has size: "
+                    + my_third_list.size().string()) // 3
+      for n in my_third_list.values() do
+        env.out.print("\t" + n.string())
+      end
+      
+      // Map over the third List, concatenating some "BOOM!'s" into a new List
+      let new_list = my_third_list.map[String]({ (n) => n + " BOOM!" })
+      env.out.print("Mapping over our three-node list produces a new list of size: "
+                    + new_list.size().string()) // 3
+      env.out.print("Each node-value in the resulting list is now far more exciting:")
+      for n in new_list.values() do
+        env.out.print("\t" + n.string())
+      end
+
+      // Filter the new list to extract 2 elements
+      let filtered_list = new_list.filter({ (n) => n.string().contains("d BOOM!") })
+      env.out.print("Filtering our three-node list produces a new list of size: "
+                        + filtered_list.size().string()) // 2
+      for n in filtered_list.values() do
+        env.out.print("\t" + n.string()) // Second BOOM!\nThird BOOM!
+      end
+      
+      // Partition the filtered list
+      let partitioned_lists = filtered_list.partition({ (n) => n.string().contains("Second") })
+      env.out.print("The size of our first partitioned list (matches predicate): " + partitioned_lists._1.size().string())        // 1
+      env.out.print("The size of our second partitioned list (doesn't match predicate): " + partitioned_lists._2.size().string())  // 1
+      env.out.print("Our matching partition elements are:")
+      for n in partitioned_lists._1.values() do
+        env.out.print("\t" + n.string()) // Second BOOM!
+      end
+```
+
+
 
 ```pony
 class ref List[A: A] is
@@ -18,7 +132,7 @@ class ref List[A: A] is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/collections/list.md#L9)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L123)</span>
 
 
 Do nothing, but be compatible with Seq.
@@ -26,12 +140,12 @@ Do nothing, but be compatible with Seq.
 
 ```pony
 new ref create(
-  len: USize val = seq)
+  len: USize val = 0)
 : List[A] ref^
 ```
 #### Parameters
 
-*   len: [USize](builtin-USize.md) val = seq
+*   len: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -40,7 +154,7 @@ new ref create(
 ---
 
 ### unit
-<span class="source-link">[[Source]](src/collections/list.md#L15)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L129)</span>
 
 
 Builds a new list from an element.
@@ -62,7 +176,7 @@ new ref unit(
 ---
 
 ### from
-<span class="source-link">[[Source]](src/collections/list.md#L21)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L135)</span>
 
 
 Builds a new list from the sequence passed in.
@@ -86,7 +200,7 @@ new ref from(
 ## Public Functions
 
 ### reserve
-<span class="source-link">[[Source]](src/collections/list.md#L29)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L143)</span>
 
 
 Do nothing, but be compatible with Seq.
@@ -108,7 +222,7 @@ fun ref reserve(
 ---
 
 ### size
-<span class="source-link">[[Source]](src/collections/list.md#L35)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L149)</span>
 
 
 Returns the number of items in the list.
@@ -126,7 +240,7 @@ fun box size()
 ---
 
 ### apply
-<span class="source-link">[[Source]](src/collections/list.md#L41)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L155)</span>
 
 
 Get the i-th element, raising an error if the index is out of bounds.
@@ -134,12 +248,12 @@ Get the i-th element, raising an error if the index is out of bounds.
 
 ```pony
 fun box apply(
-  i: USize val = seq)
+  i: USize val = 0)
 : this->A ?
 ```
 #### Parameters
 
-*   i: [USize](builtin-USize.md) val = seq
+*   i: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -148,7 +262,7 @@ fun box apply(
 ---
 
 ### update
-<span class="source-link">[[Source]](src/collections/list.md#L47)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L161)</span>
 
 
 Change the i-th element, raising an error if the index is out of bounds.
@@ -174,7 +288,7 @@ fun ref update(
 ---
 
 ### index
-<span class="source-link">[[Source]](src/collections/list.md#L55)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L169)</span>
 
 
 Gets the i-th node, raising an error if the index is out of bounds.
@@ -196,7 +310,7 @@ fun box index(
 ---
 
 ### remove
-<span class="source-link">[[Source]](src/collections/list.md#L73)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L187)</span>
 
 
 Remove the i-th node, raising an error if the index is out of bounds.
@@ -219,7 +333,7 @@ fun ref remove(
 ---
 
 ### clear
-<span class="source-link">[[Source]](src/collections/list.md#L80)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L194)</span>
 
 
 Empties the list.
@@ -237,7 +351,7 @@ fun ref clear()
 ---
 
 ### head
-<span class="source-link">[[Source]](src/collections/list.md#L88)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L202)</span>
 
 
 Get the head of the list.
@@ -255,7 +369,7 @@ fun box head()
 ---
 
 ### tail
-<span class="source-link">[[Source]](src/collections/list.md#L94)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L208)</span>
 
 
 Get the tail of the list.
@@ -273,7 +387,7 @@ fun box tail()
 ---
 
 ### prepend_node
-<span class="source-link">[[Source]](src/collections/list.md#L100)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L214)</span>
 
 
 Adds a node to the head of the list.
@@ -295,7 +409,7 @@ fun ref prepend_node(
 ---
 
 ### append_node
-<span class="source-link">[[Source]](src/collections/list.md#L111)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L225)</span>
 
 
 Adds a node to the tail of the list.
@@ -317,7 +431,7 @@ fun ref append_node(
 ---
 
 ### append_list
-<span class="source-link">[[Source]](src/collections/list.md#L122)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L236)</span>
 
 
 Remove all nodes from that and append them to this.
@@ -339,7 +453,7 @@ fun ref append_list(
 ---
 
 ### prepend_list
-<span class="source-link">[[Source]](src/collections/list.md#L132)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L246)</span>
 
 
 Remove all nodes from that and prepend them to this.
@@ -361,7 +475,7 @@ fun ref prepend_list(
 ---
 
 ### push
-<span class="source-link">[[Source]](src/collections/list.md#L142)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L256)</span>
 
 
 Adds a value to the tail of the list.
@@ -383,7 +497,7 @@ fun ref push(
 ---
 
 ### pop
-<span class="source-link">[[Source]](src/collections/list.md#L148)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L262)</span>
 
 
 Removes a value from the tail of the list.
@@ -401,7 +515,7 @@ fun ref pop()
 ---
 
 ### unshift
-<span class="source-link">[[Source]](src/collections/list.md#L154)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L268)</span>
 
 
 Adds a value to the head of the list.
@@ -423,7 +537,7 @@ fun ref unshift(
 ---
 
 ### shift
-<span class="source-link">[[Source]](src/collections/list.md#L160)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L274)</span>
 
 
 Removes a value from the head of the list.
@@ -441,7 +555,7 @@ fun ref shift()
 ---
 
 ### append
-<span class="source-link">[[Source]](src/collections/list.md#L166)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L280)</span>
 
 
 Append len elements from a sequence, starting from the given offset.
@@ -450,15 +564,15 @@ Append len elements from a sequence, starting from the given offset.
 ```pony
 fun ref append(
   seq: (ReadSeq[A] box & ReadElement[A^] box),
-  offset: USize val = seq,
-  len: USize val = seq)
+  offset: USize val = 0,
+  len: USize val = call)
 : None val
 ```
 #### Parameters
 
 *   seq: ([ReadSeq](builtin-ReadSeq.md)\[A\] box & [ReadElement](builtin-ReadElement.md)\[A^\] box)
-*   offset: [USize](builtin-USize.md) val = seq
-*   len: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   len: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -467,7 +581,7 @@ fun ref append(
 ---
 
 ### concat
-<span class="source-link">[[Source]](src/collections/list.md#L191)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L305)</span>
 
 
 Add len iterated elements to the end of the list, starting from the given
@@ -477,15 +591,15 @@ offset.
 ```pony
 fun ref concat(
   iter: Iterator[A^] ref,
-  offset: USize val = seq,
-  len: USize val = seq)
+  offset: USize val = 0,
+  len: USize val = call)
 : None val
 ```
 #### Parameters
 
 *   iter: [Iterator](builtin-Iterator.md)\[A^\] ref
-*   offset: [USize](builtin-USize.md) val = seq
-*   len: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   len: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -494,7 +608,7 @@ fun ref concat(
 ---
 
 ### truncate
-<span class="source-link">[[Source]](src/collections/list.md#L214)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L328)</span>
 
 
 Truncate the list to the given length, discarding excess elements.
@@ -517,7 +631,7 @@ fun ref truncate(
 ---
 
 ### clone
-<span class="source-link">[[Source]](src/collections/list.md#L225)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L339)</span>
 
 
 Clone the list.
@@ -535,7 +649,7 @@ fun box clone()
 ---
 
 ### map\[B: B\]
-<span class="source-link">[[Source]](src/collections/list.md#L236)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L350)</span>
 
 
 Builds a new list by applying a function to every member of the list.
@@ -557,7 +671,7 @@ fun box map[B: B](
 ---
 
 ### flat_map\[B: B\]
-<span class="source-link">[[Source]](src/collections/list.md#L263)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L377)</span>
 
 
 Builds a new list by applying a function to every member of the list and
@@ -580,7 +694,7 @@ fun box flat_map[B: B](
 ---
 
 ### filter
-<span class="source-link">[[Source]](src/collections/list.md#L290)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L404)</span>
 
 
 Builds a new list with those elements that satisfy a provided predicate.
@@ -602,7 +716,7 @@ fun box filter(
 ---
 
 ### fold\[B: B\]
-<span class="source-link">[[Source]](src/collections/list.md#L319)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L433)</span>
 
 
 Folds the elements of the list using the supplied function.
@@ -626,7 +740,7 @@ fun box fold[B: B](
 ---
 
 ### every
-<span class="source-link">[[Source]](src/collections/list.md#L349)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L463)</span>
 
 
 Returns true if every element satisfies the provided predicate, false
@@ -649,7 +763,7 @@ fun box every(
 ---
 
 ### exists
-<span class="source-link">[[Source]](src/collections/list.md#L374)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L488)</span>
 
 
 Returns true if at least one element satisfies the provided predicate,
@@ -672,7 +786,7 @@ fun box exists(
 ---
 
 ### partition
-<span class="source-link">[[Source]](src/collections/list.md#L399)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L513)</span>
 
 
 Builds a pair of lists, the first of which is made up of the elements
@@ -696,7 +810,7 @@ fun box partition(
 ---
 
 ### drop
-<span class="source-link">[[Source]](src/collections/list.md#L415)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L529)</span>
 
 
 Builds a list by dropping the first n elements.
@@ -718,7 +832,7 @@ fun box drop(
 ---
 
 ### take
-<span class="source-link">[[Source]](src/collections/list.md#L433)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L547)</span>
 
 
 Builds a list of the first n elements.
@@ -740,7 +854,7 @@ fun box take(
 ---
 
 ### take_while
-<span class="source-link">[[Source]](src/collections/list.md#L451)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L565)</span>
 
 
 Builds a list of elements satisfying the provided predicate until one does
@@ -763,7 +877,7 @@ fun box take_while(
 ---
 
 ### reverse
-<span class="source-link">[[Source]](src/collections/list.md#L471)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L585)</span>
 
 
 Builds a new list by reversing the elements in the list.
@@ -781,7 +895,7 @@ fun box reverse()
 ---
 
 ### contains\[optional B: (A & [HasEq](builtin-HasEq.md)\[A!\] #read)\]
-<span class="source-link">[[Source]](src/collections/list.md#L493)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L607)</span>
 
 
 Returns true if the list contains the provided element, false otherwise.
@@ -803,7 +917,7 @@ fun box contains[optional B: (A & HasEq[A!] #read)](
 ---
 
 ### nodes
-<span class="source-link">[[Source]](src/collections/list.md#L521)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L635)</span>
 
 
 Return an iterator on the nodes in the list.
@@ -821,7 +935,7 @@ fun box nodes()
 ---
 
 ### rnodes
-<span class="source-link">[[Source]](src/collections/list.md#L527)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L641)</span>
 
 
 Return an iterator on the nodes in the list.
@@ -839,7 +953,7 @@ fun box rnodes()
 ---
 
 ### values
-<span class="source-link">[[Source]](src/collections/list.md#L533)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L647)</span>
 
 
 Return an iterator on the values in the list.
@@ -857,7 +971,7 @@ fun box values()
 ---
 
 ### rvalues
-<span class="source-link">[[Source]](src/collections/list.md#L539)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L653)</span>
 
 
 Return an iterator on the values in the list.
@@ -877,7 +991,7 @@ fun box rvalues()
 ## Private Functions
 
 ### _map\[B: B\]
-<span class="source-link">[[Source]](src/collections/list.md#L246)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L360)</span>
 
 
 Private helper for map, recursively working with ListNodes.
@@ -903,7 +1017,7 @@ fun box _map[B: B](
 ---
 
 ### _flat_map\[B: B\]
-<span class="source-link">[[Source]](src/collections/list.md#L274)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L388)</span>
 
 
 Private helper for flat_map, recursively working with ListNodes.
@@ -929,7 +1043,7 @@ fun box _flat_map[B: B](
 ---
 
 ### _filter
-<span class="source-link">[[Source]](src/collections/list.md#L300)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L414)</span>
 
 
 Private helper for filter, recursively working with ListNodes.
@@ -955,7 +1069,7 @@ fun box _filter(
 ---
 
 ### _fold\[B: B\]
-<span class="source-link">[[Source]](src/collections/list.md#L331)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L445)</span>
 
 
 Private helper for fold, recursively working with ListNodes.
@@ -981,7 +1095,7 @@ fun box _fold[B: B](
 ---
 
 ### _every
-<span class="source-link">[[Source]](src/collections/list.md#L360)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L474)</span>
 
 
 Private helper for every, recursively working with ListNodes.
@@ -1005,7 +1119,7 @@ fun box _every(
 ---
 
 ### _exists
-<span class="source-link">[[Source]](src/collections/list.md#L385)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L499)</span>
 
 
 Private helper for exists, recursively working with ListNodes.
@@ -1029,7 +1143,7 @@ fun box _exists(
 ---
 
 ### _reverse
-<span class="source-link">[[Source]](src/collections/list.md#L481)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L595)</span>
 
 
 Private helper for reverse, recursively working with ListNodes.
@@ -1053,7 +1167,7 @@ fun box _reverse(
 ---
 
 ### _contains\[optional B: (A & [HasEq](builtin-HasEq.md)\[A!\] #read)\]
-<span class="source-link">[[Source]](src/collections/list.md#L503)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L617)</span>
 
 
 Private helper for contains, recursively working with ListNodes.
@@ -1077,7 +1191,7 @@ fun box _contains[optional B: (A & HasEq[A!] #read)](
 ---
 
 ### _increment
-<span class="source-link">[[Source]](src/collections/list.md#L545)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L659)</span>
 
 
 ```pony
@@ -1092,7 +1206,7 @@ fun ref _increment()
 ---
 
 ### _decrement
-<span class="source-link">[[Source]](src/collections/list.md#L548)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L662)</span>
 
 
 ```pony
@@ -1107,7 +1221,7 @@ fun ref _decrement()
 ---
 
 ### _set_head
-<span class="source-link">[[Source]](src/collections/list.md#L551)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L665)</span>
 
 
 ```pony
@@ -1126,7 +1240,7 @@ fun ref _set_head(
 ---
 
 ### _set_tail
-<span class="source-link">[[Source]](src/collections/list.md#L554)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L668)</span>
 
 
 ```pony
@@ -1145,7 +1259,7 @@ fun ref _set_tail(
 ---
 
 ### _set_both
-<span class="source-link">[[Source]](src/collections/list.md#L557)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L671)</span>
 
 
 ```pony

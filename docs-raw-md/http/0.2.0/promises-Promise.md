@@ -86,13 +86,13 @@ then the next promise in the chain will be rejected.
 ```pony
 fun tag next[B: Any #share](
   fulfill: Fulfill[A, B] iso,
-  rejected: Reject[B] iso = seq)
+  rejected: Reject[B] iso = qualify)
 : Promise[B] tag
 ```
 #### Parameters
 
 *   fulfill: [Fulfill](promises-Fulfill.md)\[A, B\] iso
-*   rejected: [Reject](promises-Reject.md)\[B\] iso = seq
+*   rejected: [Reject](promises-Reject.md)\[B\] iso = qualify
 
 #### Returns
 

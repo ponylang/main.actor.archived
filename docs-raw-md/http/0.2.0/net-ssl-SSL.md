@@ -23,7 +23,7 @@ new ref _create(
   ctx: Pointer[_SSLContext val] tag,
   server: Bool val,
   verify: Bool val,
-  hostname: String val = seq)
+  hostname: String val = "")
 : SSL ref^ ?
 ```
 #### Parameters
@@ -31,7 +31,7 @@ new ref _create(
 *   ctx: [Pointer](builtin-Pointer.md)\[[_SSLContext](net-ssl-_SSLContext.md) val\] tag
 *   server: [Bool](builtin-Bool.md) val
 *   verify: [Bool](builtin-Bool.md) val
-*   hostname: [String](builtin-String.md) val = seq
+*   hostname: [String](builtin-String.md) val = ""
 
 #### Returns
 
@@ -90,12 +90,12 @@ non-zero, the number of bytes returned will be exactly `expect`. If no data
 
 ```pony
 fun ref read(
-  expect: USize val = seq)
+  expect: USize val = 0)
 : (Array[U8 val] iso^ | None val)
 ```
 #### Parameters
 
-*   expect: [USize](builtin-USize.md) val = seq
+*   expect: [USize](builtin-USize.md) val = 0
 
 #### Returns
 

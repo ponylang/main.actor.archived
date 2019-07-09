@@ -31,14 +31,14 @@ the supplied capabilities and the capabilities on the parent.
 new val create(
   base: (FilePath val | AmbientAuth val),
   path': String val,
-  caps': Flags[(FileCreate val | FileChmod val | FileChown val | FileLink val | FileLookup val | FileMkdir val | FileRead val | FileRemove val | FileRename val | FileSeek val | FileStat val | FileSync val | FileTime val | FileTruncate val | FileWrite val | FileExec val), U32 val] val = seq)
+  caps': Flags[(FileCreate val | FileChmod val | FileChown val | FileLink val | FileLookup val | FileMkdir val | FileRead val | FileRemove val | FileRename val | FileSeek val | FileStat val | FileSync val | FileTime val | FileTruncate val | FileWrite val | FileExec val), U32 val] val = recover)
 : FilePath val^ ?
 ```
 #### Parameters
 
 *   base: ([FilePath](files-FilePath.md) val | [AmbientAuth](builtin-AmbientAuth.md) val)
 *   path': [String](builtin-String.md) val
-*   caps': [Flags](collections-Flags.md)\[([FileCreate](files-FileCreate.md) val | [FileChmod](files-FileChmod.md) val | [FileChown](files-FileChown.md) val | [FileLink](files-FileLink.md) val | [FileLookup](files-FileLookup.md) val | [FileMkdir](files-FileMkdir.md) val | [FileRead](files-FileRead.md) val | [FileRemove](files-FileRemove.md) val | [FileRename](files-FileRename.md) val | [FileSeek](files-FileSeek.md) val | [FileStat](files-FileStat.md) val | [FileSync](files-FileSync.md) val | [FileTime](files-FileTime.md) val | [FileTruncate](files-FileTruncate.md) val | [FileWrite](files-FileWrite.md) val | [FileExec](files-FileExec.md) val), [U32](builtin-U32.md) val\] val = seq
+*   caps': [Flags](collections-Flags.md)\[([FileCreate](files-FileCreate.md) val | [FileChmod](files-FileChmod.md) val | [FileChown](files-FileChown.md) val | [FileLink](files-FileLink.md) val | [FileLookup](files-FileLookup.md) val | [FileMkdir](files-FileMkdir.md) val | [FileRead](files-FileRead.md) val | [FileRemove](files-FileRemove.md) val | [FileRename](files-FileRename.md) val | [FileSeek](files-FileSeek.md) val | [FileStat](files-FileStat.md) val | [FileSync](files-FileSync.md) val | [FileTime](files-FileTime.md) val | [FileTruncate](files-FileTruncate.md) val | [FileWrite](files-FileWrite.md) val | [FileExec](files-FileExec.md) val), [U32](builtin-U32.md) val\] val = recover
 
 #### Returns
 
@@ -65,15 +65,15 @@ the supplied capabilities and the capabilities on the base.
 ```pony
 new val mkdtemp(
   base: (FilePath val | AmbientAuth val),
-  prefix: String val = seq,
-  caps': Flags[(FileCreate val | FileChmod val | FileChown val | FileLink val | FileLookup val | FileMkdir val | FileRead val | FileRemove val | FileRename val | FileSeek val | FileStat val | FileSync val | FileTime val | FileTruncate val | FileWrite val | FileExec val), U32 val] val = seq)
+  prefix: String val = "",
+  caps': Flags[(FileCreate val | FileChmod val | FileChown val | FileLink val | FileLookup val | FileMkdir val | FileRead val | FileRemove val | FileRename val | FileSeek val | FileStat val | FileSync val | FileTime val | FileTruncate val | FileWrite val | FileExec val), U32 val] val = recover)
 : FilePath val^ ?
 ```
 #### Parameters
 
 *   base: ([FilePath](files-FilePath.md) val | [AmbientAuth](builtin-AmbientAuth.md) val)
-*   prefix: [String](builtin-String.md) val = seq
-*   caps': [Flags](collections-Flags.md)\[([FileCreate](files-FileCreate.md) val | [FileChmod](files-FileChmod.md) val | [FileChown](files-FileChown.md) val | [FileLink](files-FileLink.md) val | [FileLookup](files-FileLookup.md) val | [FileMkdir](files-FileMkdir.md) val | [FileRead](files-FileRead.md) val | [FileRemove](files-FileRemove.md) val | [FileRename](files-FileRename.md) val | [FileSeek](files-FileSeek.md) val | [FileStat](files-FileStat.md) val | [FileSync](files-FileSync.md) val | [FileTime](files-FileTime.md) val | [FileTruncate](files-FileTruncate.md) val | [FileWrite](files-FileWrite.md) val | [FileExec](files-FileExec.md) val), [U32](builtin-U32.md) val\] val = seq
+*   prefix: [String](builtin-String.md) val = ""
+*   caps': [Flags](collections-Flags.md)\[([FileCreate](files-FileCreate.md) val | [FileChmod](files-FileChmod.md) val | [FileChown](files-FileChown.md) val | [FileLink](files-FileLink.md) val | [FileLookup](files-FileLookup.md) val | [FileMkdir](files-FileMkdir.md) val | [FileRead](files-FileRead.md) val | [FileRemove](files-FileRemove.md) val | [FileRename](files-FileRename.md) val | [FileSeek](files-FileSeek.md) val | [FileStat](files-FileStat.md) val | [FileSync](files-FileSync.md) val | [FileTime](files-FileTime.md) val | [FileTruncate](files-FileTruncate.md) val | [FileWrite](files-FileWrite.md) val | [FileExec](files-FileExec.md) val), [U32](builtin-U32.md) val\] val = recover
 
 #### Returns
 
@@ -139,13 +139,13 @@ Return a new path relative to this one.
 ```pony
 fun val join(
   path': String val,
-  caps': Flags[(FileCreate val | FileChmod val | FileChown val | FileLink val | FileLookup val | FileMkdir val | FileRead val | FileRemove val | FileRename val | FileSeek val | FileStat val | FileSync val | FileTime val | FileTruncate val | FileWrite val | FileExec val), U32 val] val = seq)
+  caps': Flags[(FileCreate val | FileChmod val | FileChown val | FileLink val | FileLookup val | FileMkdir val | FileRead val | FileRemove val | FileRename val | FileSeek val | FileStat val | FileSync val | FileTime val | FileTruncate val | FileWrite val | FileExec val), U32 val] val = recover)
 : FilePath val ?
 ```
 #### Parameters
 
 *   path': [String](builtin-String.md) val
-*   caps': [Flags](collections-Flags.md)\[([FileCreate](files-FileCreate.md) val | [FileChmod](files-FileChmod.md) val | [FileChown](files-FileChown.md) val | [FileLink](files-FileLink.md) val | [FileLookup](files-FileLookup.md) val | [FileMkdir](files-FileMkdir.md) val | [FileRead](files-FileRead.md) val | [FileRemove](files-FileRemove.md) val | [FileRename](files-FileRename.md) val | [FileSeek](files-FileSeek.md) val | [FileStat](files-FileStat.md) val | [FileSync](files-FileSync.md) val | [FileTime](files-FileTime.md) val | [FileTruncate](files-FileTruncate.md) val | [FileWrite](files-FileWrite.md) val | [FileExec](files-FileExec.md) val), [U32](builtin-U32.md) val\] val = seq
+*   caps': [Flags](collections-Flags.md)\[([FileCreate](files-FileCreate.md) val | [FileChmod](files-FileChmod.md) val | [FileChown](files-FileChown.md) val | [FileLink](files-FileLink.md) val | [FileLookup](files-FileLookup.md) val | [FileMkdir](files-FileMkdir.md) val | [FileRead](files-FileRead.md) val | [FileRemove](files-FileRemove.md) val | [FileRename](files-FileRename.md) val | [FileSeek](files-FileSeek.md) val | [FileStat](files-FileStat.md) val | [FileSync](files-FileSync.md) val | [FileTime](files-FileTime.md) val | [FileTruncate](files-FileTruncate.md) val | [FileWrite](files-FileWrite.md) val | [FileExec](files-FileExec.md) val), [U32](builtin-U32.md) val\] val = recover
 
 #### Returns
 
@@ -167,13 +167,13 @@ expanded by removing them from the `dir_entries` list.
 ```pony
 fun val walk(
   handler: WalkHandler ref,
-  follow_links: Bool val = seq)
+  follow_links: Bool val = false)
 : None val
 ```
 #### Parameters
 
 *   handler: [WalkHandler](files-WalkHandler.md) ref
-*   follow_links: [Bool](builtin-Bool.md) val = seq
+*   follow_links: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -230,12 +230,12 @@ does exist.
 
 ```pony
 fun val mkdir(
-  must_create: Bool val = seq)
+  must_create: Bool val = false)
 : Bool val
 ```
 #### Parameters
 
-*   must_create: [Bool](builtin-Bool.md) val = seq
+*   must_create: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 

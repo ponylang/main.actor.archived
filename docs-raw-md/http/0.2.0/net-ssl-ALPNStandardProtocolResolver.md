@@ -24,13 +24,13 @@ class val ALPNStandardProtocolResolver is
 ```pony
 new val create(
   supported': Array[String val] val,
-  use_client_as_fallback': Bool val = seq)
+  use_client_as_fallback': Bool val = true)
 : ALPNStandardProtocolResolver val^
 ```
 #### Parameters
 
 *   supported': [Array](builtin-Array.md)\[[String](builtin-String.md) val\] val
-*   use_client_as_fallback': [Bool](builtin-Bool.md) val = seq
+*   use_client_as_fallback': [Bool](builtin-Bool.md) val = true
 
 #### Returns
 

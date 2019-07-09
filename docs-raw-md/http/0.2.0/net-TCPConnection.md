@@ -199,9 +199,9 @@ new tag create(
   notify: TCPConnectionNotify iso,
   host: String val,
   service: String val,
-  from: String val = seq,
-  init_size: USize val = seq,
-  max_size: USize val = seq)
+  from: String val = "",
+  init_size: USize val = 64,
+  max_size: USize val = 16384)
 : TCPConnection tag^
 ```
 #### Parameters
@@ -211,9 +211,9 @@ new tag create(
 *   notify: [TCPConnectionNotify](net-TCPConnectionNotify.md) iso
 *   host: [String](builtin-String.md) val
 *   service: [String](builtin-String.md) val
-*   from: [String](builtin-String.md) val = seq
-*   init_size: [USize](builtin-USize.md) val = seq
-*   max_size: [USize](builtin-USize.md) val = seq
+*   from: [String](builtin-String.md) val = ""
+*   init_size: [USize](builtin-USize.md) val = 64
+*   max_size: [USize](builtin-USize.md) val = 16384
 
 #### Returns
 
@@ -235,9 +235,9 @@ new tag ip4(
   notify: TCPConnectionNotify iso,
   host: String val,
   service: String val,
-  from: String val = seq,
-  init_size: USize val = seq,
-  max_size: USize val = seq)
+  from: String val = "",
+  init_size: USize val = 64,
+  max_size: USize val = 16384)
 : TCPConnection tag^
 ```
 #### Parameters
@@ -247,9 +247,9 @@ new tag ip4(
 *   notify: [TCPConnectionNotify](net-TCPConnectionNotify.md) iso
 *   host: [String](builtin-String.md) val
 *   service: [String](builtin-String.md) val
-*   from: [String](builtin-String.md) val = seq
-*   init_size: [USize](builtin-USize.md) val = seq
-*   max_size: [USize](builtin-USize.md) val = seq
+*   from: [String](builtin-String.md) val = ""
+*   init_size: [USize](builtin-USize.md) val = 64
+*   max_size: [USize](builtin-USize.md) val = 16384
 
 #### Returns
 
@@ -271,9 +271,9 @@ new tag ip6(
   notify: TCPConnectionNotify iso,
   host: String val,
   service: String val,
-  from: String val = seq,
-  init_size: USize val = seq,
-  max_size: USize val = seq)
+  from: String val = "",
+  init_size: USize val = 64,
+  max_size: USize val = 16384)
 : TCPConnection tag^
 ```
 #### Parameters
@@ -283,9 +283,9 @@ new tag ip6(
 *   notify: [TCPConnectionNotify](net-TCPConnectionNotify.md) iso
 *   host: [String](builtin-String.md) val
 *   service: [String](builtin-String.md) val
-*   from: [String](builtin-String.md) val = seq
-*   init_size: [USize](builtin-USize.md) val = seq
-*   max_size: [USize](builtin-USize.md) val = seq
+*   from: [String](builtin-String.md) val = ""
+*   init_size: [USize](builtin-USize.md) val = 64
+*   max_size: [USize](builtin-USize.md) val = 16384
 
 #### Returns
 
@@ -305,8 +305,8 @@ new tag _accept(
   listen: TCPListener tag,
   notify: TCPConnectionNotify iso,
   fd: U32 val,
-  init_size: USize val = seq,
-  max_size: USize val = seq)
+  init_size: USize val = 64,
+  max_size: USize val = 16384)
 : TCPConnection tag^
 ```
 #### Parameters
@@ -314,8 +314,8 @@ new tag _accept(
 *   listen: [TCPListener](net-TCPListener.md) tag
 *   notify: [TCPConnectionNotify](net-TCPConnectionNotify.md) iso
 *   fd: [U32](builtin-U32.md) val
-*   init_size: [USize](builtin-USize.md) val = seq
-*   max_size: [USize](builtin-USize.md) val = seq
+*   init_size: [USize](builtin-USize.md) val = 64
+*   max_size: [USize](builtin-USize.md) val = 16384
 
 #### Returns
 
@@ -424,7 +424,8 @@ be dispose()
 <span class="source-link">[[Source]](src/net/tcp_connection.md#L413)</span>
 
 
-Return the local IP address.
+Return the local IP address. If this TCPConnection is closed then the
+address returned is invalid.
 
 
 ```pony
@@ -439,10 +440,11 @@ fun box local_address()
 ---
 
 ### remote_address
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L421)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L422)</span>
 
 
-Return the remote IP address.
+Return the remote IP address. If this TCPConnection is closed then the
+address returned is invalid.
 
 
 ```pony
@@ -457,7 +459,7 @@ fun box remote_address()
 ---
 
 ### expect
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L429)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L431)</span>
 
 
 A `received` call on the notifier must contain exactly `qty` bytes. If
@@ -467,12 +469,12 @@ if called in the `sent` notifier callback.
 
 ```pony
 fun ref expect(
-  qty: USize val = seq)
+  qty: USize val = 0)
 : None val
 ```
 #### Parameters
 
-*   qty: [USize](builtin-USize.md) val = seq
+*   qty: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -481,7 +483,7 @@ fun ref expect(
 ---
 
 ### set_nodelay
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L440)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L442)</span>
 
 
 Turn Nagle on/off. Defaults to on. This can only be set on a connected
@@ -504,7 +506,7 @@ fun ref set_nodelay(
 ---
 
 ### set_keepalive
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L449)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L451)</span>
 
 
 Sets the TCP keepalive timeout to approximately `secs` seconds. Exact
@@ -529,7 +531,7 @@ fun ref set_keepalive(
 ---
 
 ### write_final
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L551)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L553)</span>
 
 
 Write as much as possible to the socket. Set `_writeable` to `false` if not
@@ -554,7 +556,7 @@ fun ref write_final(
 ---
 
 ### close
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L863)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L865)</span>
 
 
 Attempt to perform a graceful shutdown. Don't accept new writes. If the
@@ -574,8 +576,26 @@ fun ref close()
 
 ---
 
+### hard_close
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L921)</span>
+
+
+When an error happens, do a non-graceful close.
+
+
+```pony
+fun ref hard_close()
+: None val
+```
+
+#### Returns
+
+* [None](builtin-None.md) val
+
+---
+
 ### getsockopt
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L984)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L986)</span>
 
 
 General wrapper for TCP sockets to the `getsockopt(2)` system call.
@@ -619,14 +639,14 @@ fun ref connected(conn: TCPConnection ref) =>
 fun ref getsockopt(
   level: I32 val,
   option_name: I32 val,
-  option_max_size: USize val = seq)
+  option_max_size: USize val = 4)
 : (U32 val , Array[U8 val] iso^)
 ```
 #### Parameters
 
 *   level: [I32](builtin-I32.md) val
 *   option_name: [I32](builtin-I32.md) val
-*   option_max_size: [USize](builtin-USize.md) val = seq
+*   option_max_size: [USize](builtin-USize.md) val = 4
 
 #### Returns
 
@@ -635,7 +655,7 @@ fun ref getsockopt(
 ---
 
 ### getsockopt_u32
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1025)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1027)</span>
 
 
 Wrapper for TCP sockets to the `getsockopt(2)` system call where
@@ -669,7 +689,7 @@ fun ref getsockopt_u32(
 ---
 
 ### setsockopt
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1041)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1043)</span>
 
 
 General wrapper for TCP sockets to the `setsockopt(2)` system call.
@@ -722,7 +742,7 @@ fun ref setsockopt(
 ---
 
 ### setsockopt_u32
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1074)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1076)</span>
 
 
 General wrapper for TCP sockets to the `setsockopt(2)` system call where
@@ -753,7 +773,7 @@ fun ref setsockopt_u32(
 ---
 
 ### get_so_error
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1086)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1088)</span>
 
 
 Wrapper for the FFI call `getsockopt(fd, SOL_SOCKET, SO_ERROR, ...)`
@@ -771,7 +791,7 @@ fun ref get_so_error()
 ---
 
 ### get_so_rcvbuf
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1092)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1094)</span>
 
 
 Wrapper for the FFI call `getsockopt(fd, SOL_SOCKET, SO_RCVBUF, ...)`
@@ -789,7 +809,7 @@ fun ref get_so_rcvbuf()
 ---
 
 ### get_so_sndbuf
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1098)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1100)</span>
 
 
 Wrapper for the FFI call `getsockopt(fd, SOL_SOCKET, SO_SNDBUF, ...)`
@@ -807,7 +827,7 @@ fun ref get_so_sndbuf()
 ---
 
 ### get_tcp_nodelay
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1104)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1106)</span>
 
 
 Wrapper for the FFI call `getsockopt(fd, SOL_SOCKET, TCP_NODELAY, ...)`
@@ -825,7 +845,7 @@ fun ref get_tcp_nodelay()
 ---
 
 ### set_so_rcvbuf
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1111)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1113)</span>
 
 
 Wrapper for the FFI call `setsockopt(fd, SOL_SOCKET, SO_RCVBUF, ...)`
@@ -847,7 +867,7 @@ fun ref set_so_rcvbuf(
 ---
 
 ### set_so_sndbuf
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1117)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1119)</span>
 
 
 Wrapper for the FFI call `setsockopt(fd, SOL_SOCKET, SO_SNDBUF, ...)`
@@ -869,7 +889,7 @@ fun ref set_so_sndbuf(
 ---
 
 ### set_tcp_nodelay
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L1123)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L1125)</span>
 
 
 Wrapper for the FFI call `setsockopt(fd, SOL_SOCKET, TCP_NODELAY, ...)`
@@ -893,7 +913,7 @@ fun ref set_tcp_nodelay(
 ## Private Behaviours
 
 ### _event_notify
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L460)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L462)</span>
 
 
 Handle socket events.
@@ -914,7 +934,7 @@ be _event_notify(
 ---
 
 ### _read_again
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L545)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L547)</span>
 
 
 Resume reading.
@@ -929,7 +949,7 @@ be _read_again()
 ## Private Functions
 
 ### _complete_writes
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L586)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L588)</span>
 
 
 The OS has informed us that `len` bytes of pending writes have completed.
@@ -952,7 +972,7 @@ fun ref _complete_writes(
 ---
 
 ### _pending_writes
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L611)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L613)</span>
 
 
 Send pending data. If any data can't be sent, keep it and mark as not
@@ -972,7 +992,7 @@ fun ref _pending_writes()
 ---
 
 ### _manage_pending_buffer
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L654)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L656)</span>
 
 
 Manage pending buffer for data sent. Returns a boolean of whether
@@ -999,7 +1019,7 @@ fun ref _manage_pending_buffer(
 ---
 
 ### _complete_reads
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L727)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L729)</span>
 
 
 The OS has informed us that `len` bytes of pending reads have completed.
@@ -1022,7 +1042,7 @@ fun ref _complete_reads(
 ---
 
 ### _read_buf_size
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L759)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L761)</span>
 
 
 Resize the read buffer.
@@ -1040,7 +1060,7 @@ fun ref _read_buf_size()
 ---
 
 ### _queue_read
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L769)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L771)</span>
 
 
 Begin an IOCP read on Windows.
@@ -1058,7 +1078,7 @@ fun ref _queue_read()
 ---
 
 ### _pending_reads
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L784)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L786)</span>
 
 
 Unless this connection is currently muted, read while data is available,
@@ -1078,7 +1098,7 @@ fun ref _pending_reads()
 ---
 
 ### _notify_connecting
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L852)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L854)</span>
 
 
 Inform the notifier that we're connecting.
@@ -1096,7 +1116,7 @@ fun ref _notify_connecting()
 ---
 
 ### _close
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L880)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L882)</span>
 
 
 ```pony
@@ -1111,7 +1131,7 @@ fun ref _close()
 ---
 
 ### _try_shutdown
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L884)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L886)</span>
 
 
 If we have closed and we have no remaining writes or pending connections,
@@ -1129,26 +1149,8 @@ fun ref _try_shutdown()
 
 ---
 
-### _hard_close
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L919)</span>
-
-
-When an error happens, do a non-graceful close.
-
-
-```pony
-fun ref _hard_close()
-: None val
-```
-
-#### Returns
-
-* [None](builtin-None.md) val
-
----
-
 ### _is_sock_connected
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L958)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L960)</span>
 
 
 ```pony
@@ -1167,7 +1169,7 @@ fun box _is_sock_connected(
 ---
 
 ### _apply_backpressure
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L962)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L964)</span>
 
 
 ```pony
@@ -1182,7 +1184,7 @@ fun ref _apply_backpressure()
 ---
 
 ### _release_backpressure
-<span class="source-link">[[Source]](src/net/tcp_connection.md#L976)</span>
+<span class="source-link">[[Source]](src/net/tcp_connection.md#L978)</span>
 
 
 ```pony

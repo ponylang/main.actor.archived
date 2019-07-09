@@ -445,13 +445,13 @@ Iter[I64]([1; 2; 3; 4].values())
 ```pony
 fun ref find(
   f: {(A!): Bool ?}[A] box,
-  n: USize val = seq)
+  n: USize val = 1)
 : A! ?
 ```
 #### Parameters
 
 *   f: {(A!): Bool ?}[A] box
-*   n: [USize](builtin-USize.md) val = seq
+*   n: [USize](builtin-USize.md) val = 1
 
 #### Returns
 
@@ -690,12 +690,12 @@ Iter[I64]([1; 2; 3].values())
 
 ```pony
 fun ref run(
-  on_error: {ref()}[A] ref = seq)
+  on_error: {ref()}[A] ref = lambda)
 : None val
 ```
 #### Parameters
 
-*   on_error: {ref()}[A] ref = seq
+*   on_error: {ref()}[A] ref = lambda
 
 #### Returns
 

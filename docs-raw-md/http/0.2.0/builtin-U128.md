@@ -830,6 +830,158 @@ fun box shr(
 
 ---
 
+### fld
+
+
+
+```pony
+fun box fld(
+  y: U128 val)
+: U128 val
+```
+#### Parameters
+
+*   y: [U128](builtin-U128.md) val
+
+#### Returns
+
+* [U128](builtin-U128.md) val
+
+---
+
+### fldc
+
+
+
+```pony
+fun box fldc(
+  y: U128 val)
+: (U128 val , Bool val)
+```
+#### Parameters
+
+*   y: [U128](builtin-U128.md) val
+
+#### Returns
+
+* ([U128](builtin-U128.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### fld_partial
+
+
+
+```pony
+fun box fld_partial(
+  y: U128 val)
+: U128 val ?
+```
+#### Parameters
+
+*   y: [U128](builtin-U128.md) val
+
+#### Returns
+
+* [U128](builtin-U128.md) val ?
+
+---
+
+### fld_unsafe
+
+
+
+```pony
+fun box fld_unsafe(
+  y: U128 val)
+: U128 val
+```
+#### Parameters
+
+*   y: [U128](builtin-U128.md) val
+
+#### Returns
+
+* [U128](builtin-U128.md) val
+
+---
+
+### mod
+
+
+
+```pony
+fun box mod(
+  y: U128 val)
+: U128 val
+```
+#### Parameters
+
+*   y: [U128](builtin-U128.md) val
+
+#### Returns
+
+* [U128](builtin-U128.md) val
+
+---
+
+### modc
+
+
+
+```pony
+fun box modc(
+  y: U128 val)
+: (U128 val , Bool val)
+```
+#### Parameters
+
+*   y: [U128](builtin-U128.md) val
+
+#### Returns
+
+* ([U128](builtin-U128.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### mod_partial
+
+
+
+```pony
+fun box mod_partial(
+  y: U128 val)
+: U128 val ?
+```
+#### Parameters
+
+*   y: [U128](builtin-U128.md) val
+
+#### Returns
+
+* [U128](builtin-U128.md) val ?
+
+---
+
+### mod_unsafe
+
+
+
+```pony
+fun box mod_unsafe(
+  y: U128 val)
+: U128 val
+```
+#### Parameters
+
+*   y: [U128](builtin-U128.md) val
+
+#### Returns
+
+* [U128](builtin-U128.md) val
+
+---
+
 ### shl_unsafe
 
 

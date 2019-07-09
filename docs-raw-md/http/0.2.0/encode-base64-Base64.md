@@ -77,13 +77,13 @@ Encode for URLs (RFC 4648). Padding characters are stripped by default.
 ```pony
 fun box encode_url[optional A: Seq[U8 val] iso](
   data: ReadSeq[U8 val] box,
-  pad: Bool val = seq)
+  pad: Bool val = false)
 : A^
 ```
 #### Parameters
 
 *   data: [ReadSeq](builtin-ReadSeq.md)\[[U8](builtin-U8.md) val\] box
-*   pad: [Bool](builtin-Bool.md) val = seq
+*   pad: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -101,21 +101,23 @@ Configurable encoding. The defaults are for RFC 4648.
 ```pony
 fun box encode[optional A: Seq[U8 val] iso](
   data: ReadSeq[U8 val] box,
-  at62: U8 val = seq,
-  at63: U8 val = seq,
-  pad: U8 val = seq,
-  linelen: USize val = seq,
-  linesep: String val = seq)
+  at62: U8 val = 43,
+  at63: U8 val = 47,
+  pad: U8 val = 61,
+  linelen: USize val = 0,
+  linesep: String val = "
+")
 : A^
 ```
 #### Parameters
 
 *   data: [ReadSeq](builtin-ReadSeq.md)\[[U8](builtin-U8.md) val\] box
-*   at62: [U8](builtin-U8.md) val = seq
-*   at63: [U8](builtin-U8.md) val = seq
-*   pad: [U8](builtin-U8.md) val = seq
-*   linelen: [USize](builtin-USize.md) val = seq
-*   linesep: [String](builtin-String.md) val = seq
+*   at62: [U8](builtin-U8.md) val = 43
+*   at63: [U8](builtin-U8.md) val = 47
+*   pad: [U8](builtin-U8.md) val = 61
+*   linelen: [USize](builtin-USize.md) val = 0
+*   linesep: [String](builtin-String.md) val = "
+"
 
 #### Returns
 
@@ -157,17 +159,17 @@ any time), is an error.
 ```pony
 fun box decode[optional A: Seq[U8 val] iso](
   data: ReadSeq[U8 val] box,
-  at62: U8 val = seq,
-  at63: U8 val = seq,
-  pad: U8 val = seq)
+  at62: U8 val = 43,
+  at63: U8 val = 47,
+  pad: U8 val = 61)
 : A^ ?
 ```
 #### Parameters
 
 *   data: [ReadSeq](builtin-ReadSeq.md)\[[U8](builtin-U8.md) val\] box
-*   at62: [U8](builtin-U8.md) val = seq
-*   at63: [U8](builtin-U8.md) val = seq
-*   pad: [U8](builtin-U8.md) val = seq
+*   at62: [U8](builtin-U8.md) val = 43
+*   at63: [U8](builtin-U8.md) val = 47
+*   pad: [U8](builtin-U8.md) val = 61
 
 #### Returns
 

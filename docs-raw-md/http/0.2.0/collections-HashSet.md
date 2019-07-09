@@ -27,12 +27,12 @@ Defaults to a prealloc of 8.
 
 ```pony
 new ref create(
-  prealloc: USize val = seq)
+  prealloc: USize val = 8)
 : HashSet[A, H] ref^
 ```
 #### Parameters
 
-*   prealloc: [USize](builtin-USize.md) val = seq
+*   prealloc: [USize](builtin-USize.md) val = 8
 
 #### Returns
 
@@ -591,12 +591,12 @@ error if there is no next populated index.
 
 ```pony
 fun box next_index(
-  prev: USize val = seq)
+  prev: USize val = call)
 : USize val ?
 ```
 #### Parameters
 
-*   prev: [USize](builtin-USize.md) val = seq
+*   prev: [USize](builtin-USize.md) val = call
 
 #### Returns
 

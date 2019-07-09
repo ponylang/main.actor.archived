@@ -413,7 +413,8 @@ actor TCPConnection
 
   fun local_address(): NetAddress =>
     """
-    Return the local IP address.
+    Return the local IP address. If this TCPConnection is closed then the
+    address returned is invalid.
     """
     let ip = recover NetAddress end
     @pony_os_sockname[Bool](_fd, ip)
@@ -421,7 +422,8 @@ actor TCPConnection
 
   fun remote_address(): NetAddress =>
     """
-    Return the remote IP address.
+    Return the remote IP address. If this TCPConnection is closed then the
+    address returned is invalid.
     """
     let ip = recover NetAddress end
     @pony_os_peername[Bool](_fd, ip)
@@ -592,7 +594,7 @@ actor TCPConnection
     ifdef windows then
       if len == 0 then
         // IOCP reported a failed write on this chunk. Non-graceful shutdown.
-        _hard_close()
+        hard_close()
         return
       end
 
@@ -645,7 +647,7 @@ actor TCPConnection
           end
         else
           // Non-graceful shutdown on error.
-          _hard_close()
+          hard_close()
         end
       end
     end
@@ -778,7 +780,7 @@ actor TCPConnection
           _read_buf.cpointer(_read_len),
           _read_buf.size() - _read_len) ?
       else
-        _hard_close()
+        hard_close()
       end
     end
 
@@ -858,7 +860,7 @@ actor TCPConnection
       _notify.connecting(this, _connect_count)
     else
       _notify.connect_failed(this)
-      _hard_close()
+      hard_close()
     end
 
   fun ref close() =>
@@ -872,7 +874,7 @@ actor TCPConnection
       _close()
     else
       if _muted then
-        _hard_close()
+        hard_close()
       else
         _close()
       end
@@ -906,7 +908,7 @@ actor TCPConnection
     end
 
     if _connected and _shutdown and _shutdown_peer then
-      _hard_close()
+      hard_close()
     end
 
     ifdef windows then
@@ -917,7 +919,7 @@ actor TCPConnection
       end
     end
 
-  fun ref _hard_close() =>
+  fun ref hard_close() =>
     """
     When an error happens, do a non-graceful close.
     """
@@ -1128,6 +1130,5 @@ actor TCPConnection
     var word: Array[U8] ref =
       _OSSocket.u32_to_bytes4(if state then 1 else 0 end)
     _OSSocket.setsockopt(_fd, OSSockOpt.sol_socket(), OSSockOpt.tcp_nodelay(), word)
-
 
 ```````

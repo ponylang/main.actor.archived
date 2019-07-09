@@ -21,14 +21,14 @@ Create a new ANSI term.
 new tag create(
   notify: ANSINotify iso,
   source: DisposableActor tag,
-  timers: Timers tag = seq)
+  timers: Timers tag = reference)
 : ANSITerm tag^
 ```
 #### Parameters
 
 *   notify: [ANSINotify](term-ANSINotify.md) iso
 *   source: [DisposableActor](builtin-DisposableActor.md) tag
-*   timers: [Timers](time-Timers.md) tag = seq
+*   timers: [Timers](time-Timers.md) tag = reference
 
 #### Returns
 

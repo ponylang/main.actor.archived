@@ -561,6 +561,158 @@ fun box shr(
 
 ---
 
+### fld
+
+
+
+```pony
+fun box fld(
+  y: ULong val)
+: ULong val
+```
+#### Parameters
+
+*   y: [ULong](builtin-ULong.md) val
+
+#### Returns
+
+* [ULong](builtin-ULong.md) val
+
+---
+
+### fldc
+
+
+
+```pony
+fun box fldc(
+  y: ULong val)
+: (ULong val , Bool val)
+```
+#### Parameters
+
+*   y: [ULong](builtin-ULong.md) val
+
+#### Returns
+
+* ([ULong](builtin-ULong.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### fld_partial
+
+
+
+```pony
+fun box fld_partial(
+  y: ULong val)
+: ULong val ?
+```
+#### Parameters
+
+*   y: [ULong](builtin-ULong.md) val
+
+#### Returns
+
+* [ULong](builtin-ULong.md) val ?
+
+---
+
+### fld_unsafe
+
+
+
+```pony
+fun box fld_unsafe(
+  y: ULong val)
+: ULong val
+```
+#### Parameters
+
+*   y: [ULong](builtin-ULong.md) val
+
+#### Returns
+
+* [ULong](builtin-ULong.md) val
+
+---
+
+### mod
+
+
+
+```pony
+fun box mod(
+  y: ULong val)
+: ULong val
+```
+#### Parameters
+
+*   y: [ULong](builtin-ULong.md) val
+
+#### Returns
+
+* [ULong](builtin-ULong.md) val
+
+---
+
+### modc
+
+
+
+```pony
+fun box modc(
+  y: ULong val)
+: (ULong val , Bool val)
+```
+#### Parameters
+
+*   y: [ULong](builtin-ULong.md) val
+
+#### Returns
+
+* ([ULong](builtin-ULong.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### mod_partial
+
+
+
+```pony
+fun box mod_partial(
+  y: ULong val)
+: ULong val ?
+```
+#### Parameters
+
+*   y: [ULong](builtin-ULong.md) val
+
+#### Returns
+
+* [ULong](builtin-ULong.md) val ?
+
+---
+
+### mod_unsafe
+
+
+
+```pony
+fun box mod_unsafe(
+  y: ULong val)
+: ULong val
+```
+#### Parameters
+
+*   y: [ULong](builtin-ULong.md) val
+
+#### Returns
+
+* [ULong](builtin-ULong.md) val
+
+---
+
 ### shl_unsafe
 
 

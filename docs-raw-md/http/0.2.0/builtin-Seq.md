@@ -19,12 +19,12 @@ Create a sequence, reserving space for len elements.
 
 ```pony
 new ref create(
-  len: USize val = seq)
+  len: USize val = 0)
 : Seq[A] ref^
 ```
 #### Parameters
 
-*   len: [USize](builtin-USize.md) val = seq
+*   len: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -231,15 +231,15 @@ offset.
 ```pony
 fun ref append(
   seq: (ReadSeq[A] box & ReadElement[A^] box),
-  offset: USize val = seq,
-  len: USize val = seq)
+  offset: USize val = 0,
+  len: USize val = call)
 : None val
 ```
 #### Parameters
 
 *   seq: ([ReadSeq](builtin-ReadSeq.md)\[A\] box & [ReadElement](builtin-ReadElement.md)\[A^\] box)
-*   offset: [USize](builtin-USize.md) val = seq
-*   len: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   len: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -258,15 +258,15 @@ offset.
 ```pony
 fun ref concat(
   iter: Iterator[A^] ref,
-  offset: USize val = seq,
-  len: USize val = seq)
+  offset: USize val = 0,
+  len: USize val = call)
 : None val
 ```
 #### Parameters
 
 *   iter: [Iterator](builtin-Iterator.md)\[A^\] ref
-*   offset: [USize](builtin-USize.md) val = seq
-*   len: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   len: [USize](builtin-USize.md) val = call
 
 #### Returns
 

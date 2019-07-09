@@ -40,13 +40,13 @@ it. If existing URL encoding is invalid, raise an error.
 ```pony
 new val build(
   from: String val,
-  percent_encoded: Bool val = seq)
+  percent_encoded: Bool val = true)
 : URL val^ ?
 ```
 #### Parameters
 
 *   from: [String](builtin-String.md) val
-*   percent_encoded: [Bool](builtin-Bool.md) val = seq
+*   percent_encoded: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 

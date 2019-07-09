@@ -1,5 +1,5 @@
 # Integer\[A: [Integer](builtin-Integer.md)\[A\] val\]
-<span class="source-link">[[Source]](src/builtin/real.md#L190)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L213)</span>
 ```pony
 trait val Integer[A: Integer[A] val] is
   Real[A] val
@@ -89,7 +89,7 @@ new val max_value()
 ## Public Functions
 
 ### add_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L191)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L214)</span>
 
 
 Unsafe operation.
@@ -112,7 +112,7 @@ fun box add_unsafe(
 ---
 
 ### sub_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L198)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L221)</span>
 
 
 Unsafe operation.
@@ -135,7 +135,7 @@ fun box sub_unsafe(
 ---
 
 ### mul_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L205)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L228)</span>
 
 
 Unsafe operation.
@@ -158,8 +158,10 @@ fun box mul_unsafe(
 ---
 
 ### div_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L212)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L235)</span>
 
+
+Integer division, rounded towards zero.
 
 Unsafe operation.
 If y is 0, the result is undefined.
@@ -182,7 +184,7 @@ fun box div_unsafe(
 ---
 
 ### divrem_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L220)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L245)</span>
 
 
 Calculates the quotient of this number and `y` and the remainder.
@@ -208,7 +210,7 @@ fun box divrem_unsafe(
 ---
 
 ### rem_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L230)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L255)</span>
 
 
 Calculates the remainder of this number divided by `y`.
@@ -233,8 +235,63 @@ fun box rem_unsafe(
 
 ---
 
+### fld_unsafe
+<span class="source-link">[[Source]](src/builtin/real.md#L265)</span>
+
+
+Floored division, rounded towards negative infinity,
+as opposed to `div` which rounds towards zero.
+
+*Unsafe Operation*
+
+If y is 0, the result is undefined.
+If the operation overflows, the result is undefined.
+
+
+```pony
+fun box fld_unsafe(
+  y: A)
+: A
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* A
+
+---
+
+### mod_unsafe
+<span class="source-link">[[Source]](src/builtin/real.md#L276)</span>
+
+
+Calculates the modulo of this number after floored division by `y`.
+
+*Unsafe Operation.*
+
+If y is 0, the result is undefined.
+If the operation overflows, the result is undefined.
+
+
+```pony
+fun box mod_unsafe(
+  y: A)
+: A
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* A
+
+---
+
 ### add_partial
-<span class="source-link">[[Source]](src/builtin/real.md#L240)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L286)</span>
 
 
 Add y to this number.
@@ -258,7 +315,7 @@ fun box add_partial(
 ---
 
 ### sub_partial
-<span class="source-link">[[Source]](src/builtin/real.md#L247)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L293)</span>
 
 
 Subtract y from this number.
@@ -282,7 +339,7 @@ fun box sub_partial(
 ---
 
 ### mul_partial
-<span class="source-link">[[Source]](src/builtin/real.md#L254)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L300)</span>
 
 
 Multiply y with this number.
@@ -306,12 +363,12 @@ fun box mul_partial(
 ---
 
 ### div_partial
-<span class="source-link">[[Source]](src/builtin/real.md#L261)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L307)</span>
 
 
-Divides this number by y.
+Divides this number by `y`, rounds the result towards zero.
 
-If y is `0` this function errors.
+If y is `0` or the operation overflows, this function errors.
 
 
 ```pony
@@ -330,12 +387,13 @@ fun box div_partial(
 ---
 
 ### rem_partial
-<span class="source-link">[[Source]](src/builtin/real.md#L268)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L314)</span>
 
 
 Calculates the remainder of this number divided by y.
+The result has the sign of the dividend.
 
-If y is `0` this function errors.
+If y is `0` or the operation overflows, this function errors.
 
 
 ```pony
@@ -354,12 +412,12 @@ fun box rem_partial(
 ---
 
 ### divrem_partial
-<span class="source-link">[[Source]](src/builtin/real.md#L275)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L322)</span>
 
 
 Divides this number by y and calculates the remainder of the operation.
 
-If y is `0` this function errors.
+If y is `0` or the operation overflows, this function errors.
 
 
 ```pony
@@ -377,8 +435,57 @@ fun box divrem_partial(
 
 ---
 
+### fld_partial
+<span class="source-link">[[Source]](src/builtin/real.md#L329)</span>
+
+
+Floored integer division, rounded towards negative infinity.
+
+If y is `0` or the operation overflows, this function errors
+
+
+```pony
+fun box fld_partial(
+  y: A)
+: A ?
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* A ?
+
+---
+
+### mod_partial
+<span class="source-link">[[Source]](src/builtin/real.md#L336)</span>
+
+
+Calculates the modulo of this number and `y` after floored division (`fld`).
+The result has the sign of the divisor.
+
+If y is `0` or the operation overflows, this function errors.
+
+
+```pony
+fun box mod_partial(
+  y: A)
+: A ?
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* A ?
+
+---
+
 ### neg_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L282)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L344)</span>
 
 
 Unsafe operation.
@@ -397,7 +504,7 @@ fun box neg_unsafe()
 ---
 
 ### addc
-<span class="source-link">[[Source]](src/builtin/real.md#L289)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L351)</span>
 
 
 Add `y` to this integer and return the result and a flag indicating overflow.
@@ -419,7 +526,7 @@ fun box addc(
 ---
 
 ### subc
-<span class="source-link">[[Source]](src/builtin/real.md#L293)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L355)</span>
 
 
 Subtract `y` from this integer and return the result and a flag indicating overflow.
@@ -441,7 +548,7 @@ fun box subc(
 ---
 
 ### mulc
-<span class="source-link">[[Source]](src/builtin/real.md#L297)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L359)</span>
 
 
 Multiply `y` with this integer and return the result and a flag indicating overflow.
@@ -463,7 +570,7 @@ fun box mulc(
 ---
 
 ### divc
-<span class="source-link">[[Source]](src/builtin/real.md#L301)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L363)</span>
 
 
 Divide this integer by `y` and return the result and a flag indicating overflow or division by zero.
@@ -485,10 +592,12 @@ fun box divc(
 ---
 
 ### remc
-<span class="source-link">[[Source]](src/builtin/real.md#L305)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L367)</span>
 
 
-Calculated the ramainder of this number dividec by y and return the result and a flag indicating division by zero or overflow.
+Calculate the remainder of this number divided by `y` and return the result and a flag indicating division by zero or overflow.
+
+The result will have the sign of the dividend.
 
 
 ```pony
@@ -506,8 +615,54 @@ fun box remc(
 
 ---
 
+### fldc
+<span class="source-link">[[Source]](src/builtin/real.md#L373)</span>
+
+
+Divide this integer by `y` and return the result, rounded towards negative infinity and a flag indicating overflow or division by zero.
+
+
+```pony
+fun box fldc(
+  y: A)
+: (A , Bool val)
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* (A , [Bool](builtin-Bool.md) val)
+
+---
+
+### modc
+<span class="source-link">[[Source]](src/builtin/real.md#L377)</span>
+
+
+Calculate the modulo of this number after floored division by `y` and return the result and a flag indicating division by zero or overflow.
+
+The result will have the sign of the divisor.
+
+
+```pony
+fun box modc(
+  y: A)
+: (A , Bool val)
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* (A , [Bool](builtin-Bool.md) val)
+
+---
+
 ### op_and
-<span class="source-link">[[Source]](src/builtin/real.md#L310)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L384)</span>
 
 
 ```pony
@@ -526,7 +681,7 @@ fun box op_and(
 ---
 
 ### op_or
-<span class="source-link">[[Source]](src/builtin/real.md#L311)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L385)</span>
 
 
 ```pony
@@ -545,7 +700,7 @@ fun box op_or(
 ---
 
 ### op_xor
-<span class="source-link">[[Source]](src/builtin/real.md#L312)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L386)</span>
 
 
 ```pony
@@ -564,7 +719,7 @@ fun box op_xor(
 ---
 
 ### op_not
-<span class="source-link">[[Source]](src/builtin/real.md#L313)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L387)</span>
 
 
 ```pony
@@ -579,7 +734,7 @@ fun box op_not()
 ---
 
 ### bit_reverse
-<span class="source-link">[[Source]](src/builtin/real.md#L315)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L389)</span>
 
 
 Reverse the order of the bits within the integer.
@@ -598,7 +753,7 @@ fun box bit_reverse()
 ---
 
 ### bswap
-<span class="source-link">[[Source]](src/builtin/real.md#L321)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L395)</span>
 
 
 ```pony
@@ -689,7 +844,7 @@ fun box div(
 ---
 
 ### divrem
-<span class="source-link">[[Source]](src/builtin/real.md#L145)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L150)</span>
 
 
 ```pony
@@ -708,7 +863,7 @@ fun box divrem(
 ---
 
 ### rem
-<span class="source-link">[[Source]](src/builtin/real.md#L146)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L151)</span>
 
 
 ```pony
@@ -727,7 +882,7 @@ fun box rem(
 ---
 
 ### neg
-<span class="source-link">[[Source]](src/builtin/real.md#L147)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L159)</span>
 
 
 ```pony
@@ -741,8 +896,46 @@ fun box neg()
 
 ---
 
+### fld
+<span class="source-link">[[Source]](src/builtin/real.md#L161)</span>
+
+
+```pony
+fun box fld(
+  y: A)
+: A
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* A
+
+---
+
+### mod
+<span class="source-link">[[Source]](src/builtin/real.md#L165)</span>
+
+
+```pony
+fun box mod(
+  y: A)
+: A
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* A
+
+---
+
 ### eq
-<span class="source-link">[[Source]](src/builtin/real.md#L149)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L172)</span>
 
 
 ```pony
@@ -761,7 +954,7 @@ fun box eq(
 ---
 
 ### ne
-<span class="source-link">[[Source]](src/builtin/real.md#L150)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L173)</span>
 
 
 ```pony
@@ -780,7 +973,7 @@ fun box ne(
 ---
 
 ### lt
-<span class="source-link">[[Source]](src/builtin/real.md#L151)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L174)</span>
 
 
 ```pony
@@ -799,7 +992,7 @@ fun box lt(
 ---
 
 ### le
-<span class="source-link">[[Source]](src/builtin/real.md#L152)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L175)</span>
 
 
 ```pony
@@ -818,7 +1011,7 @@ fun box le(
 ---
 
 ### ge
-<span class="source-link">[[Source]](src/builtin/real.md#L153)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L176)</span>
 
 
 ```pony
@@ -837,7 +1030,7 @@ fun box ge(
 ---
 
 ### gt
-<span class="source-link">[[Source]](src/builtin/real.md#L154)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L177)</span>
 
 
 ```pony
@@ -856,7 +1049,7 @@ fun box gt(
 ---
 
 ### min
-<span class="source-link">[[Source]](src/builtin/real.md#L156)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L179)</span>
 
 
 ```pony
@@ -875,7 +1068,7 @@ fun box min(
 ---
 
 ### max
-<span class="source-link">[[Source]](src/builtin/real.md#L157)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L180)</span>
 
 
 ```pony
@@ -894,7 +1087,7 @@ fun box max(
 ---
 
 ### hash
-<span class="source-link">[[Source]](src/builtin/real.md#L159)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L182)</span>
 
 
 ```pony
@@ -909,7 +1102,7 @@ fun box hash()
 ---
 
 ### hash64
-<span class="source-link">[[Source]](src/builtin/real.md#L175)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L198)</span>
 
 
 ```pony
@@ -1440,7 +1633,7 @@ fun box compare(
 ## Private Functions
 
 ### _value
-<span class="source-link">[[Source]](src/builtin/real.md#L188)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L211)</span>
 
 
 ```pony

@@ -21,14 +21,14 @@ Create a date from a POSIX time. Negative arguments will be changed to zero.
 
 ```pony
 new ref create(
-  seconds: I64 val = seq,
-  nanoseconds: I64 val = seq)
+  seconds: I64 val = 0,
+  nanoseconds: I64 val = 0)
 : PosixDate ref^
 ```
 #### Parameters
 
-*   seconds: [I64](builtin-I64.md) val = seq
-*   nanoseconds: [I64](builtin-I64.md) val = seq
+*   seconds: [I64](builtin-I64.md) val = 0
+*   nanoseconds: [I64](builtin-I64.md) val = 0
 
 #### Returns
 

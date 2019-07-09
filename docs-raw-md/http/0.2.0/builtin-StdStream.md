@@ -1,5 +1,5 @@
 # StdStream
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L33)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L38)</span>
 
 Asynchronous access to stdout and stderr. The constructors are private to
 ensure that access is provided only via an environment.
@@ -12,7 +12,7 @@ actor tag StdStream
 ## Constructors
 
 ### _out
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L40)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L45)</span>
 
 
 Create an async stream for stdout.
@@ -30,7 +30,7 @@ new tag _out()
 ---
 
 ### _err
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L46)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L51)</span>
 
 
 Create an async stream for stderr.
@@ -50,7 +50,7 @@ new tag _err()
 ## Public Behaviours
 
 ### print
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L52)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L57)</span>
 
 
 Print some bytes and insert a newline afterwards.
@@ -67,7 +67,7 @@ be print(
 ---
 
 ### write
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L58)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L63)</span>
 
 
 Print some bytes without inserting a newline afterwards.
@@ -84,7 +84,7 @@ be write(
 ---
 
 ### printv
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L64)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L69)</span>
 
 
 Print an iterable collection of ByteSeqs.
@@ -101,7 +101,7 @@ be printv(
 ---
 
 ### writev
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L72)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L77)</span>
 
 
 Write an iterable collection of ByteSeqs.
@@ -117,10 +117,23 @@ be writev(
 
 ---
 
+### flush
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L85)</span>
+
+
+Flush any data out to the os (ignoring failures).
+
+
+```pony
+be flush()
+```
+
+---
+
 ## Private Functions
 
 ### _write
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L80)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L91)</span>
 
 
 Write the bytes without explicitly flushing.
@@ -142,7 +155,7 @@ fun ref _write(
 ---
 
 ### _print
-<span class="source-link">[[Source]](src/builtin/std_stream.md#L86)</span>
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L97)</span>
 
 
 Write the bytes and a newline without explicitly flushing.

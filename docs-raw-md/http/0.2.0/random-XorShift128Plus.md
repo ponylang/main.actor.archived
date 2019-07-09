@@ -22,8 +22,31 @@ class ref XorShift128Plus is
 
 ## Constructors
 
-### create
+### from_u64
 <span class="source-link">[[Source]](src/random/xorshift.md#L13)</span>
+
+
+Use seed x to seed a [SplitMix64](random-SplitMix64.md) and use this to
+initialize the 128 bits of state.
+
+
+```pony
+new ref from_u64(
+  x: U64 val = 5489)
+: XorShift128Plus ref^
+```
+#### Parameters
+
+*   x: [U64](builtin-U64.md) val = 5489
+
+#### Returns
+
+* [XorShift128Plus](random-XorShift128Plus.md) ref^
+
+---
+
+### create
+<span class="source-link">[[Source]](src/random/xorshift.md#L22)</span>
 
 
 Create with the specified seed. Returned values are deterministic for a
@@ -32,14 +55,14 @@ given seed.
 
 ```pony
 new ref create(
-  x: U64 val = seq,
-  y: U64 val = seq)
+  x: U64 val = 5489,
+  y: U64 val = 0)
 : XorShift128Plus ref^
 ```
 #### Parameters
 
-*   x: [U64](builtin-U64.md) val = seq
-*   y: [U64](builtin-U64.md) val = seq
+*   x: [U64](builtin-U64.md) val = 5489
+*   y: [U64](builtin-U64.md) val = 0
 
 #### Returns
 
@@ -50,7 +73,7 @@ new ref create(
 ## Public Functions
 
 ### next
-<span class="source-link">[[Source]](src/random/xorshift.md#L22)</span>
+<span class="source-link">[[Source]](src/random/xorshift.md#L31)</span>
 
 
 A random integer in [0, 2^64)
@@ -292,12 +315,54 @@ fun ref isize()
 
 ---
 
+### int_fp_mult\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
+
+
+
+```pony
+fun ref int_fp_mult[optional N: ((U8 val | U16 val | U32 val | 
+    U64 val | U128 val | ULong val | 
+    USize val) & Real[N] val)](
+  n: N)
+: N
+```
+#### Parameters
+
+*   n: N
+
+#### Returns
+
+* N
+
+---
+
 ### int\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
 
 
 
 ```pony
 fun ref int[optional N: ((U8 val | U16 val | U32 val | 
+    U64 val | U128 val | ULong val | 
+    USize val) & Real[N] val)](
+  n: N)
+: N
+```
+#### Parameters
+
+*   n: N
+
+#### Returns
+
+* N
+
+---
+
+### int_unbiased\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
+
+
+
+```pony
+fun ref int_unbiased[optional N: ((U8 val | U16 val | U32 val | 
     U64 val | U128 val | ULong val | 
     USize val) & Real[N] val)](
   n: N)
@@ -344,6 +409,27 @@ fun ref shuffle[A: A](
 #### Returns
 
 * [None](builtin-None.md) val
+
+---
+
+## Private Functions
+
+### _u64_unbiased
+
+
+
+```pony
+fun ref _u64_unbiased(
+  range: U64 val)
+: U64 val
+```
+#### Parameters
+
+*   range: [U64](builtin-U64.md) val
+
+#### Returns
+
+* [U64](builtin-U64.md) val
 
 ---
 

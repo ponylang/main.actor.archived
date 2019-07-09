@@ -144,14 +144,14 @@ Set the Capsicum rights on the file descriptor.
 fun box set_rights(
   fd: I32 val,
   path: FilePath val,
-  writeable: Bool val = seq)
+  writeable: Bool val = true)
 : None val ?
 ```
 #### Parameters
 
 *   fd: [I32](builtin-I32.md) val
 *   path: [FilePath](files-FilePath.md) val
-*   writeable: [Bool](builtin-Bool.md) val = seq
+*   writeable: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 

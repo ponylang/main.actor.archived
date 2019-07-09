@@ -246,13 +246,13 @@ In all cases, join(head, tail) returns a path to the same location as path
 ```pony
 fun box split(
   path: String val,
-  separator: String val = seq)
+  separator: String val = call)
 : (String val , String val)
 ```
 #### Parameters
 
 *   path: [String](builtin-String.md) val
-*   separator: [String](builtin-String.md) val = seq
+*   separator: [String](builtin-String.md) val = call
 
 #### Returns
 
@@ -273,13 +273,13 @@ will be omitted from the result.
 ```pony
 fun box base(
   path: String val,
-  with_ext: Bool val = seq)
+  with_ext: Bool val = true)
 : String val
 ```
 #### Parameters
 
 *   path: [String](builtin-String.md) val
-*   with_ext: [Bool](builtin-Bool.md) val = seq
+*   with_ext: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 
@@ -495,12 +495,12 @@ directory name, but not guaranteed to not already exist.
 
 ```pony
 fun box random(
-  len: USize val = seq)
+  len: USize val = 6)
 : String val
 ```
 #### Parameters
 
-*   len: [USize](builtin-USize.md) val = seq
+*   len: [USize](builtin-USize.md) val = 6
 
 #### Returns
 
@@ -558,13 +558,13 @@ Look for a drive letter followed by a ':', returning true if we find it.
 ```pony
 fun box _drive_letter(
   path: String val,
-  offset: ISize val = seq)
+  offset: ISize val = 0)
 : Bool val
 ```
 #### Parameters
 
 *   path: [String](builtin-String.md) val
-*   offset: [ISize](builtin-ISize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
 
 #### Returns
 
@@ -583,13 +583,13 @@ we found one, otherwise an empty String.
 ```pony
 fun box _network_share(
   path: String val,
-  offset: ISize val = seq)
+  offset: ISize val = 0)
 : String val
 ```
 #### Parameters
 
 *   path: [String](builtin-String.md) val
-*   offset: [ISize](builtin-ISize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
 
 #### Returns
 

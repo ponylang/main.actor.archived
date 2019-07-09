@@ -546,6 +546,158 @@ fun box shr(
 
 ---
 
+### fld
+
+
+
+```pony
+fun box fld(
+  y: U32 val)
+: U32 val
+```
+#### Parameters
+
+*   y: [U32](builtin-U32.md) val
+
+#### Returns
+
+* [U32](builtin-U32.md) val
+
+---
+
+### fldc
+
+
+
+```pony
+fun box fldc(
+  y: U32 val)
+: (U32 val , Bool val)
+```
+#### Parameters
+
+*   y: [U32](builtin-U32.md) val
+
+#### Returns
+
+* ([U32](builtin-U32.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### fld_partial
+
+
+
+```pony
+fun box fld_partial(
+  y: U32 val)
+: U32 val ?
+```
+#### Parameters
+
+*   y: [U32](builtin-U32.md) val
+
+#### Returns
+
+* [U32](builtin-U32.md) val ?
+
+---
+
+### fld_unsafe
+
+
+
+```pony
+fun box fld_unsafe(
+  y: U32 val)
+: U32 val
+```
+#### Parameters
+
+*   y: [U32](builtin-U32.md) val
+
+#### Returns
+
+* [U32](builtin-U32.md) val
+
+---
+
+### mod
+
+
+
+```pony
+fun box mod(
+  y: U32 val)
+: U32 val
+```
+#### Parameters
+
+*   y: [U32](builtin-U32.md) val
+
+#### Returns
+
+* [U32](builtin-U32.md) val
+
+---
+
+### modc
+
+
+
+```pony
+fun box modc(
+  y: U32 val)
+: (U32 val , Bool val)
+```
+#### Parameters
+
+*   y: [U32](builtin-U32.md) val
+
+#### Returns
+
+* ([U32](builtin-U32.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### mod_partial
+
+
+
+```pony
+fun box mod_partial(
+  y: U32 val)
+: U32 val ?
+```
+#### Parameters
+
+*   y: [U32](builtin-U32.md) val
+
+#### Returns
+
+* [U32](builtin-U32.md) val ?
+
+---
+
+### mod_unsafe
+
+
+
+```pony
+fun box mod_unsafe(
+  y: U32 val)
+: U32 val
+```
+#### Parameters
+
+*   y: [U32](builtin-U32.md) val
+
+#### Returns
+
+* [U32](builtin-U32.md) val
+
+---
+
 ### shl_unsafe
 
 

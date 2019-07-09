@@ -1,5 +1,5 @@
 # Stdin
-<span class="source-link">[[Source]](src/builtin/stdin.md#L49)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L43)</span>
 
 Asynchronous access to stdin. The constructor is private to ensure that
 access is provided only via an environment.
@@ -31,7 +31,7 @@ actor tag Stdin
 ## Constructors
 
 ### _create
-<span class="source-link">[[Source]](src/builtin/stdin.md#L78)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L72)</span>
 
 
 Create an asynchronous stdin provider.
@@ -55,7 +55,7 @@ new tag _create(
 ## Public Behaviours
 
 ### apply
-<span class="source-link">[[Source]](src/builtin/stdin.md#L84)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L78)</span>
 
 
 Set the notifier. Optionally, also sets the chunk size, dictating the
@@ -65,17 +65,17 @@ maximum number of bytes of each chunk that will be passed to the notifier.
 ```pony
 be apply(
   notify: (InputNotify iso | None val),
-  chunk_size: USize val = seq)
+  chunk_size: USize val = 32)
 ```
 #### Parameters
 
 *   notify: ([InputNotify](builtin-InputNotify.md) iso | [None](builtin-None.md) val)
-*   chunk_size: [USize](builtin-USize.md) val = seq
+*   chunk_size: [USize](builtin-USize.md) val = 32
 
 ---
 
 ### dispose
-<span class="source-link">[[Source]](src/builtin/stdin.md#L92)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L86)</span>
 
 
 Clear the notifier in order to shut down input.
@@ -90,7 +90,7 @@ be dispose()
 ## Private Behaviours
 
 ### _loop_read
-<span class="source-link">[[Source]](src/builtin/stdin.md#L121)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L115)</span>
 
 
 If we are able to read from stdin, schedule another read.
@@ -103,7 +103,7 @@ be _loop_read()
 ---
 
 ### _event_notify
-<span class="source-link">[[Source]](src/builtin/stdin.md#L129)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L123)</span>
 
 
 When the event fires, read from stdin.
@@ -124,7 +124,7 @@ be _event_notify(
 ---
 
 ### _read_again
-<span class="source-link">[[Source]](src/builtin/stdin.md#L139)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L133)</span>
 
 
 Resume reading.
@@ -139,7 +139,7 @@ be _read_again()
 ## Private Functions
 
 ### _set_notify
-<span class="source-link">[[Source]](src/builtin/stdin.md#L98)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L92)</span>
 
 
 Set the notifier.
@@ -161,7 +161,7 @@ fun ref _set_notify(
 ---
 
 ### _read
-<span class="source-link">[[Source]](src/builtin/stdin.md#L145)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L139)</span>
 
 
 Read a chunk of data from stdin. Read a maximum of _chunk_size bytes, send
@@ -180,7 +180,7 @@ fun ref _read()
 ---
 
 ### _close_event
-<span class="source-link">[[Source]](src/builtin/stdin.md#L200)</span>
+<span class="source-link">[[Source]](src/builtin/stdin.md#L194)</span>
 
 
 Close the event.

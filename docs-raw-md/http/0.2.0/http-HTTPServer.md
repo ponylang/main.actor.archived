@@ -77,13 +77,13 @@ new tag create(
     TCPListenAuth val),
   notify: ServerNotify iso,
   handler: HandlerFactory val,
-  logger: Logger val = seq,
-  host: String val = seq,
-  service: String val = seq,
-  limit: USize val = seq,
-  sslctx: (SSLContext val | None val) = seq,
+  logger: Logger val = reference,
+  host: String val = "",
+  service: String val = "0",
+  limit: USize val = 0,
+  sslctx: (SSLContext val | None val) = reference,
   reversedns: (AmbientAuth val | NetAuth val | DNSAuth val | 
-    None val) = seq)
+    None val) = reference)
 : HTTPServer tag^
 ```
 #### Parameters
@@ -92,13 +92,13 @@ new tag create(
     [TCPListenAuth](net-TCPListenAuth.md) val)
 *   notify: [ServerNotify](http-ServerNotify.md) iso
 *   handler: [HandlerFactory](http-HandlerFactory.md) val
-*   logger: [Logger](http-Logger.md) val = seq
-*   host: [String](builtin-String.md) val = seq
-*   service: [String](builtin-String.md) val = seq
-*   limit: [USize](builtin-USize.md) val = seq
-*   sslctx: ([SSLContext](net-ssl-SSLContext.md) val | [None](builtin-None.md) val) = seq
+*   logger: [Logger](http-Logger.md) val = reference
+*   host: [String](builtin-String.md) val = ""
+*   service: [String](builtin-String.md) val = "0"
+*   limit: [USize](builtin-USize.md) val = 0
+*   sslctx: ([SSLContext](net-ssl-SSLContext.md) val | [None](builtin-None.md) val) = reference
 *   reversedns: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [DNSAuth](net-DNSAuth.md) val | 
-    [None](builtin-None.md) val) = seq
+    [None](builtin-None.md) val) = reference
 
 #### Returns
 

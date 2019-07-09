@@ -62,8 +62,8 @@ new tag create(
     TCPConnectAuth val),
   host: String val,
   service: String val,
-  sslctx: (SSLContext val | None val) = seq,
-  pipeline: Bool val = seq,
+  sslctx: (SSLContext val | None val) = reference,
+  pipeline: Bool val = true,
   handlermaker: HandlerFactory val)
 : _ClientConnection tag^
 ```
@@ -73,8 +73,8 @@ new tag create(
     [TCPConnectAuth](net-TCPConnectAuth.md) val)
 *   host: [String](builtin-String.md) val
 *   service: [String](builtin-String.md) val
-*   sslctx: ([SSLContext](net-ssl-SSLContext.md) val | [None](builtin-None.md) val) = seq
-*   pipeline: [Bool](builtin-Bool.md) val = seq
+*   sslctx: ([SSLContext](net-ssl-SSLContext.md) val | [None](builtin-None.md) val) = reference
+*   pipeline: [Bool](builtin-Bool.md) val = true
 *   handlermaker: [HandlerFactory](http-HandlerFactory.md) val
 
 #### Returns

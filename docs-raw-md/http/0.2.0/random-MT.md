@@ -29,14 +29,14 @@ given seed.
 
 ```pony
 new ref create(
-  x: U64 val = seq,
-  y: U64 val = seq)
+  x: U64 val = 5489,
+  y: U64 val = 0)
 : MT ref^
 ```
 #### Parameters
 
-*   x: [U64](builtin-U64.md) val = seq
-*   y: [U64](builtin-U64.md) val = seq
+*   x: [U64](builtin-U64.md) val = 5489
+*   y: [U64](builtin-U64.md) val = 0
 
 #### Returns
 
@@ -289,8 +289,29 @@ fun ref isize()
 
 ---
 
-### int\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
+### int_fp_mult\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
 <span class="source-link">[[Source]](src/random/random.md#L137)</span>
+
+
+```pony
+fun ref int_fp_mult[optional N: ((U8 val | U16 val | U32 val | 
+    U64 val | U128 val | ULong val | 
+    USize val) & Real[N] val)](
+  n: N)
+: N
+```
+#### Parameters
+
+*   n: N
+
+#### Returns
+
+* N
+
+---
+
+### int\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
+<span class="source-link">[[Source]](src/random/random.md#L143)</span>
 
 
 ```pony
@@ -310,8 +331,29 @@ fun ref int[optional N: ((U8 val | U16 val | U32 val |
 
 ---
 
+### int_unbiased\[optional N: (([U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Real](builtin-Real.md)\[N\] val)\]
+<span class="source-link">[[Source]](src/random/random.md#L159)</span>
+
+
+```pony
+fun ref int_unbiased[optional N: ((U8 val | U16 val | U32 val | 
+    U64 val | U128 val | ULong val | 
+    USize val) & Real[N] val)](
+  n: N)
+: N
+```
+#### Parameters
+
+*   n: N
+
+#### Returns
+
+* N
+
+---
+
 ### real
-<span class="source-link">[[Source]](src/random/random.md#L143)</span>
+<span class="source-link">[[Source]](src/random/random.md#L195)</span>
 
 
 ```pony
@@ -326,7 +368,7 @@ fun ref real()
 ---
 
 ### shuffle\[A: A\]
-<span class="source-link">[[Source]](src/random/random.md#L149)</span>
+<span class="source-link">[[Source]](src/random/random.md#L201)</span>
 
 
 ```pony
@@ -524,6 +566,25 @@ fun ref _wrap()
 #### Returns
 
 * [U64](builtin-U64.md) val ?
+
+---
+
+### _u64_unbiased
+<span class="source-link">[[Source]](src/random/random.md#L167)</span>
+
+
+```pony
+fun ref _u64_unbiased(
+  range: U64 val)
+: U64 val
+```
+#### Parameters
+
+*   range: [U64](builtin-U64.md) val
+
+#### Returns
+
+* [U64](builtin-U64.md) val
 
 ---
 

@@ -22,12 +22,12 @@ resolution.
 
 ```pony
 new tag create(
-  slop: USize val = seq)
+  slop: USize val = 20)
 : Timers tag^
 ```
 #### Parameters
 
-*   slop: [USize](builtin-USize.md) val = seq
+*   slop: [USize](builtin-USize.md) val = 20
 
 #### Returns
 

@@ -56,11 +56,11 @@ new tag create(
   auth: (AmbientAuth val | NetAuth val | TCPAuth val | 
     TCPListenAuth val),
   notify: TCPListenNotify iso,
-  host: String val = seq,
-  service: String val = seq,
-  limit: USize val = seq,
-  init_size: USize val = seq,
-  max_size: USize val = seq)
+  host: String val = "",
+  service: String val = "0",
+  limit: USize val = 0,
+  init_size: USize val = 64,
+  max_size: USize val = 16384)
 : TCPListener tag^
 ```
 #### Parameters
@@ -68,11 +68,11 @@ new tag create(
 *   auth: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [TCPAuth](net-TCPAuth.md) val | 
     [TCPListenAuth](net-TCPListenAuth.md) val)
 *   notify: [TCPListenNotify](net-TCPListenNotify.md) iso
-*   host: [String](builtin-String.md) val = seq
-*   service: [String](builtin-String.md) val = seq
-*   limit: [USize](builtin-USize.md) val = seq
-*   init_size: [USize](builtin-USize.md) val = seq
-*   max_size: [USize](builtin-USize.md) val = seq
+*   host: [String](builtin-String.md) val = ""
+*   service: [String](builtin-String.md) val = "0"
+*   limit: [USize](builtin-USize.md) val = 0
+*   init_size: [USize](builtin-USize.md) val = 64
+*   max_size: [USize](builtin-USize.md) val = 16384
 
 #### Returns
 
@@ -92,11 +92,11 @@ new tag ip4(
   auth: (AmbientAuth val | NetAuth val | TCPAuth val | 
     TCPListenAuth val),
   notify: TCPListenNotify iso,
-  host: String val = seq,
-  service: String val = seq,
-  limit: USize val = seq,
-  init_size: USize val = seq,
-  max_size: USize val = seq)
+  host: String val = "",
+  service: String val = "0",
+  limit: USize val = 0,
+  init_size: USize val = 64,
+  max_size: USize val = 16384)
 : TCPListener tag^
 ```
 #### Parameters
@@ -104,11 +104,11 @@ new tag ip4(
 *   auth: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [TCPAuth](net-TCPAuth.md) val | 
     [TCPListenAuth](net-TCPListenAuth.md) val)
 *   notify: [TCPListenNotify](net-TCPListenNotify.md) iso
-*   host: [String](builtin-String.md) val = seq
-*   service: [String](builtin-String.md) val = seq
-*   limit: [USize](builtin-USize.md) val = seq
-*   init_size: [USize](builtin-USize.md) val = seq
-*   max_size: [USize](builtin-USize.md) val = seq
+*   host: [String](builtin-String.md) val = ""
+*   service: [String](builtin-String.md) val = "0"
+*   limit: [USize](builtin-USize.md) val = 0
+*   init_size: [USize](builtin-USize.md) val = 64
+*   max_size: [USize](builtin-USize.md) val = 16384
 
 #### Returns
 
@@ -128,11 +128,11 @@ new tag ip6(
   auth: (AmbientAuth val | NetAuth val | TCPAuth val | 
     TCPListenAuth val),
   notify: TCPListenNotify iso,
-  host: String val = seq,
-  service: String val = seq,
-  limit: USize val = seq,
-  init_size: USize val = seq,
-  max_size: USize val = seq)
+  host: String val = "",
+  service: String val = "0",
+  limit: USize val = 0,
+  init_size: USize val = 64,
+  max_size: USize val = 16384)
 : TCPListener tag^
 ```
 #### Parameters
@@ -140,11 +140,11 @@ new tag ip6(
 *   auth: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [TCPAuth](net-TCPAuth.md) val | 
     [TCPListenAuth](net-TCPListenAuth.md) val)
 *   notify: [TCPListenNotify](net-TCPListenNotify.md) iso
-*   host: [String](builtin-String.md) val = seq
-*   service: [String](builtin-String.md) val = seq
-*   limit: [USize](builtin-USize.md) val = seq
-*   init_size: [USize](builtin-USize.md) val = seq
-*   max_size: [USize](builtin-USize.md) val = seq
+*   host: [String](builtin-String.md) val = ""
+*   service: [String](builtin-String.md) val = "0"
+*   limit: [USize](builtin-USize.md) val = 0
+*   init_size: [USize](builtin-USize.md) val = 64
+*   max_size: [USize](builtin-USize.md) val = 16384
 
 #### Returns
 
@@ -270,12 +270,12 @@ Accept connections as long as we have spawned fewer than our limit.
 
 ```pony
 fun ref _accept(
-  ns: U32 val = seq)
+  ns: U32 val = 0)
 : None val
 ```
 #### Parameters
 
-*   ns: [U32](builtin-U32.md) val = seq
+*   ns: [U32](builtin-U32.md) val = 0
 
 #### Returns
 

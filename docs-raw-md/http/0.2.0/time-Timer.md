@@ -49,14 +49,14 @@ until the first expiration. The interval should also be in nanoseconds.
 new iso create(
   notify: TimerNotify iso,
   expiration: U64 val,
-  interval: U64 val = seq)
+  interval: U64 val = 0)
 : Timer iso^
 ```
 #### Parameters
 
 *   notify: [TimerNotify](time-TimerNotify.md) iso
 *   expiration: [U64](builtin-U64.md) val
-*   interval: [U64](builtin-U64.md) val = seq
+*   interval: [U64](builtin-U64.md) val = 0
 
 #### Returns
 
@@ -76,14 +76,14 @@ time. The expiration time is wall-clock adjusted system time.
 new ref abs(
   notify: TimerNotify ref,
   expiration: (I64 val , I64 val),
-  interval: U64 val = seq)
+  interval: U64 val = 0)
 : Timer ref^
 ```
 #### Parameters
 
 *   notify: [TimerNotify](time-TimerNotify.md) ref
 *   expiration: ([I64](builtin-I64.md) val , [I64](builtin-I64.md) val)
-*   interval: [U64](builtin-U64.md) val = seq
+*   interval: [U64](builtin-U64.md) val = 0
 
 #### Returns
 

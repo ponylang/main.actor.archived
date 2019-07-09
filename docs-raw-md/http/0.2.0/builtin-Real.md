@@ -153,6 +153,9 @@ fun box mul(
 <span class="source-link">[[Source]](src/builtin/real.md#L144)</span>
 
 
+Integer division, rounded towards zero.
+
+
 ```pony
 fun box div(
   y: A)
@@ -169,7 +172,7 @@ fun box div(
 ---
 
 ### divrem
-<span class="source-link">[[Source]](src/builtin/real.md#L145)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L150)</span>
 
 
 ```pony
@@ -188,7 +191,12 @@ fun box divrem(
 ---
 
 ### rem
-<span class="source-link">[[Source]](src/builtin/real.md#L146)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L151)</span>
+
+
+Calculate the remainder after integer division, rounded towards zero (`div`).
+
+The result has the sign of the dividend.
 
 
 ```pony
@@ -207,7 +215,7 @@ fun box rem(
 ---
 
 ### neg
-<span class="source-link">[[Source]](src/builtin/real.md#L147)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L159)</span>
 
 
 ```pony
@@ -221,8 +229,54 @@ fun box neg()
 
 ---
 
+### fld
+<span class="source-link">[[Source]](src/builtin/real.md#L161)</span>
+
+
+Floored integer division, rounded towards negative infinity.
+
+
+```pony
+fun box fld(
+  y: A)
+: A
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* A
+
+---
+
+### mod
+<span class="source-link">[[Source]](src/builtin/real.md#L165)</span>
+
+
+Calculate the modulo after floored integer division, rounded towards negative infinity (`fld`).
+
+The result has the sign of the divisor.
+
+
+```pony
+fun box mod(
+  y: A)
+: A
+```
+#### Parameters
+
+*   y: A
+
+#### Returns
+
+* A
+
+---
+
 ### eq
-<span class="source-link">[[Source]](src/builtin/real.md#L149)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L172)</span>
 
 
 ```pony
@@ -241,7 +295,7 @@ fun box eq(
 ---
 
 ### ne
-<span class="source-link">[[Source]](src/builtin/real.md#L150)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L173)</span>
 
 
 ```pony
@@ -260,7 +314,7 @@ fun box ne(
 ---
 
 ### lt
-<span class="source-link">[[Source]](src/builtin/real.md#L151)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L174)</span>
 
 
 ```pony
@@ -279,7 +333,7 @@ fun box lt(
 ---
 
 ### le
-<span class="source-link">[[Source]](src/builtin/real.md#L152)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L175)</span>
 
 
 ```pony
@@ -298,7 +352,7 @@ fun box le(
 ---
 
 ### ge
-<span class="source-link">[[Source]](src/builtin/real.md#L153)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L176)</span>
 
 
 ```pony
@@ -317,7 +371,7 @@ fun box ge(
 ---
 
 ### gt
-<span class="source-link">[[Source]](src/builtin/real.md#L154)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L177)</span>
 
 
 ```pony
@@ -336,7 +390,7 @@ fun box gt(
 ---
 
 ### min
-<span class="source-link">[[Source]](src/builtin/real.md#L156)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L179)</span>
 
 
 ```pony
@@ -355,7 +409,7 @@ fun box min(
 ---
 
 ### max
-<span class="source-link">[[Source]](src/builtin/real.md#L157)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L180)</span>
 
 
 ```pony
@@ -374,7 +428,7 @@ fun box max(
 ---
 
 ### hash
-<span class="source-link">[[Source]](src/builtin/real.md#L159)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L182)</span>
 
 
 ```pony
@@ -389,7 +443,7 @@ fun box hash()
 ---
 
 ### hash64
-<span class="source-link">[[Source]](src/builtin/real.md#L175)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L198)</span>
 
 
 ```pony
@@ -920,7 +974,7 @@ fun box compare(
 ## Private Functions
 
 ### _value
-<span class="source-link">[[Source]](src/builtin/real.md#L188)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L211)</span>
 
 
 ```pony

@@ -78,3 +78,16 @@ be writev(
 
 ---
 
+### flush
+<span class="source-link">[[Source]](src/builtin/std_stream.md#L33)</span>
+
+
+Flush the stream.
+
+
+```pony
+be flush()
+```
+
+---
+

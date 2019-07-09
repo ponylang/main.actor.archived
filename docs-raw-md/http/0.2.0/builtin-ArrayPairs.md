@@ -1,5 +1,5 @@
 # ArrayPairs\[A: A, B: [Array](builtin-Array.md)\[A\] #read\]
-<span class="source-link">[[Source]](src/builtin/array.md#L899)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L944)</span>
 ```pony
 class ref ArrayPairs[A: A, B: Array[A] #read] is
   Iterator[(USize val , B->A)] ref
@@ -14,7 +14,7 @@ class ref ArrayPairs[A: A, B: Array[A] #read] is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/builtin/array.md#L903)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L948)</span>
 
 
 ```pony
@@ -35,7 +35,7 @@ new ref create(
 ## Public Functions
 
 ### has_next
-<span class="source-link">[[Source]](src/builtin/array.md#L907)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L952)</span>
 
 
 ```pony
@@ -50,7 +50,7 @@ fun box has_next()
 ---
 
 ### next
-<span class="source-link">[[Source]](src/builtin/array.md#L910)</span>
+<span class="source-link">[[Source]](src/builtin/array.md#L955)</span>
 
 
 ```pony

@@ -20,6 +20,8 @@ let n = rand.next()
 
 * [class XorShift128Plus](random-XorShift128Plus.md)
 * [class XorOshiro128Plus](random-XorOshiro128Plus.md)
+* [class XorOshiro128StarStar](random-XorOshiro128StarStar.md)
+* [class SplitMix64](random-SplitMix64.md)
 * [type Rand](random-Rand.md)
 * [trait Random](random-Random.md)
 * [class MT](random-MT.md)

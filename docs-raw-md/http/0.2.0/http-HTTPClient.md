@@ -22,16 +22,16 @@ Create the context in which all HTTP sessions will originate.
 new ref create(
   auth: (AmbientAuth val | NetAuth val | TCPAuth val | 
     TCPConnectAuth val),
-  sslctx: (SSLContext val | None val) = seq,
-  pipeline: Bool val = seq)
+  sslctx: (SSLContext val | None val) = reference,
+  pipeline: Bool val = true)
 : HTTPClient ref^
 ```
 #### Parameters
 
 *   auth: ([AmbientAuth](builtin-AmbientAuth.md) val | [NetAuth](net-NetAuth.md) val | [TCPAuth](net-TCPAuth.md) val | 
     [TCPConnectAuth](net-TCPConnectAuth.md) val)
-*   sslctx: ([SSLContext](net-ssl-SSLContext.md) val | [None](builtin-None.md) val) = seq
-*   pipeline: [Bool](builtin-Bool.md) val = seq
+*   sslctx: ([SSLContext](net-ssl-SSLContext.md) val | [None](builtin-None.md) val) = reference
+*   pipeline: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 

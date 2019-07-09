@@ -47,23 +47,23 @@ new val create()
 ```pony
 fun box apply(
   str: String val,
-  fmt: FormatDefault val = seq,
-  prefix: PrefixDefault val = seq,
-  prec: USize val = seq,
-  width: USize val = seq,
-  align: (AlignLeft val | AlignRight val | AlignCenter val) = seq,
-  fill: U32 val = seq)
+  fmt: FormatDefault val = reference,
+  prefix: PrefixDefault val = reference,
+  prec: USize val = call,
+  width: USize val = 0,
+  align: (AlignLeft val | AlignRight val | AlignCenter val) = reference,
+  fill: U32 val = 32)
 : String iso^
 ```
 #### Parameters
 
 *   str: [String](builtin-String.md) val
-*   fmt: [FormatDefault](format-FormatDefault.md) val = seq
-*   prefix: [PrefixDefault](format-PrefixDefault.md) val = seq
-*   prec: [USize](builtin-USize.md) val = seq
-*   width: [USize](builtin-USize.md) val = seq
-*   align: ([AlignLeft](format-AlignLeft.md) val | [AlignRight](format-AlignRight.md) val | [AlignCenter](format-AlignCenter.md) val) = seq
-*   fill: [U32](builtin-U32.md) val = seq
+*   fmt: [FormatDefault](format-FormatDefault.md) val = reference
+*   prefix: [PrefixDefault](format-PrefixDefault.md) val = reference
+*   prec: [USize](builtin-USize.md) val = call
+*   width: [USize](builtin-USize.md) val = 0
+*   align: ([AlignLeft](format-AlignLeft.md) val | [AlignRight](format-AlignRight.md) val | [AlignCenter](format-AlignCenter.md) val) = reference
+*   fill: [U32](builtin-U32.md) val = 32
 
 #### Returns
 
@@ -85,12 +85,12 @@ fun box int[A: ((I8 val | I16 val | I32 val |
   fmt: (FormatDefault val | FormatUTF32 val | FormatBinary val | 
     FormatBinaryBare val | FormatOctal val | FormatOctalBare val | 
     FormatHex val | FormatHexBare val | FormatHexSmall val | 
-    FormatHexSmallBare val) = seq,
-  prefix: (PrefixDefault val | PrefixSpace val | PrefixSign val) = seq,
-  prec: USize val = seq,
-  width: USize val = seq,
-  align: (AlignLeft val | AlignRight val | AlignCenter val) = seq,
-  fill: U32 val = seq)
+    FormatHexSmallBare val) = reference,
+  prefix: (PrefixDefault val | PrefixSpace val | PrefixSign val) = reference,
+  prec: USize val = call,
+  width: USize val = 0,
+  align: (AlignLeft val | AlignRight val | AlignCenter val) = reference,
+  fill: U32 val = 32)
 : String iso^
 ```
 #### Parameters
@@ -99,12 +99,12 @@ fun box int[A: ((I8 val | I16 val | I32 val |
 *   fmt: ([FormatDefault](format-FormatDefault.md) val | [FormatUTF32](format-FormatUTF32.md) val | [FormatBinary](format-FormatBinary.md) val | 
     [FormatBinaryBare](format-FormatBinaryBare.md) val | [FormatOctal](format-FormatOctal.md) val | [FormatOctalBare](format-FormatOctalBare.md) val | 
     [FormatHex](format-FormatHex.md) val | [FormatHexBare](format-FormatHexBare.md) val | [FormatHexSmall](format-FormatHexSmall.md) val | 
-    [FormatHexSmallBare](format-FormatHexSmallBare.md) val) = seq
-*   prefix: ([PrefixDefault](format-PrefixDefault.md) val | [PrefixSpace](format-PrefixSpace.md) val | [PrefixSign](format-PrefixSign.md) val) = seq
-*   prec: [USize](builtin-USize.md) val = seq
-*   width: [USize](builtin-USize.md) val = seq
-*   align: ([AlignLeft](format-AlignLeft.md) val | [AlignRight](format-AlignRight.md) val | [AlignCenter](format-AlignCenter.md) val) = seq
-*   fill: [U32](builtin-U32.md) val = seq
+    [FormatHexSmallBare](format-FormatHexSmallBare.md) val) = reference
+*   prefix: ([PrefixDefault](format-PrefixDefault.md) val | [PrefixSpace](format-PrefixSpace.md) val | [PrefixSign](format-PrefixSign.md) val) = reference
+*   prec: [USize](builtin-USize.md) val = call
+*   width: [USize](builtin-USize.md) val = 0
+*   align: ([AlignLeft](format-AlignLeft.md) val | [AlignRight](format-AlignRight.md) val | [AlignCenter](format-AlignCenter.md) val) = reference
+*   fill: [U32](builtin-U32.md) val = 32
 
 #### Returns
 
@@ -121,12 +121,12 @@ fun box float[A: ((F32 val | F64 val) & FloatingPoint[A])](
   x: A,
   fmt: (FormatDefault val | FormatExp val | FormatExpLarge val | 
     FormatFix val | FormatFixLarge val | FormatGeneral val | 
-    FormatGeneralLarge val) = seq,
-  prefix: (PrefixDefault val | PrefixSpace val | PrefixSign val) = seq,
-  prec: USize val = seq,
-  width: USize val = seq,
-  align: (AlignLeft val | AlignRight val | AlignCenter val) = seq,
-  fill: U32 val = seq)
+    FormatGeneralLarge val) = reference,
+  prefix: (PrefixDefault val | PrefixSpace val | PrefixSign val) = reference,
+  prec: USize val = 6,
+  width: USize val = 0,
+  align: (AlignLeft val | AlignRight val | AlignCenter val) = reference,
+  fill: U32 val = 32)
 : String iso^
 ```
 #### Parameters
@@ -134,12 +134,12 @@ fun box float[A: ((F32 val | F64 val) & FloatingPoint[A])](
 *   x: A
 *   fmt: ([FormatDefault](format-FormatDefault.md) val | [FormatExp](format-FormatExp.md) val | [FormatExpLarge](format-FormatExpLarge.md) val | 
     [FormatFix](format-FormatFix.md) val | [FormatFixLarge](format-FormatFixLarge.md) val | [FormatGeneral](format-FormatGeneral.md) val | 
-    [FormatGeneralLarge](format-FormatGeneralLarge.md) val) = seq
-*   prefix: ([PrefixDefault](format-PrefixDefault.md) val | [PrefixSpace](format-PrefixSpace.md) val | [PrefixSign](format-PrefixSign.md) val) = seq
-*   prec: [USize](builtin-USize.md) val = seq
-*   width: [USize](builtin-USize.md) val = seq
-*   align: ([AlignLeft](format-AlignLeft.md) val | [AlignRight](format-AlignRight.md) val | [AlignCenter](format-AlignCenter.md) val) = seq
-*   fill: [U32](builtin-U32.md) val = seq
+    [FormatGeneralLarge](format-FormatGeneralLarge.md) val) = reference
+*   prefix: ([PrefixDefault](format-PrefixDefault.md) val | [PrefixSpace](format-PrefixSpace.md) val | [PrefixSign](format-PrefixSign.md) val) = reference
+*   prec: [USize](builtin-USize.md) val = 6
+*   width: [USize](builtin-USize.md) val = 0
+*   align: ([AlignLeft](format-AlignLeft.md) val | [AlignRight](format-AlignRight.md) val | [AlignCenter](format-AlignCenter.md) val) = reference
+*   fill: [U32](builtin-U32.md) val = 32
 
 #### Returns
 

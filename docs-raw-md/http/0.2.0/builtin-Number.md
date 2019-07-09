@@ -1,5 +1,5 @@
 # Number
-<span class="source-link">[[Source]](src/builtin/real.md#L613)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L714)</span>
 ```pony
 type Number is
   (I8 val | I16 val | I32 val | I64 val | I128 val | ILong val | ISize val | U8 val | U16 val | U32 val | U64 val | U128 val | ULong val | USize val | F32 val | F64 val)

@@ -1,5 +1,5 @@
 # _UnsignedPartialArithmetic
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L15)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L105)</span>
 ```pony
 primitive val _UnsignedPartialArithmetic is
   _PartialArithmetic ref
@@ -14,7 +14,7 @@ primitive val _UnsignedPartialArithmetic is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L15)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L105)</span>
 
 
 ```pony
@@ -30,50 +30,8 @@ new val create()
 
 ## Public Functions
 
-### div_checked\[T: [UnsignedInteger](builtin-UnsignedInteger.md)\[T\] val\]
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L17)</span>
-
-
-```pony
-fun box div_checked[T: UnsignedInteger[T] val](
-  x: T,
-  y: T)
-: (T , Bool val)
-```
-#### Parameters
-
-*   x: T
-*   y: T
-
-#### Returns
-
-* (T , [Bool](builtin-Bool.md) val)
-
----
-
-### rem_checked\[T: [UnsignedInteger](builtin-UnsignedInteger.md)\[T\] val\]
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L20)</span>
-
-
-```pony
-fun box rem_checked[T: UnsignedInteger[T] val](
-  x: T,
-  y: T)
-: (T , Bool val)
-```
-#### Parameters
-
-*   x: T
-*   y: T
-
-#### Returns
-
-* (T , [Bool](builtin-Bool.md) val)
-
----
-
 ### div_partial\[T: [UnsignedInteger](builtin-UnsignedInteger.md)\[T\] val\]
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L23)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L106)</span>
 
 
 ```pony
@@ -94,7 +52,7 @@ fun box div_partial[T: UnsignedInteger[T] val](
 ---
 
 ### rem_partial\[T: [UnsignedInteger](builtin-UnsignedInteger.md)\[T\] val\]
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L30)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L113)</span>
 
 
 ```pony
@@ -115,7 +73,7 @@ fun box rem_partial[T: UnsignedInteger[T] val](
 ---
 
 ### divrem_partial\[T: [UnsignedInteger](builtin-UnsignedInteger.md)\[T\] val\]
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L37)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L120)</span>
 
 
 ```pony
@@ -135,8 +93,50 @@ fun box divrem_partial[T: UnsignedInteger[T] val](
 
 ---
 
+### fld_partial\[T: [UnsignedInteger](builtin-UnsignedInteger.md)\[T\] val\]
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L127)</span>
+
+
+```pony
+fun box fld_partial[T: UnsignedInteger[T] val](
+  x: T,
+  y: T)
+: T ?
+```
+#### Parameters
+
+*   x: T
+*   y: T
+
+#### Returns
+
+* T ?
+
+---
+
+### mod_partial\[T: [UnsignedInteger](builtin-UnsignedInteger.md)\[T\] val\]
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L134)</span>
+
+
+```pony
+fun box mod_partial[T: UnsignedInteger[T] val](
+  x: T,
+  y: T)
+: T ?
+```
+#### Parameters
+
+*   x: T
+*   y: T
+
+#### Returns
+
+* T ?
+
+---
+
 ### add_partial\[T: ([Integer](builtin-Integer.md)\[T\] val & ([I8](builtin-I8.md) val | [I16](builtin-I16.md) val | [I32](builtin-I32.md) val | [I64](builtin-I64.md) val | [I128](builtin-I128.md) val | [ILong](builtin-ILong.md) val | [ISize](builtin-ISize.md) val | [U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val))\]
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L3)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L93)</span>
 
 
 ```pony
@@ -161,7 +161,7 @@ fun box add_partial[T: (Integer[T] val & (I8 val | I16 val | I32 val |
 ---
 
 ### sub_partial\[T: ([Integer](builtin-Integer.md)\[T\] val & ([I8](builtin-I8.md) val | [I16](builtin-I16.md) val | [I32](builtin-I32.md) val | [I64](builtin-I64.md) val | [I128](builtin-I128.md) val | [ILong](builtin-ILong.md) val | [ISize](builtin-ISize.md) val | [U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val))\]
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L7)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L97)</span>
 
 
 ```pony
@@ -186,7 +186,7 @@ fun box sub_partial[T: (Integer[T] val & (I8 val | I16 val | I32 val |
 ---
 
 ### mul_partial\[T: ([Integer](builtin-Integer.md)\[T\] val & ([I8](builtin-I8.md) val | [I16](builtin-I16.md) val | [I32](builtin-I32.md) val | [I64](builtin-I64.md) val | [I128](builtin-I128.md) val | [ILong](builtin-ILong.md) val | [ISize](builtin-ISize.md) val | [U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val))\]
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L11)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L101)</span>
 
 
 ```pony
@@ -211,7 +211,7 @@ fun box mul_partial[T: (Integer[T] val & (I8 val | I16 val | I32 val |
 ---
 
 ### eq
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L17)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L106)</span>
 
 
 ```pony
@@ -230,7 +230,7 @@ fun box eq(
 ---
 
 ### ne
-<span class="source-link">[[Source]](src/builtin/_partial_arithmetic.md#L17)</span>
+<span class="source-link">[[Source]](src/builtin/_arithmetic.md#L106)</span>
 
 
 ```pony

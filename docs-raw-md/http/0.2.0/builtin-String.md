@@ -1,5 +1,5 @@
 # String
-<span class="source-link">[[Source]](src/builtin/string.md#L7)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L9)</span>
 
   A String is an ordered collection of characters.
 
@@ -59,7 +59,7 @@ class val String is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/builtin/string.md#L52)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L54)</span>
 
 
 An empty string. Enough space for len bytes is reserved.
@@ -67,12 +67,12 @@ An empty string. Enough space for len bytes is reserved.
 
 ```pony
 new ref create(
-  len: USize val = seq)
+  len: USize val = 0)
 : String ref^
 ```
 #### Parameters
 
-*   len: [USize](builtin-USize.md) val = seq
+*   len: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -81,7 +81,7 @@ new ref create(
 ---
 
 ### from_array
-<span class="source-link">[[Source]](src/builtin/string.md#L61)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L63)</span>
 
 
 Create a string from an array, reusing the underlying data pointer.
@@ -103,7 +103,7 @@ new val from_array(
 ---
 
 ### from_iso_array
-<span class="source-link">[[Source]](src/builtin/string.md#L69)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L71)</span>
 
 
 Create a string from an array, reusing the underlying data pointer
@@ -125,7 +125,7 @@ new iso from_iso_array(
 ---
 
 ### from_cpointer
-<span class="source-link">[[Source]](src/builtin/string.md#L80)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L82)</span>
 
 
 Return a string from binary pointer data without making a
@@ -138,14 +138,14 @@ empty string is returned.
 new ref from_cpointer(
   str: Pointer[U8 val] ref,
   len: USize val,
-  alloc: USize val = seq)
+  alloc: USize val = 0)
 : String ref^
 ```
 #### Parameters
 
 *   str: [Pointer](builtin-Pointer.md)\[[U8](builtin-U8.md) val\] ref
 *   len: [USize](builtin-USize.md) val
-*   alloc: [USize](builtin-USize.md) val = seq
+*   alloc: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -154,7 +154,7 @@ new ref from_cpointer(
 ---
 
 ### from_cstring
-<span class="source-link">[[Source]](src/builtin/string.md#L98)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L100)</span>
 
 
 Return a string from a pointer to a null-terminated cstring
@@ -183,7 +183,7 @@ new ref from_cstring(
 ---
 
 ### copy_cpointer
-<span class="source-link">[[Source]](src/builtin/string.md#L126)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L128)</span>
 
 
 Create a string by copying a fixed number of bytes from a pointer.
@@ -207,7 +207,7 @@ new ref copy_cpointer(
 ---
 
 ### copy_cstring
-<span class="source-link">[[Source]](src/builtin/string.md#L142)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L144)</span>
 
 
 Create a string by copying a null-terminated C string. Note that
@@ -232,7 +232,7 @@ new ref copy_cstring(
 ---
 
 ### from_utf32
-<span class="source-link">[[Source]](src/builtin/string.md#L167)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L169)</span>
 
 
 Create a UTF-8 string from a single UTF-32 code point.
@@ -256,7 +256,7 @@ new ref from_utf32(
 ## Public Functions
 
 ### push_utf32
-<span class="source-link">[[Source]](src/builtin/string.md#L187)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L189)</span>
 
 
 Push a UTF-32 code point.
@@ -278,7 +278,7 @@ fun ref push_utf32(
 ---
 
 ### cpointer
-<span class="source-link">[[Source]](src/builtin/string.md#L214)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L216)</span>
 
 
 Returns a C compatible pointer to the underlying string allocation.
@@ -286,12 +286,12 @@ Returns a C compatible pointer to the underlying string allocation.
 
 ```pony
 fun box cpointer(
-  offset: USize val = seq)
+  offset: USize val = 0)
 : Pointer[U8 val] tag
 ```
 #### Parameters
 
-*   offset: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -300,7 +300,7 @@ fun box cpointer(
 ---
 
 ### cstring
-<span class="source-link">[[Source]](src/builtin/string.md#L220)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L222)</span>
 
 
 Returns a C compatible pointer to a null-terminated version of the
@@ -322,7 +322,7 @@ fun box cstring()
 ---
 
 ### array
-<span class="source-link">[[Source]](src/builtin/string.md#L237)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L239)</span>
 
 
 Returns an Array[U8] that reuses the underlying data pointer.
@@ -340,7 +340,7 @@ fun val array()
 ---
 
 ### iso_array
-<span class="source-link">[[Source]](src/builtin/string.md#L245)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L247)</span>
 
 
 Returns an Array[U8] iso that reuses the underlying data pointer.
@@ -358,7 +358,7 @@ fun iso iso_array()
 ---
 
 ### size
-<span class="source-link">[[Source]](src/builtin/string.md#L253)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L255)</span>
 
 
 Returns the length of the string data in bytes.
@@ -376,7 +376,7 @@ fun box size()
 ---
 
 ### codepoints
-<span class="source-link">[[Source]](src/builtin/string.md#L259)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L261)</span>
 
 
 Returns the number of unicode code points in the string between the two
@@ -385,14 +385,14 @@ offsets. Index range [`from` .. `to`) is half-open.
 
 ```pony
 fun box codepoints(
-  from: ISize val = seq,
-  to: ISize val = seq)
+  from: ISize val = 0,
+  to: ISize val = call)
 : USize val
 ```
 #### Parameters
 
-*   from: [ISize](builtin-ISize.md) val = seq
-*   to: [ISize](builtin-ISize.md) val = seq
+*   from: [ISize](builtin-ISize.md) val = 0
+*   to: [ISize](builtin-ISize.md) val = call
 
 #### Returns
 
@@ -401,7 +401,7 @@ fun box codepoints(
 ---
 
 ### space
-<span class="source-link">[[Source]](src/builtin/string.md#L282)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L284)</span>
 
 
 Returns the space available for data, not including the null terminator.
@@ -419,7 +419,7 @@ fun box space()
 ---
 
 ### reserve
-<span class="source-link">[[Source]](src/builtin/string.md#L288)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L290)</span>
 
 
 Reserve space for len bytes. An additional byte will be reserved for the
@@ -442,7 +442,7 @@ fun ref reserve(
 ---
 
 ### compact
-<span class="source-link">[[Source]](src/builtin/string.md#L304)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L306)</span>
 
 
 Try to remove unused space, making it available for garbage collection. The
@@ -461,7 +461,7 @@ fun ref compact()
 ---
 
 ### recalc
-<span class="source-link">[[Source]](src/builtin/string.md#L323)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L325)</span>
 
 
 Recalculates the string length. This is only needed if the string is
@@ -481,7 +481,7 @@ fun ref recalc()
 ---
 
 ### truncate
-<span class="source-link">[[Source]](src/builtin/string.md#L339)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L341)</span>
 
 
 Truncates the string at the minimum of len and space. Ensures there is a
@@ -506,7 +506,7 @@ fun ref truncate(
 ---
 
 ### trim_in_place
-<span class="source-link">[[Source]](src/builtin/string.md#L355)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L357)</span>
 
 
 Trim the string to a portion of itself, covering `from` until `to`.
@@ -516,14 +516,14 @@ elements.
 
 ```pony
 fun ref trim_in_place(
-  from: USize val = seq,
-  to: USize val = seq)
+  from: USize val = 0,
+  to: USize val = call)
 : None val
 ```
 #### Parameters
 
-*   from: [USize](builtin-USize.md) val = seq
-*   to: [USize](builtin-USize.md) val = seq
+*   from: [USize](builtin-USize.md) val = 0
+*   to: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -532,7 +532,7 @@ fun ref trim_in_place(
 ---
 
 ### trim
-<span class="source-link">[[Source]](src/builtin/string.md#L383)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L385)</span>
 
 
 Return a shared portion of this string, covering `from` until `to`.
@@ -542,14 +542,14 @@ The operation does not allocate a new string pointer nor copy elements.
 
 ```pony
 fun val trim(
-  from: USize val = seq,
-  to: USize val = seq)
+  from: USize val = 0,
+  to: USize val = call)
 : String val
 ```
 #### Parameters
 
-*   from: [USize](builtin-USize.md) val = seq
-*   to: [USize](builtin-USize.md) val = seq
+*   from: [USize](builtin-USize.md) val = 0
+*   to: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -558,12 +558,12 @@ fun val trim(
 ---
 
 ### chop
-<span class="source-link">[[Source]](src/builtin/string.md#L407)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L409)</span>
 
 
 Chops the string in half at the split point requested and returns both
 the left and right portions. The original string is trimmed in place and
-returned as the right portion. If the split point is larger than the
+returned as the left portion. If the split point is larger than the
 string, the left portion is the original string and the right portion
 is a new empty string.
 Both strings are isolated and mutable, as they do not share memory.
@@ -585,8 +585,36 @@ fun iso chop(
 
 ---
 
+### unchop
+<span class="source-link">[[Source]](src/builtin/string.md#L435)</span>
+
+
+Unchops two iso strings to return the original string they were chopped
+from. Both input strings are isolated and mutable and were originally
+chopped from a single string. This function checks that they are indeed two
+strings chopped from the same original string and can be unchopped before
+doing the unchopping and returning the unchopped string. If the two strings
+cannot be unchopped it returns both strings without modifying them.
+The operation does not allocate a new string pointer nor copy elements.
+
+
+```pony
+fun iso unchop(
+  b: String iso)
+: ((String iso^ , String iso^) | String iso^)
+```
+#### Parameters
+
+*   b: [String](builtin-String.md) iso
+
+#### Returns
+
+* (([String](builtin-String.md) iso^ , [String](builtin-String.md) iso^) | [String](builtin-String.md) iso^)
+
+---
+
 ### is_null_terminated
-<span class="source-link">[[Source]](src/builtin/string.md#L433)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L477)</span>
 
 
 Return true if the string is null-terminated and safe to pass to an FFI
@@ -609,7 +637,7 @@ fun box is_null_terminated()
 ---
 
 ### utf32
-<span class="source-link">[[Source]](src/builtin/string.md#L444)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L488)</span>
 
 
 Return a UTF32 representation of the character at the given offset and the
@@ -635,7 +663,7 @@ fun box utf32(
 ---
 
 ### apply
-<span class="source-link">[[Source]](src/builtin/string.md#L530)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L574)</span>
 
 
 Returns the i-th byte. Raise an error if the index is out of bounds.
@@ -657,7 +685,7 @@ fun box apply(
 ---
 
 ### update
-<span class="source-link">[[Source]](src/builtin/string.md#L536)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L580)</span>
 
 
 Change the i-th byte. Raise an error if the index is out of bounds.
@@ -681,7 +709,7 @@ fun ref update(
 ---
 
 ### at_offset
-<span class="source-link">[[Source]](src/builtin/string.md#L546)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L590)</span>
 
 
 Returns the byte at the given offset. Raise an error if the offset is out
@@ -704,7 +732,7 @@ fun box at_offset(
 ---
 
 ### update_offset
-<span class="source-link">[[Source]](src/builtin/string.md#L553)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L597)</span>
 
 
 Changes a byte in the string, returning the previous byte at that offset.
@@ -729,7 +757,7 @@ fun ref update_offset(
 ---
 
 ### clone
-<span class="source-link">[[Source]](src/builtin/string.md#L560)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L604)</span>
 
 
 Returns a copy of the string. The resulting string is
@@ -747,8 +775,55 @@ fun box clone()
 
 ---
 
+### repeat_str
+<span class="source-link">[[Source]](src/builtin/string.md#L616)</span>
+
+
+Returns a copy of the string repeated `num` times with an optional
+separator added inbetween repeats.
+
+
+```pony
+fun box repeat_str(
+  num: USize val = 1,
+  sep: String val = "")
+: String iso^
+```
+#### Parameters
+
+*   num: [USize](builtin-USize.md) val = 1
+*   sep: [String](builtin-String.md) val = ""
+
+#### Returns
+
+* [String](builtin-String.md) iso^
+
+---
+
+### mul
+<span class="source-link">[[Source]](src/builtin/string.md#L634)</span>
+
+
+Returns a copy of the string repeated `num` times.
+
+
+```pony
+fun box mul(
+  num: USize val)
+: String iso^
+```
+#### Parameters
+
+*   num: [USize](builtin-USize.md) val
+
+#### Returns
+
+* [String](builtin-String.md) iso^
+
+---
+
 ### find
-<span class="source-link">[[Source]](src/builtin/string.md#L572)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L640)</span>
 
 
 Return the index of the n-th instance of s in the string starting from the
@@ -758,15 +833,15 @@ beginning. Raise an error if there is no n-th occurrence of s or s is empty.
 ```pony
 fun box find(
   s: String box,
-  offset: ISize val = seq,
-  nth: USize val = seq)
+  offset: ISize val = 0,
+  nth: USize val = 0)
 : ISize val ?
 ```
 #### Parameters
 
 *   s: [String](builtin-String.md) box
-*   offset: [ISize](builtin-ISize.md) val = seq
-*   nth: [USize](builtin-USize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
+*   nth: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -775,7 +850,7 @@ fun box find(
 ---
 
 ### rfind
-<span class="source-link">[[Source]](src/builtin/string.md#L601)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L669)</span>
 
 
 Return the index of n-th instance of `s` in the string starting from the
@@ -786,15 +861,15 @@ Raise an error if there is no n-th occurrence of `s` or `s` is empty.
 ```pony
 fun box rfind(
   s: String box,
-  offset: ISize val = seq,
-  nth: USize val = seq)
+  offset: ISize val = call,
+  nth: USize val = 0)
 : ISize val ?
 ```
 #### Parameters
 
 *   s: [String](builtin-String.md) box
-*   offset: [ISize](builtin-ISize.md) val = seq
-*   nth: [USize](builtin-USize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = call
+*   nth: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -803,7 +878,7 @@ fun box rfind(
 ---
 
 ### contains
-<span class="source-link">[[Source]](src/builtin/string.md#L632)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L700)</span>
 
 
 Returns true if contains s as a substring, false otherwise.
@@ -812,15 +887,15 @@ Returns true if contains s as a substring, false otherwise.
 ```pony
 fun box contains(
   s: String box,
-  offset: ISize val = seq,
-  nth: USize val = seq)
+  offset: ISize val = 0,
+  nth: USize val = 0)
 : Bool val
 ```
 #### Parameters
 
 *   s: [String](builtin-String.md) box
-*   offset: [ISize](builtin-ISize.md) val = seq
-*   nth: [USize](builtin-USize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
+*   nth: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -829,7 +904,7 @@ fun box contains(
 ---
 
 ### count
-<span class="source-link">[[Source]](src/builtin/string.md#L660)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L728)</span>
 
 
 Counts the non-overlapping occurrences of s in the string.
@@ -838,13 +913,13 @@ Counts the non-overlapping occurrences of s in the string.
 ```pony
 fun box count(
   s: String box,
-  offset: ISize val = seq)
+  offset: ISize val = 0)
 : USize val
 ```
 #### Parameters
 
 *   s: [String](builtin-String.md) box
-*   offset: [ISize](builtin-ISize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
 
 #### Returns
 
@@ -853,7 +928,7 @@ fun box count(
 ---
 
 ### at
-<span class="source-link">[[Source]](src/builtin/string.md#L683)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L751)</span>
 
 
 Returns true if the substring s is present at the given offset.
@@ -862,13 +937,13 @@ Returns true if the substring s is present at the given offset.
 ```pony
 fun box at(
   s: String box,
-  offset: ISize val = seq)
+  offset: ISize val = 0)
 : Bool val
 ```
 #### Parameters
 
 *   s: [String](builtin-String.md) box
-*   offset: [ISize](builtin-ISize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
 
 #### Returns
 
@@ -877,7 +952,7 @@ fun box at(
 ---
 
 ### delete
-<span class="source-link">[[Source]](src/builtin/string.md#L695)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L763)</span>
 
 
 Delete len bytes at the supplied offset, compacting the string in place.
@@ -886,13 +961,13 @@ Delete len bytes at the supplied offset, compacting the string in place.
 ```pony
 fun ref delete(
   offset: ISize val,
-  len: USize val = seq)
+  len: USize val = 1)
 : None val
 ```
 #### Parameters
 
 *   offset: [ISize](builtin-ISize.md) val
-*   len: [USize](builtin-USize.md) val = seq
+*   len: [USize](builtin-USize.md) val = 1
 
 #### Returns
 
@@ -901,7 +976,7 @@ fun ref delete(
 ---
 
 ### substring
-<span class="source-link">[[Source]](src/builtin/string.md#L708)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L776)</span>
 
 
 Returns a substring. Index range [`from` .. `to`) is half-open.
@@ -915,13 +990,13 @@ similar operations that don't allocate a new string, see `trim` and
 ```pony
 fun box substring(
   from: ISize val,
-  to: ISize val = seq)
+  to: ISize val = call)
 : String iso^
 ```
 #### Parameters
 
 *   from: [ISize](builtin-ISize.md) val
-*   to: [ISize](builtin-ISize.md) val = seq
+*   to: [ISize](builtin-ISize.md) val = call
 
 #### Returns
 
@@ -930,7 +1005,7 @@ fun box substring(
 ---
 
 ### lower
-<span class="source-link">[[Source]](src/builtin/string.md#L731)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L799)</span>
 
 
 Returns a lower case version of the string.
@@ -948,7 +1023,7 @@ fun box lower()
 ---
 
 ### lower_in_place
-<span class="source-link">[[Source]](src/builtin/string.md#L739)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L807)</span>
 
 
 Transforms the string to lower case. Currently only knows ASCII case.
@@ -966,7 +1041,7 @@ fun ref lower_in_place()
 ---
 
 ### upper
-<span class="source-link">[[Source]](src/builtin/string.md#L755)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L823)</span>
 
 
 Returns an upper case version of the string. Currently only knows ASCII
@@ -985,7 +1060,7 @@ fun box upper()
 ---
 
 ### upper_in_place
-<span class="source-link">[[Source]](src/builtin/string.md#L764)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L832)</span>
 
 
 Transforms the string to upper case.
@@ -1003,7 +1078,7 @@ fun ref upper_in_place()
 ---
 
 ### reverse
-<span class="source-link">[[Source]](src/builtin/string.md#L780)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L848)</span>
 
 
 Returns a reversed version of the string.
@@ -1021,7 +1096,7 @@ fun box reverse()
 ---
 
 ### reverse_in_place
-<span class="source-link">[[Source]](src/builtin/string.md#L788)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L856)</span>
 
 
 Reverses the byte order in the string. This needs to be changed to handle
@@ -1040,7 +1115,7 @@ fun ref reverse_in_place()
 ---
 
 ### push
-<span class="source-link">[[Source]](src/builtin/string.md#L806)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L874)</span>
 
 
 Add a byte to the end of the string.
@@ -1062,7 +1137,7 @@ fun ref push(
 ---
 
 ### pop
-<span class="source-link">[[Source]](src/builtin/string.md#L815)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L883)</span>
 
 
 Remove a byte from the end of the string.
@@ -1080,7 +1155,7 @@ fun ref pop()
 ---
 
 ### unshift
-<span class="source-link">[[Source]](src/builtin/string.md#L826)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L894)</span>
 
 
 Adds a byte to the beginning of the string.
@@ -1102,7 +1177,7 @@ fun ref unshift(
 ---
 
 ### shift
-<span class="source-link">[[Source]](src/builtin/string.md#L840)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L908)</span>
 
 
 Removes a byte from the beginning of the string.
@@ -1120,7 +1195,7 @@ fun ref shift()
 ---
 
 ### append
-<span class="source-link">[[Source]](src/builtin/string.md#L853)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L921)</span>
 
 
 Append the elements from a sequence, starting from the given offset.
@@ -1129,15 +1204,15 @@ Append the elements from a sequence, starting from the given offset.
 ```pony
 fun ref append(
   seq: ReadSeq[U8 val] box,
-  offset: USize val = seq,
-  len: USize val = seq)
+  offset: USize val = 0,
+  len: USize val = call)
 : None val
 ```
 #### Parameters
 
 *   seq: [ReadSeq](builtin-ReadSeq.md)\[[U8](builtin-U8.md) val\] box
-*   offset: [USize](builtin-USize.md) val = seq
-*   len: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   len: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -1146,7 +1221,7 @@ fun ref append(
 ---
 
 ### concat
-<span class="source-link">[[Source]](src/builtin/string.md#L881)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L949)</span>
 
 
 Add len iterated bytes to the end of the string, starting from the given
@@ -1156,15 +1231,15 @@ offset.
 ```pony
 fun ref concat(
   iter: Iterator[U8 val] ref,
-  offset: USize val = seq,
-  len: USize val = seq)
+  offset: USize val = 0,
+  len: USize val = call)
 : None val
 ```
 #### Parameters
 
 *   iter: [Iterator](builtin-Iterator.md)\[[U8](builtin-U8.md) val\] ref
-*   offset: [USize](builtin-USize.md) val = seq
-*   len: [USize](builtin-USize.md) val = seq
+*   offset: [USize](builtin-USize.md) val = 0
+*   len: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -1173,7 +1248,7 @@ fun ref concat(
 ---
 
 ### clear
-<span class="source-link">[[Source]](src/builtin/string.md#L912)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L980)</span>
 
 
 Truncate the string to zero length.
@@ -1191,7 +1266,7 @@ fun ref clear()
 ---
 
 ### insert
-<span class="source-link">[[Source]](src/builtin/string.md#L919)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L987)</span>
 
 
 Returns a version of the string with the given string inserted at the given
@@ -1216,7 +1291,7 @@ fun box insert(
 ---
 
 ### insert_in_place
-<span class="source-link">[[Source]](src/builtin/string.md#L928)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L996)</span>
 
 
 Inserts the given string at the given offset. Appends the string if the
@@ -1241,7 +1316,7 @@ fun ref insert_in_place(
 ---
 
 ### insert_byte
-<span class="source-link">[[Source]](src/builtin/string.md#L941)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1009)</span>
 
 
 Inserts a byte at the given offset. Appends if the offset is out of bounds.
@@ -1265,7 +1340,7 @@ fun ref insert_byte(
 ---
 
 ### cut
-<span class="source-link">[[Source]](src/builtin/string.md#L953)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1021)</span>
 
 
 Returns a version of the string with the given range deleted.
@@ -1275,13 +1350,13 @@ Index range [`from` .. `to`) is half-open.
 ```pony
 fun box cut(
   from: ISize val,
-  to: ISize val = seq)
+  to: ISize val = call)
 : String iso^
 ```
 #### Parameters
 
 *   from: [ISize](builtin-ISize.md) val
-*   to: [ISize](builtin-ISize.md) val = seq
+*   to: [ISize](builtin-ISize.md) val = call
 
 #### Returns
 
@@ -1290,7 +1365,7 @@ fun box cut(
 ---
 
 ### cut_in_place
-<span class="source-link">[[Source]](src/builtin/string.md#L962)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1030)</span>
 
 
 Cuts the given range out of the string.
@@ -1300,13 +1375,13 @@ Index range [`from` .. `to`) is half-open.
 ```pony
 fun ref cut_in_place(
   from: ISize val,
-  to: ISize val = seq)
+  to: ISize val = call)
 : None val
 ```
 #### Parameters
 
 *   from: [ISize](builtin-ISize.md) val
-*   to: [ISize](builtin-ISize.md) val = seq
+*   to: [ISize](builtin-ISize.md) val = call
 
 #### Returns
 
@@ -1315,7 +1390,7 @@ fun ref cut_in_place(
 ---
 
 ### remove
-<span class="source-link">[[Source]](src/builtin/string.md#L984)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1052)</span>
 
 
 Remove all instances of s from the string. Returns the count of removed
@@ -1338,7 +1413,7 @@ fun ref remove(
 ---
 
 ### replace
-<span class="source-link">[[Source]](src/builtin/string.md#L1001)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1069)</span>
 
 
 Replace up to n occurrences of `from` in `this` with `to`. If n is 0, all
@@ -1349,14 +1424,14 @@ occurrences will be replaced. Returns the count of replaced occurrences.
 fun ref replace(
   from: String box,
   to: String box,
-  n: USize val = seq)
+  n: USize val = 0)
 : USize val
 ```
 #### Parameters
 
 *   from: [String](builtin-String.md) box
 *   to: [String](builtin-String.md) box
-*   n: [USize](builtin-USize.md) val = seq
+*   n: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -1365,7 +1440,7 @@ fun ref replace(
 ---
 
 ### split_by
-<span class="source-link">[[Source]](src/builtin/string.md#L1026)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1094)</span>
 
 
 Split the string into an array of strings that are delimited by `delim` in
@@ -1381,13 +1456,13 @@ to the whole string.
 ```pony
 fun box split_by(
   delim: String val,
-  n: USize val = seq)
+  n: USize val = call)
 : Array[String val] iso^
 ```
 #### Parameters
 
 *   delim: [String](builtin-String.md) val
-*   n: [USize](builtin-USize.md) val = seq
+*   n: [USize](builtin-USize.md) val = call
 
 #### Returns
 
@@ -1396,7 +1471,7 @@ fun box split_by(
 ---
 
 ### split
-<span class="source-link">[[Source]](src/builtin/string.md#L1057)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1125)</span>
 
 
 Split the string into an array of strings. Any character in the delimiter
@@ -1409,14 +1484,16 @@ example, `"1,,2".split(",") => ["1", "", "2"]`.
 
 ```pony
 fun box split(
-  delim: String val = seq,
-  n: USize val = seq)
+  delim: String val = " 	
+",
+  n: USize val = 0)
 : Array[String val] iso^
 ```
 #### Parameters
 
-*   delim: [String](builtin-String.md) val = seq
-*   n: [USize](builtin-USize.md) val = seq
+*   delim: [String](builtin-String.md) val = " 	
+"
+*   n: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -1425,7 +1502,7 @@ fun box split(
 ---
 
 ### strip
-<span class="source-link">[[Source]](src/builtin/string.md#L1117)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1185)</span>
 
 
 Remove all leading and trailing characters from the string that are in s.
@@ -1433,12 +1510,14 @@ Remove all leading and trailing characters from the string that are in s.
 
 ```pony
 fun ref strip(
-  s: String box = seq)
+  s: String box = " 	
+")
 : None val
 ```
 #### Parameters
 
-*   s: [String](builtin-String.md) box = seq
+*   s: [String](builtin-String.md) box = " 	
+"
 
 #### Returns
 
@@ -1447,7 +1526,7 @@ fun ref strip(
 ---
 
 ### rstrip
-<span class="source-link">[[Source]](src/builtin/string.md#L1123)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1191)</span>
 
 
 Remove all trailing characters within the string that are in s. By default,
@@ -1456,12 +1535,14 @@ trailing whitespace is removed.
 
 ```pony
 fun ref rstrip(
-  s: String box = seq)
+  s: String box = " 	
+")
 : None val
 ```
 #### Parameters
 
-*   s: [String](builtin-String.md) box = seq
+*   s: [String](builtin-String.md) box = " 	
+"
 
 #### Returns
 
@@ -1470,7 +1551,7 @@ fun ref rstrip(
 ---
 
 ### lstrip
-<span class="source-link">[[Source]](src/builtin/string.md#L1155)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1223)</span>
 
 
 Remove all leading characters within the string that are in s. By default,
@@ -1479,12 +1560,14 @@ leading whitespace is removed.
 
 ```pony
 fun ref lstrip(
-  s: String box = seq)
+  s: String box = " 	
+")
 : None val
 ```
 #### Parameters
 
-*   s: [String](builtin-String.md) box = seq
+*   s: [String](builtin-String.md) box = " 	
+"
 
 #### Returns
 
@@ -1493,7 +1576,7 @@ fun ref lstrip(
 ---
 
 ### add
-<span class="source-link">[[Source]](src/builtin/string.md#L1196)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1264)</span>
 
 
 Return a string that is a concatenation of this and that.
@@ -1515,7 +1598,7 @@ fun box add(
 ---
 
 ### join
-<span class="source-link">[[Source]](src/builtin/string.md#L1204)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1272)</span>
 
 
 Return a string that is a concatenation of the strings in data, using this
@@ -1538,7 +1621,7 @@ fun box join(
 ---
 
 ### compare
-<span class="source-link">[[Source]](src/builtin/string.md#L1221)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1289)</span>
 
 
 Lexically compare two strings.
@@ -1560,7 +1643,7 @@ fun box compare(
 ---
 
 ### compare_sub
-<span class="source-link">[[Source]](src/builtin/string.md#L1227)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1295)</span>
 
 
 Lexically compare at most `n` bytes of the substring of `this` starting at
@@ -1585,18 +1668,18 @@ Needs to be made UTF-8 safe.
 fun box compare_sub(
   that: String box,
   n: USize val,
-  offset: ISize val = seq,
-  that_offset: ISize val = seq,
-  ignore_case: Bool val = seq)
+  offset: ISize val = 0,
+  that_offset: ISize val = 0,
+  ignore_case: Bool val = false)
 : (Less val | Equal val | Greater val)
 ```
 #### Parameters
 
 *   that: [String](builtin-String.md) box
 *   n: [USize](builtin-USize.md) val
-*   offset: [ISize](builtin-ISize.md) val = seq
-*   that_offset: [ISize](builtin-ISize.md) val = seq
-*   ignore_case: [Bool](builtin-Bool.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
+*   that_offset: [ISize](builtin-ISize.md) val = 0
+*   ignore_case: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -1605,7 +1688,7 @@ fun box compare_sub(
 ---
 
 ### eq
-<span class="source-link">[[Source]](src/builtin/string.md#L1284)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1352)</span>
 
 
 Returns true if the two strings have the same contents.
@@ -1627,7 +1710,7 @@ fun box eq(
 ---
 
 ### lt
-<span class="source-link">[[Source]](src/builtin/string.md#L1294)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1362)</span>
 
 
 Returns true if this is lexically less than that. Needs to be made UTF-8
@@ -1650,7 +1733,7 @@ fun box lt(
 ---
 
 ### le
-<span class="source-link">[[Source]](src/builtin/string.md#L1312)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1380)</span>
 
 
 Returns true if this is lexically less than or equal to that. Needs to be
@@ -1673,7 +1756,7 @@ fun box le(
 ---
 
 ### offset_to_index
-<span class="source-link">[[Source]](src/builtin/string.md#L1330)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1398)</span>
 
 
 ```pony
@@ -1692,7 +1775,7 @@ fun box offset_to_index(
 ---
 
 ### bool
-<span class="source-link">[[Source]](src/builtin/string.md#L1333)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1401)</span>
 
 
 ```pony
@@ -1707,17 +1790,17 @@ fun box bool()
 ---
 
 ### i8
-<span class="source-link">[[Source]](src/builtin/string.md#L1341)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1409)</span>
 
 
 ```pony
 fun box i8(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : I8 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1726,17 +1809,17 @@ fun box i8(
 ---
 
 ### i16
-<span class="source-link">[[Source]](src/builtin/string.md#L1342)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1410)</span>
 
 
 ```pony
 fun box i16(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : I16 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1745,17 +1828,17 @@ fun box i16(
 ---
 
 ### i32
-<span class="source-link">[[Source]](src/builtin/string.md#L1343)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1411)</span>
 
 
 ```pony
 fun box i32(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : I32 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1764,17 +1847,17 @@ fun box i32(
 ---
 
 ### i64
-<span class="source-link">[[Source]](src/builtin/string.md#L1344)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1412)</span>
 
 
 ```pony
 fun box i64(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : I64 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1783,17 +1866,17 @@ fun box i64(
 ---
 
 ### i128
-<span class="source-link">[[Source]](src/builtin/string.md#L1345)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1413)</span>
 
 
 ```pony
 fun box i128(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : I128 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1802,17 +1885,17 @@ fun box i128(
 ---
 
 ### ilong
-<span class="source-link">[[Source]](src/builtin/string.md#L1346)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1414)</span>
 
 
 ```pony
 fun box ilong(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : ILong val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1821,17 +1904,17 @@ fun box ilong(
 ---
 
 ### isize
-<span class="source-link">[[Source]](src/builtin/string.md#L1347)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1415)</span>
 
 
 ```pony
 fun box isize(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : ISize val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1840,17 +1923,17 @@ fun box isize(
 ---
 
 ### u8
-<span class="source-link">[[Source]](src/builtin/string.md#L1348)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1416)</span>
 
 
 ```pony
 fun box u8(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : U8 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1859,17 +1942,17 @@ fun box u8(
 ---
 
 ### u16
-<span class="source-link">[[Source]](src/builtin/string.md#L1349)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1417)</span>
 
 
 ```pony
 fun box u16(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : U16 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1878,17 +1961,17 @@ fun box u16(
 ---
 
 ### u32
-<span class="source-link">[[Source]](src/builtin/string.md#L1350)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1418)</span>
 
 
 ```pony
 fun box u32(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : U32 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1897,17 +1980,17 @@ fun box u32(
 ---
 
 ### u64
-<span class="source-link">[[Source]](src/builtin/string.md#L1351)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1419)</span>
 
 
 ```pony
 fun box u64(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : U64 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1916,17 +1999,17 @@ fun box u64(
 ---
 
 ### u128
-<span class="source-link">[[Source]](src/builtin/string.md#L1352)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1420)</span>
 
 
 ```pony
 fun box u128(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : U128 val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1935,17 +2018,17 @@ fun box u128(
 ---
 
 ### ulong
-<span class="source-link">[[Source]](src/builtin/string.md#L1353)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1421)</span>
 
 
 ```pony
 fun box ulong(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : ULong val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1954,17 +2037,17 @@ fun box ulong(
 ---
 
 ### usize
-<span class="source-link">[[Source]](src/builtin/string.md#L1354)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1422)</span>
 
 
 ```pony
 fun box usize(
-  base: U8 val = seq)
+  base: U8 val = 0)
 : USize val ?
 ```
 #### Parameters
 
-*   base: [U8](builtin-U8.md) val = seq
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -1973,7 +2056,7 @@ fun box usize(
 ---
 
 ### read_int\[A: (([I8](builtin-I8.md) val | [I16](builtin-I16.md) val | [I32](builtin-I32.md) val | [I64](builtin-I64.md) val | [I128](builtin-I128.md) val | [ILong](builtin-ILong.md) val | [ISize](builtin-ISize.md) val | [U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Integer](builtin-Integer.md)\[A\] val)\]
-<span class="source-link">[[Source]](src/builtin/string.md#L1367)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1435)</span>
 
 
 Read an integer from the specified location in this string. The integer
@@ -1993,14 +2076,14 @@ fun box read_int[A: ((I8 val | I16 val | I32 val |
     ISize val | U8 val | U16 val | 
     U32 val | U64 val | U128 val | 
     ULong val | USize val) & Integer[A] val)](
-  offset: ISize val = seq,
-  base: U8 val = seq)
+  offset: ISize val = 0,
+  base: U8 val = 0)
 : (A , USize val) ?
 ```
 #### Parameters
 
-*   offset: [ISize](builtin-ISize.md) val = seq
-*   base: [U8](builtin-U8.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
+*   base: [U8](builtin-U8.md) val = 0
 
 #### Returns
 
@@ -2009,45 +2092,79 @@ fun box read_int[A: ((I8 val | I16 val | I32 val |
 ---
 
 ### f32
-<span class="source-link">[[Source]](src/builtin/string.md#L1481)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1549)</span>
+
+
+Convert this string starting at the given offset
+to a 32-bit floating point number ([F32](builtin-F32.md)).
+
+This method errors if this string cannot be parsed to a float,
+if the result would over- or underflow,
+the offset exceeds the size of this string or
+there are leftover characters in the string after conversion.
+
+Examples:
+
+```pony
+"1.5".f32()? == F32(1.5)
+"1.19208e-07".f32()? == F32(1.19208e-07)
+"NaN".f32()?.nan() == true
+```
 
 
 ```pony
 fun box f32(
-  offset: ISize val = seq)
-: F32 val
+  offset: ISize val = 0)
+: F32 val ?
 ```
 #### Parameters
 
-*   offset: [ISize](builtin-ISize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
 
 #### Returns
 
-* [F32](builtin-F32.md) val
+* [F32](builtin-F32.md) val ?
 
 ---
 
 ### f64
-<span class="source-link">[[Source]](src/builtin/string.md#L1490)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1582)</span>
+
+
+Convert this string starting at the given offset
+to a 64-bit floating point number ([F64](builtin-F64.md)).
+
+This method errors if this string cannot be parsed to a float,
+if the result would over- or underflow,
+the offset exceeds the size of this string or
+there are leftover characters in the string after conversion.
+
+Examples:
+
+```pony
+"1.5".f64()? == F64(1.5)
+"1.19208e-07".f64()? == F64(1.19208e-07)
+"Inf".f64()?.infinite() == true
+```
 
 
 ```pony
 fun box f64(
-  offset: ISize val = seq)
-: F64 val
+  offset: ISize val = 0)
+: F64 val ?
 ```
 #### Parameters
 
-*   offset: [ISize](builtin-ISize.md) val = seq
+*   offset: [ISize](builtin-ISize.md) val = 0
 
 #### Returns
 
-* [F64](builtin-F64.md) val
+* [F64](builtin-F64.md) val ?
 
 ---
 
 ### hash
-<span class="source-link">[[Source]](src/builtin/string.md#L1499)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1615)</span>
 
 
 ```pony
@@ -2062,7 +2179,7 @@ fun box hash()
 ---
 
 ### hash64
-<span class="source-link">[[Source]](src/builtin/string.md#L1502)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1618)</span>
 
 
 ```pony
@@ -2077,7 +2194,7 @@ fun box hash64()
 ---
 
 ### string
-<span class="source-link">[[Source]](src/builtin/string.md#L1505)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1621)</span>
 
 
 ```pony
@@ -2092,7 +2209,7 @@ fun box string()
 ---
 
 ### values
-<span class="source-link">[[Source]](src/builtin/string.md#L1508)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1624)</span>
 
 
 Return an iterator over the bytes in the string.
@@ -2110,7 +2227,7 @@ fun box values()
 ---
 
 ### runes
-<span class="source-link">[[Source]](src/builtin/string.md#L1514)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1630)</span>
 
 
 Return an iterator over the codepoints in the string.
@@ -2187,7 +2304,7 @@ fun box ne(
 ## Private Functions
 
 ### _copy_to
-<span class="source-link">[[Source]](src/builtin/string.md#L207)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L209)</span>
 
 
 Copy copy_len characters from this to that at specified offsets.
@@ -2197,16 +2314,16 @@ Copy copy_len characters from this to that at specified offsets.
 fun box _copy_to(
   ptr: Pointer[U8 val] ref,
   copy_len: USize val,
-  from_offset: USize val = seq,
-  to_offset: USize val = seq)
+  from_offset: USize val = 0,
+  to_offset: USize val = 0)
 : None val
 ```
 #### Parameters
 
 *   ptr: [Pointer](builtin-Pointer.md)\[[U8](builtin-U8.md) val\] ref
 *   copy_len: [USize](builtin-USize.md) val
-*   from_offset: [USize](builtin-USize.md) val = seq
-*   to_offset: [USize](builtin-USize.md) val = seq
+*   from_offset: [USize](builtin-USize.md) val = 0
+*   to_offset: [USize](builtin-USize.md) val = 0
 
 #### Returns
 
@@ -2215,7 +2332,7 @@ fun box _copy_to(
 ---
 
 ### _append
-<span class="source-link">[[Source]](src/builtin/string.md#L1185)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1253)</span>
 
 
 ```pony
@@ -2234,7 +2351,7 @@ fun iso _append(
 ---
 
 ### _to_int\[A: (([I8](builtin-I8.md) val | [I16](builtin-I16.md) val | [I32](builtin-I32.md) val | [I64](builtin-I64.md) val | [I128](builtin-I128.md) val | [ILong](builtin-ILong.md) val | [ISize](builtin-ISize.md) val | [U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Integer](builtin-Integer.md)\[A\] val)\]
-<span class="source-link">[[Source]](src/builtin/string.md#L1356)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1424)</span>
 
 
 Convert the *whole* string to the specified type.
@@ -2262,7 +2379,7 @@ fun box _to_int[A: ((I8 val | I16 val | I32 val |
 ---
 
 ### _read_int_base\[A: (([I8](builtin-I8.md) val | [I16](builtin-I16.md) val | [I32](builtin-I32.md) val | [I64](builtin-I64.md) val | [I128](builtin-I128.md) val | [ILong](builtin-ILong.md) val | [ISize](builtin-ISize.md) val | [U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val) & [Integer](builtin-Integer.md)\[A\] val)\]
-<span class="source-link">[[Source]](src/builtin/string.md#L1444)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1512)</span>
 
 
 Determine the base of an integer starting at the specified index.
@@ -2295,7 +2412,7 @@ fun box _read_int_base[A: ((I8 val | I16 val | I32 val |
 ---
 
 ### _set
-<span class="source-link">[[Source]](src/builtin/string.md#L1520)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1636)</span>
 
 
 Unsafe update, used internally.

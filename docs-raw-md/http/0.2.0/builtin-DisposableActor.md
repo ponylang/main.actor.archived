@@ -1,5 +1,5 @@
 # DisposableActor
-<span class="source-link">[[Source]](src/builtin/stdin.md#L27)</span>
+<span class="source-link">[[Source]](src/builtin/disposable_actor.md#L1)</span>
 
 An interface used to asynchronously dispose of an actor.
 
@@ -11,7 +11,7 @@ interface tag DisposableActor
 ## Public Behaviours
 
 ### dispose
-<span class="source-link">[[Source]](src/builtin/stdin.md#L31)</span>
+<span class="source-link">[[Source]](src/builtin/disposable_actor.md#L5)</span>
 
 
 ```pony

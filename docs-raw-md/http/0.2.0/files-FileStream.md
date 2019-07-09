@@ -107,3 +107,16 @@ be writev(
 
 ---
 
+### flush
+<span class="source-link">[[Source]](src/files/file_stream.md#L35)</span>
+
+
+Flush pending data to write.
+
+
+```pony
+be flush()
+```
+
+---
+

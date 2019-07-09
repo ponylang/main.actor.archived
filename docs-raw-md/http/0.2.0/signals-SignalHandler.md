@@ -23,14 +23,14 @@ Create a signal handler.
 new tag create(
   notify: SignalNotify iso,
   sig: U32 val,
-  wait: Bool val = seq)
+  wait: Bool val = false)
 : SignalHandler tag^
 ```
 #### Parameters
 
 *   notify: [SignalNotify](signals-SignalNotify.md) iso
 *   sig: [U32](builtin-U32.md) val
-*   wait: [Bool](builtin-Bool.md) val = seq
+*   wait: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 

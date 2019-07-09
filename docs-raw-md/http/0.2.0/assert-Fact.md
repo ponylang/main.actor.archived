@@ -35,13 +35,13 @@ new val create()
 ```pony
 fun box apply(
   test: Bool val,
-  msg: String val = seq)
+  msg: String val = "")
 : None val ?
 ```
 #### Parameters
 
 *   test: [Bool](builtin-Bool.md) val
-*   msg: [String](builtin-String.md) val = seq
+*   msg: [String](builtin-String.md) val = ""
 
 #### Returns
 

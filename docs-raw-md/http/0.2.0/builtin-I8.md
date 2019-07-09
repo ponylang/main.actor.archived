@@ -284,8 +284,84 @@ fun box max(
 
 ---
 
-### addc
+### fld
 <span class="source-link">[[Source]](src/builtin/signed.md#L36)</span>
+
+
+```pony
+fun box fld(
+  y: I8 val)
+: I8 val
+```
+#### Parameters
+
+*   y: [I8](builtin-I8.md) val
+
+#### Returns
+
+* [I8](builtin-I8.md) val
+
+---
+
+### fld_unsafe
+<span class="source-link">[[Source]](src/builtin/signed.md#L39)</span>
+
+
+```pony
+fun box fld_unsafe(
+  y: I8 val)
+: I8 val
+```
+#### Parameters
+
+*   y: [I8](builtin-I8.md) val
+
+#### Returns
+
+* [I8](builtin-I8.md) val
+
+---
+
+### mod
+<span class="source-link">[[Source]](src/builtin/signed.md#L42)</span>
+
+
+```pony
+fun box mod(
+  y: I8 val)
+: I8 val
+```
+#### Parameters
+
+*   y: [I8](builtin-I8.md) val
+
+#### Returns
+
+* [I8](builtin-I8.md) val
+
+---
+
+### mod_unsafe
+<span class="source-link">[[Source]](src/builtin/signed.md#L45)</span>
+
+
+```pony
+fun box mod_unsafe(
+  y: I8 val)
+: I8 val
+```
+#### Parameters
+
+*   y: [I8](builtin-I8.md) val
+
+#### Returns
+
+* [I8](builtin-I8.md) val
+
+---
+
+### addc
+<span class="source-link">[[Source]](src/builtin/signed.md#L48)</span>
 
 
 ```pony
@@ -304,7 +380,7 @@ fun box addc(
 ---
 
 ### subc
-<span class="source-link">[[Source]](src/builtin/signed.md#L39)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L51)</span>
 
 
 ```pony
@@ -323,7 +399,7 @@ fun box subc(
 ---
 
 ### mulc
-<span class="source-link">[[Source]](src/builtin/signed.md#L42)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L54)</span>
 
 
 ```pony
@@ -342,7 +418,7 @@ fun box mulc(
 ---
 
 ### divc
-<span class="source-link">[[Source]](src/builtin/signed.md#L45)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L57)</span>
 
 
 ```pony
@@ -361,7 +437,7 @@ fun box divc(
 ---
 
 ### remc
-<span class="source-link">[[Source]](src/builtin/signed.md#L48)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L60)</span>
 
 
 ```pony
@@ -379,8 +455,46 @@ fun box remc(
 
 ---
 
+### fldc
+<span class="source-link">[[Source]](src/builtin/signed.md#L63)</span>
+
+
+```pony
+fun box fldc(
+  y: I8 val)
+: (I8 val , Bool val)
+```
+#### Parameters
+
+*   y: [I8](builtin-I8.md) val
+
+#### Returns
+
+* ([I8](builtin-I8.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### modc
+<span class="source-link">[[Source]](src/builtin/signed.md#L66)</span>
+
+
+```pony
+fun box modc(
+  y: I8 val)
+: (I8 val , Bool val)
+```
+#### Parameters
+
+*   y: [I8](builtin-I8.md) val
+
+#### Returns
+
+* ([I8](builtin-I8.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
 ### add_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L51)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L69)</span>
 
 
 ```pony
@@ -399,7 +513,7 @@ fun box add_partial(
 ---
 
 ### sub_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L54)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L72)</span>
 
 
 ```pony
@@ -418,7 +532,7 @@ fun box sub_partial(
 ---
 
 ### mul_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L57)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L75)</span>
 
 
 ```pony
@@ -437,7 +551,7 @@ fun box mul_partial(
 ---
 
 ### div_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L60)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L78)</span>
 
 
 ```pony
@@ -456,7 +570,7 @@ fun box div_partial(
 ---
 
 ### rem_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L63)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L81)</span>
 
 
 ```pony
@@ -475,7 +589,7 @@ fun box rem_partial(
 ---
 
 ### divrem_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L66)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L84)</span>
 
 
 ```pony
@@ -490,6 +604,44 @@ fun box divrem_partial(
 #### Returns
 
 * ([I8](builtin-I8.md) val , [I8](builtin-I8.md) val) ?
+
+---
+
+### fld_partial
+<span class="source-link">[[Source]](src/builtin/signed.md#L87)</span>
+
+
+```pony
+fun box fld_partial(
+  y: I8 val)
+: I8 val ?
+```
+#### Parameters
+
+*   y: [I8](builtin-I8.md) val
+
+#### Returns
+
+* [I8](builtin-I8.md) val ?
+
+---
+
+### mod_partial
+<span class="source-link">[[Source]](src/builtin/signed.md#L90)</span>
+
+
+```pony
+fun box mod_partial(
+  y: I8 val)
+: I8 val ?
+```
+#### Parameters
+
+*   y: [I8](builtin-I8.md) val
+
+#### Returns
+
+* [I8](builtin-I8.md) val ?
 
 ---
 

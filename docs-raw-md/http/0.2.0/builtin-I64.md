@@ -1,5 +1,5 @@
 # I64
-<span class="source-link">[[Source]](src/builtin/signed.md#L206)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L278)</span>
 ```pony
 primitive val I64 is
   SignedInteger[I64 val, U64 val] val
@@ -14,7 +14,7 @@ primitive val I64 is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/builtin/signed.md#L207)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L279)</span>
 
 
 ```pony
@@ -33,7 +33,7 @@ new val create(
 ---
 
 ### from\[A: (([I8](builtin-I8.md) val | [I16](builtin-I16.md) val | [I32](builtin-I32.md) val | [I64](builtin-I64.md) val | [I128](builtin-I128.md) val | [ILong](builtin-ILong.md) val | [ISize](builtin-ISize.md) val | [U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val | [F32](builtin-F32.md) val | [F64](builtin-F64.md) val) & [Real](builtin-Real.md)\[A\] val)\]
-<span class="source-link">[[Source]](src/builtin/signed.md#L208)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L280)</span>
 
 
 ```pony
@@ -57,7 +57,7 @@ new val from[A: ((I8 val | I16 val | I32 val |
 ---
 
 ### min_value
-<span class="source-link">[[Source]](src/builtin/signed.md#L210)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L282)</span>
 
 
 ```pony
@@ -72,7 +72,7 @@ new val min_value()
 ---
 
 ### max_value
-<span class="source-link">[[Source]](src/builtin/signed.md#L211)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L283)</span>
 
 
 ```pony
@@ -89,7 +89,7 @@ new val max_value()
 ## Public Functions
 
 ### abs
-<span class="source-link">[[Source]](src/builtin/signed.md#L213)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L285)</span>
 
 
 ```pony
@@ -104,7 +104,7 @@ fun box abs()
 ---
 
 ### bit_reverse
-<span class="source-link">[[Source]](src/builtin/signed.md#L214)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L286)</span>
 
 
 ```pony
@@ -119,7 +119,7 @@ fun box bit_reverse()
 ---
 
 ### bswap
-<span class="source-link">[[Source]](src/builtin/signed.md#L215)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L287)</span>
 
 
 ```pony
@@ -134,7 +134,7 @@ fun box bswap()
 ---
 
 ### popcount
-<span class="source-link">[[Source]](src/builtin/signed.md#L216)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L288)</span>
 
 
 ```pony
@@ -149,7 +149,7 @@ fun box popcount()
 ---
 
 ### clz
-<span class="source-link">[[Source]](src/builtin/signed.md#L217)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L289)</span>
 
 
 ```pony
@@ -164,7 +164,7 @@ fun box clz()
 ---
 
 ### ctz
-<span class="source-link">[[Source]](src/builtin/signed.md#L218)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L290)</span>
 
 
 ```pony
@@ -179,7 +179,7 @@ fun box ctz()
 ---
 
 ### clz_unsafe
-<span class="source-link">[[Source]](src/builtin/signed.md#L220)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L292)</span>
 
 
 Unsafe operation.
@@ -198,7 +198,7 @@ fun box clz_unsafe()
 ---
 
 ### ctz_unsafe
-<span class="source-link">[[Source]](src/builtin/signed.md#L227)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L299)</span>
 
 
 Unsafe operation.
@@ -217,7 +217,7 @@ fun box ctz_unsafe()
 ---
 
 ### bitwidth
-<span class="source-link">[[Source]](src/builtin/signed.md#L234)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L306)</span>
 
 
 ```pony
@@ -232,7 +232,7 @@ fun box bitwidth()
 ---
 
 ### bytewidth
-<span class="source-link">[[Source]](src/builtin/signed.md#L236)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L308)</span>
 
 
 ```pony
@@ -247,7 +247,7 @@ fun box bytewidth()
 ---
 
 ### min
-<span class="source-link">[[Source]](src/builtin/signed.md#L238)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L310)</span>
 
 
 ```pony
@@ -266,7 +266,7 @@ fun box min(
 ---
 
 ### max
-<span class="source-link">[[Source]](src/builtin/signed.md#L239)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L311)</span>
 
 
 ```pony
@@ -284,8 +284,84 @@ fun box max(
 
 ---
 
+### fld
+<span class="source-link">[[Source]](src/builtin/signed.md#L313)</span>
+
+
+```pony
+fun box fld(
+  y: I64 val)
+: I64 val
+```
+#### Parameters
+
+*   y: [I64](builtin-I64.md) val
+
+#### Returns
+
+* [I64](builtin-I64.md) val
+
+---
+
+### fld_unsafe
+<span class="source-link">[[Source]](src/builtin/signed.md#L316)</span>
+
+
+```pony
+fun box fld_unsafe(
+  y: I64 val)
+: I64 val
+```
+#### Parameters
+
+*   y: [I64](builtin-I64.md) val
+
+#### Returns
+
+* [I64](builtin-I64.md) val
+
+---
+
+### mod
+<span class="source-link">[[Source]](src/builtin/signed.md#L319)</span>
+
+
+```pony
+fun box mod(
+  y: I64 val)
+: I64 val
+```
+#### Parameters
+
+*   y: [I64](builtin-I64.md) val
+
+#### Returns
+
+* [I64](builtin-I64.md) val
+
+---
+
+### mod_unsafe
+<span class="source-link">[[Source]](src/builtin/signed.md#L322)</span>
+
+
+```pony
+fun box mod_unsafe(
+  y: I64 val)
+: I64 val
+```
+#### Parameters
+
+*   y: [I64](builtin-I64.md) val
+
+#### Returns
+
+* [I64](builtin-I64.md) val
+
+---
+
 ### hash
-<span class="source-link">[[Source]](src/builtin/signed.md#L240)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L325)</span>
 
 
 ```pony
@@ -300,7 +376,7 @@ fun box hash()
 ---
 
 ### addc
-<span class="source-link">[[Source]](src/builtin/signed.md#L242)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L327)</span>
 
 
 ```pony
@@ -319,7 +395,7 @@ fun box addc(
 ---
 
 ### subc
-<span class="source-link">[[Source]](src/builtin/signed.md#L245)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L330)</span>
 
 
 ```pony
@@ -338,7 +414,7 @@ fun box subc(
 ---
 
 ### mulc
-<span class="source-link">[[Source]](src/builtin/signed.md#L248)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L333)</span>
 
 
 ```pony
@@ -357,7 +433,7 @@ fun box mulc(
 ---
 
 ### divc
-<span class="source-link">[[Source]](src/builtin/signed.md#L251)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L336)</span>
 
 
 ```pony
@@ -376,7 +452,7 @@ fun box divc(
 ---
 
 ### remc
-<span class="source-link">[[Source]](src/builtin/signed.md#L254)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L339)</span>
 
 
 ```pony
@@ -394,8 +470,46 @@ fun box remc(
 
 ---
 
+### fldc
+<span class="source-link">[[Source]](src/builtin/signed.md#L342)</span>
+
+
+```pony
+fun box fldc(
+  y: I64 val)
+: (I64 val , Bool val)
+```
+#### Parameters
+
+*   y: [I64](builtin-I64.md) val
+
+#### Returns
+
+* ([I64](builtin-I64.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### modc
+<span class="source-link">[[Source]](src/builtin/signed.md#L345)</span>
+
+
+```pony
+fun box modc(
+  y: I64 val)
+: (I64 val , Bool val)
+```
+#### Parameters
+
+*   y: [I64](builtin-I64.md) val
+
+#### Returns
+
+* ([I64](builtin-I64.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
 ### add_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L257)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L348)</span>
 
 
 ```pony
@@ -414,7 +528,7 @@ fun box add_partial(
 ---
 
 ### sub_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L260)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L351)</span>
 
 
 ```pony
@@ -433,7 +547,7 @@ fun box sub_partial(
 ---
 
 ### mul_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L263)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L354)</span>
 
 
 ```pony
@@ -452,7 +566,7 @@ fun box mul_partial(
 ---
 
 ### div_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L266)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L357)</span>
 
 
 ```pony
@@ -471,7 +585,7 @@ fun box div_partial(
 ---
 
 ### rem_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L269)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L360)</span>
 
 
 ```pony
@@ -490,7 +604,7 @@ fun box rem_partial(
 ---
 
 ### divrem_partial
-<span class="source-link">[[Source]](src/builtin/signed.md#L272)</span>
+<span class="source-link">[[Source]](src/builtin/signed.md#L363)</span>
 
 
 ```pony
@@ -505,6 +619,44 @@ fun box divrem_partial(
 #### Returns
 
 * ([I64](builtin-I64.md) val , [I64](builtin-I64.md) val) ?
+
+---
+
+### fld_partial
+<span class="source-link">[[Source]](src/builtin/signed.md#L366)</span>
+
+
+```pony
+fun box fld_partial(
+  y: I64 val)
+: I64 val ?
+```
+#### Parameters
+
+*   y: [I64](builtin-I64.md) val
+
+#### Returns
+
+* [I64](builtin-I64.md) val ?
+
+---
+
+### mod_partial
+<span class="source-link">[[Source]](src/builtin/signed.md#L369)</span>
+
+
+```pony
+fun box mod_partial(
+  y: I64 val)
+: I64 val ?
+```
+#### Parameters
+
+*   y: [I64](builtin-I64.md) val
+
+#### Returns
+
+* [I64](builtin-I64.md) val ?
 
 ---
 

@@ -1,5 +1,5 @@
 # F64
-<span class="source-link">[[Source]](src/builtin/float.md#L192)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L218)</span>
 ```pony
 primitive val F64 is
   FloatingPoint[F64 val] val
@@ -14,17 +14,17 @@ primitive val F64 is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/builtin/float.md#L193)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L219)</span>
 
 
 ```pony
 new val create(
-  value: F64 val = seq)
+  value: F64 val = 0)
 : F64 val^
 ```
 #### Parameters
 
-*   value: [F64](builtin-F64.md) val = seq
+*   value: [F64](builtin-F64.md) val = 0
 
 #### Returns
 
@@ -33,7 +33,7 @@ new val create(
 ---
 
 ### pi
-<span class="source-link">[[Source]](src/builtin/float.md#L194)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L220)</span>
 
 
 ```pony
@@ -48,7 +48,7 @@ new val pi()
 ---
 
 ### e
-<span class="source-link">[[Source]](src/builtin/float.md#L195)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L221)</span>
 
 
 ```pony
@@ -63,7 +63,7 @@ new val e()
 ---
 
 ### _nan
-<span class="source-link">[[Source]](src/builtin/float.md#L197)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L223)</span>
 
 
 ```pony
@@ -78,7 +78,7 @@ new val _nan()
 ---
 
 ### _inf
-<span class="source-link">[[Source]](src/builtin/float.md#L198)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L224)</span>
 
 
 ```pony
@@ -97,7 +97,7 @@ new val _inf(
 ---
 
 ### from_bits
-<span class="source-link">[[Source]](src/builtin/float.md#L200)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L226)</span>
 
 
 ```pony
@@ -116,7 +116,7 @@ new val from_bits(
 ---
 
 ### from\[B: (([I8](builtin-I8.md) val | [I16](builtin-I16.md) val | [I32](builtin-I32.md) val | [I64](builtin-I64.md) val | [I128](builtin-I128.md) val | [ILong](builtin-ILong.md) val | [ISize](builtin-ISize.md) val | [U8](builtin-U8.md) val | [U16](builtin-U16.md) val | [U32](builtin-U32.md) val | [U64](builtin-U64.md) val | [U128](builtin-U128.md) val | [ULong](builtin-ULong.md) val | [USize](builtin-USize.md) val | [F32](builtin-F32.md) val | [F64](builtin-F64.md) val) & [Real](builtin-Real.md)\[B\] val)\]
-<span class="source-link">[[Source]](src/builtin/float.md#L202)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L228)</span>
 
 
 ```pony
@@ -140,7 +140,7 @@ new val from[B: ((I8 val | I16 val | I32 val |
 ---
 
 ### min_value
-<span class="source-link">[[Source]](src/builtin/float.md#L204)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L230)</span>
 
 
 Minimum negative value representable.
@@ -158,7 +158,7 @@ new val min_value()
 ---
 
 ### max_value
-<span class="source-link">[[Source]](src/builtin/float.md#L210)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L236)</span>
 
 
 Maximum positive value representable.
@@ -176,7 +176,7 @@ new val max_value()
 ---
 
 ### min_normalised
-<span class="source-link">[[Source]](src/builtin/float.md#L216)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L242)</span>
 
 
 Minimum positive value representable at full precision (ie a normalised
@@ -195,7 +195,7 @@ new val min_normalised()
 ---
 
 ### epsilon
-<span class="source-link">[[Source]](src/builtin/float.md#L223)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L249)</span>
 
 
 Minimum positive value such that (1 + epsilon) != 1.
@@ -215,7 +215,7 @@ new val epsilon()
 ## Public Functions
 
 ### bits
-<span class="source-link">[[Source]](src/builtin/float.md#L201)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L227)</span>
 
 
 ```pony
@@ -230,7 +230,7 @@ fun box bits()
 ---
 
 ### radix
-<span class="source-link">[[Source]](src/builtin/float.md#L229)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L255)</span>
 
 
 Exponent radix.
@@ -248,7 +248,7 @@ fun tag radix()
 ---
 
 ### precision2
-<span class="source-link">[[Source]](src/builtin/float.md#L235)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L261)</span>
 
 
 Mantissa precision in bits.
@@ -266,7 +266,7 @@ fun tag precision2()
 ---
 
 ### precision10
-<span class="source-link">[[Source]](src/builtin/float.md#L241)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L267)</span>
 
 
 Mantissa precision in decimal digits.
@@ -284,7 +284,7 @@ fun tag precision10()
 ---
 
 ### min_exp2
-<span class="source-link">[[Source]](src/builtin/float.md#L247)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L273)</span>
 
 
 Minimum exponent value such that (2^exponent) - 1 is representable at full
@@ -303,7 +303,7 @@ fun tag min_exp2()
 ---
 
 ### min_exp10
-<span class="source-link">[[Source]](src/builtin/float.md#L254)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L280)</span>
 
 
 Minimum exponent value such that (10^exponent) - 1 is representable at full
@@ -322,7 +322,7 @@ fun tag min_exp10()
 ---
 
 ### max_exp2
-<span class="source-link">[[Source]](src/builtin/float.md#L261)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L287)</span>
 
 
 Maximum exponent value such that (2^exponent) - 1 is representable.
@@ -340,7 +340,7 @@ fun tag max_exp2()
 ---
 
 ### max_exp10
-<span class="source-link">[[Source]](src/builtin/float.md#L267)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L293)</span>
 
 
 Maximum exponent value such that (10^exponent) - 1 is representable.
@@ -358,7 +358,7 @@ fun tag max_exp10()
 ---
 
 ### abs
-<span class="source-link">[[Source]](src/builtin/float.md#L273)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L299)</span>
 
 
 ```pony
@@ -373,7 +373,7 @@ fun box abs()
 ---
 
 ### ceil
-<span class="source-link">[[Source]](src/builtin/float.md#L274)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L300)</span>
 
 
 ```pony
@@ -388,7 +388,7 @@ fun box ceil()
 ---
 
 ### floor
-<span class="source-link">[[Source]](src/builtin/float.md#L275)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L301)</span>
 
 
 ```pony
@@ -403,7 +403,7 @@ fun box floor()
 ---
 
 ### round
-<span class="source-link">[[Source]](src/builtin/float.md#L276)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L302)</span>
 
 
 ```pony
@@ -418,7 +418,7 @@ fun box round()
 ---
 
 ### trunc
-<span class="source-link">[[Source]](src/builtin/float.md#L277)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L303)</span>
 
 
 ```pony
@@ -433,7 +433,7 @@ fun box trunc()
 ---
 
 ### min
-<span class="source-link">[[Source]](src/builtin/float.md#L279)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L305)</span>
 
 
 ```pony
@@ -452,7 +452,7 @@ fun box min(
 ---
 
 ### max
-<span class="source-link">[[Source]](src/builtin/float.md#L280)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L306)</span>
 
 
 ```pony
@@ -470,8 +470,84 @@ fun box max(
 
 ---
 
+### fld
+<span class="source-link">[[Source]](src/builtin/float.md#L308)</span>
+
+
+```pony
+fun box fld(
+  y: F64 val)
+: F64 val
+```
+#### Parameters
+
+*   y: [F64](builtin-F64.md) val
+
+#### Returns
+
+* [F64](builtin-F64.md) val
+
+---
+
+### fld_unsafe
+<span class="source-link">[[Source]](src/builtin/float.md#L311)</span>
+
+
+```pony
+fun box fld_unsafe(
+  y: F64 val)
+: F64 val
+```
+#### Parameters
+
+*   y: [F64](builtin-F64.md) val
+
+#### Returns
+
+* [F64](builtin-F64.md) val
+
+---
+
+### mod
+<span class="source-link">[[Source]](src/builtin/float.md#L314)</span>
+
+
+```pony
+fun box mod(
+  y: F64 val)
+: F64 val
+```
+#### Parameters
+
+*   y: [F64](builtin-F64.md) val
+
+#### Returns
+
+* [F64](builtin-F64.md) val
+
+---
+
+### mod_unsafe
+<span class="source-link">[[Source]](src/builtin/float.md#L324)</span>
+
+
+```pony
+fun box mod_unsafe(
+  y: F64 val)
+: F64 val
+```
+#### Parameters
+
+*   y: [F64](builtin-F64.md) val
+
+#### Returns
+
+* [F64](builtin-F64.md) val
+
+---
+
 ### finite
-<span class="source-link">[[Source]](src/builtin/float.md#L282)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L334)</span>
 
 
 Check whether this number is finite, ie not +/-infinity and not NaN.
@@ -489,7 +565,7 @@ fun box finite()
 ---
 
 ### infinite
-<span class="source-link">[[Source]](src/builtin/float.md#L289)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L341)</span>
 
 
 Check whether this number is +/-infinity
@@ -507,7 +583,7 @@ fun box infinite()
 ---
 
 ### nan
-<span class="source-link">[[Source]](src/builtin/float.md#L297)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L349)</span>
 
 
 Check whether this number is NaN.
@@ -525,7 +601,7 @@ fun box nan()
 ---
 
 ### ldexp
-<span class="source-link">[[Source]](src/builtin/float.md#L305)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L357)</span>
 
 
 ```pony
@@ -546,7 +622,7 @@ fun box ldexp(
 ---
 
 ### frexp
-<span class="source-link">[[Source]](src/builtin/float.md#L308)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L360)</span>
 
 
 ```pony
@@ -561,7 +637,7 @@ fun box frexp()
 ---
 
 ### log
-<span class="source-link">[[Source]](src/builtin/float.md#L313)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L365)</span>
 
 
 ```pony
@@ -576,7 +652,7 @@ fun box log()
 ---
 
 ### log2
-<span class="source-link">[[Source]](src/builtin/float.md#L314)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L366)</span>
 
 
 ```pony
@@ -591,7 +667,7 @@ fun box log2()
 ---
 
 ### log10
-<span class="source-link">[[Source]](src/builtin/float.md#L315)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L367)</span>
 
 
 ```pony
@@ -606,7 +682,7 @@ fun box log10()
 ---
 
 ### logb
-<span class="source-link">[[Source]](src/builtin/float.md#L316)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L368)</span>
 
 
 ```pony
@@ -621,7 +697,7 @@ fun box logb()
 ---
 
 ### pow
-<span class="source-link">[[Source]](src/builtin/float.md#L318)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L370)</span>
 
 
 ```pony
@@ -640,7 +716,7 @@ fun box pow(
 ---
 
 ### powi
-<span class="source-link">[[Source]](src/builtin/float.md#L319)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L371)</span>
 
 
 ```pony
@@ -659,7 +735,7 @@ fun box powi(
 ---
 
 ### sqrt
-<span class="source-link">[[Source]](src/builtin/float.md#L326)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L378)</span>
 
 
 ```pony
@@ -674,7 +750,7 @@ fun box sqrt()
 ---
 
 ### sqrt_unsafe
-<span class="source-link">[[Source]](src/builtin/float.md#L333)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L385)</span>
 
 
 Unsafe operation.
@@ -693,7 +769,7 @@ fun box sqrt_unsafe()
 ---
 
 ### cbrt
-<span class="source-link">[[Source]](src/builtin/float.md#L340)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L392)</span>
 
 
 ```pony
@@ -708,7 +784,7 @@ fun box cbrt()
 ---
 
 ### exp
-<span class="source-link">[[Source]](src/builtin/float.md#L341)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L393)</span>
 
 
 ```pony
@@ -723,7 +799,7 @@ fun box exp()
 ---
 
 ### exp2
-<span class="source-link">[[Source]](src/builtin/float.md#L342)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L394)</span>
 
 
 ```pony
@@ -738,7 +814,7 @@ fun box exp2()
 ---
 
 ### cos
-<span class="source-link">[[Source]](src/builtin/float.md#L344)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L396)</span>
 
 
 ```pony
@@ -753,7 +829,7 @@ fun box cos()
 ---
 
 ### sin
-<span class="source-link">[[Source]](src/builtin/float.md#L345)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L397)</span>
 
 
 ```pony
@@ -768,7 +844,7 @@ fun box sin()
 ---
 
 ### tan
-<span class="source-link">[[Source]](src/builtin/float.md#L346)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L398)</span>
 
 
 ```pony
@@ -783,7 +859,7 @@ fun box tan()
 ---
 
 ### cosh
-<span class="source-link">[[Source]](src/builtin/float.md#L348)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L400)</span>
 
 
 ```pony
@@ -798,7 +874,7 @@ fun box cosh()
 ---
 
 ### sinh
-<span class="source-link">[[Source]](src/builtin/float.md#L349)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L401)</span>
 
 
 ```pony
@@ -813,7 +889,7 @@ fun box sinh()
 ---
 
 ### tanh
-<span class="source-link">[[Source]](src/builtin/float.md#L350)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L402)</span>
 
 
 ```pony
@@ -828,7 +904,7 @@ fun box tanh()
 ---
 
 ### acos
-<span class="source-link">[[Source]](src/builtin/float.md#L352)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L404)</span>
 
 
 ```pony
@@ -843,7 +919,7 @@ fun box acos()
 ---
 
 ### asin
-<span class="source-link">[[Source]](src/builtin/float.md#L353)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L405)</span>
 
 
 ```pony
@@ -858,7 +934,7 @@ fun box asin()
 ---
 
 ### atan
-<span class="source-link">[[Source]](src/builtin/float.md#L354)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L406)</span>
 
 
 ```pony
@@ -873,7 +949,7 @@ fun box atan()
 ---
 
 ### atan2
-<span class="source-link">[[Source]](src/builtin/float.md#L355)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L407)</span>
 
 
 ```pony
@@ -892,7 +968,7 @@ fun box atan2(
 ---
 
 ### acosh
-<span class="source-link">[[Source]](src/builtin/float.md#L357)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L409)</span>
 
 
 ```pony
@@ -907,7 +983,7 @@ fun box acosh()
 ---
 
 ### asinh
-<span class="source-link">[[Source]](src/builtin/float.md#L358)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L410)</span>
 
 
 ```pony
@@ -922,7 +998,7 @@ fun box asinh()
 ---
 
 ### atanh
-<span class="source-link">[[Source]](src/builtin/float.md#L359)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L411)</span>
 
 
 ```pony
@@ -937,7 +1013,7 @@ fun box atanh()
 ---
 
 ### copysign
-<span class="source-link">[[Source]](src/builtin/float.md#L361)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L413)</span>
 
 
 ```pony
@@ -956,7 +1032,7 @@ fun box copysign(
 ---
 
 ### hash
-<span class="source-link">[[Source]](src/builtin/float.md#L363)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L415)</span>
 
 
 ```pony
@@ -971,7 +1047,7 @@ fun box hash()
 ---
 
 ### hash64
-<span class="source-link">[[Source]](src/builtin/float.md#L364)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L416)</span>
 
 
 ```pony
@@ -986,7 +1062,7 @@ fun box hash64()
 ---
 
 ### i128
-<span class="source-link">[[Source]](src/builtin/float.md#L366)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L418)</span>
 
 
 ```pony
@@ -1001,7 +1077,7 @@ fun box i128()
 ---
 
 ### u128
-<span class="source-link">[[Source]](src/builtin/float.md#L393)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L445)</span>
 
 
 ```pony
@@ -1016,7 +1092,7 @@ fun box u128()
 ---
 
 ### i128_unsafe
-<span class="source-link">[[Source]](src/builtin/float.md#L419)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L471)</span>
 
 
 Unsafe operation.
@@ -1035,7 +1111,7 @@ fun box i128_unsafe()
 ---
 
 ### u128_unsafe
-<span class="source-link">[[Source]](src/builtin/float.md#L426)</span>
+<span class="source-link">[[Source]](src/builtin/float.md#L478)</span>
 
 
 Unsafe operation.
@@ -1054,7 +1130,7 @@ fun box u128_unsafe()
 ---
 
 ### add_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L442)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L527)</span>
 
 
 ```pony
@@ -1073,7 +1149,7 @@ fun box add_unsafe(
 ---
 
 ### sub_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L451)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L536)</span>
 
 
 ```pony
@@ -1092,7 +1168,7 @@ fun box sub_unsafe(
 ---
 
 ### mul_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L460)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L545)</span>
 
 
 ```pony
@@ -1111,7 +1187,7 @@ fun box mul_unsafe(
 ---
 
 ### div_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L469)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L554)</span>
 
 
 ```pony
@@ -1130,7 +1206,7 @@ fun box div_unsafe(
 ---
 
 ### divrem_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L478)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L571)</span>
 
 
 ```pony
@@ -1149,7 +1225,7 @@ fun box divrem_unsafe(
 ---
 
 ### rem_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L487)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L580)</span>
 
 
 ```pony
@@ -1168,7 +1244,7 @@ fun box rem_unsafe(
 ---
 
 ### neg_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L496)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L597)</span>
 
 
 ```pony
@@ -1183,7 +1259,7 @@ fun box neg_unsafe()
 ---
 
 ### eq_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L505)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L606)</span>
 
 
 ```pony
@@ -1202,7 +1278,7 @@ fun box eq_unsafe(
 ---
 
 ### ne_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L514)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L615)</span>
 
 
 ```pony
@@ -1221,7 +1297,7 @@ fun box ne_unsafe(
 ---
 
 ### lt_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L523)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L624)</span>
 
 
 ```pony
@@ -1240,7 +1316,7 @@ fun box lt_unsafe(
 ---
 
 ### le_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L532)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L633)</span>
 
 
 ```pony
@@ -1259,7 +1335,7 @@ fun box le_unsafe(
 ---
 
 ### ge_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L541)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L642)</span>
 
 
 ```pony
@@ -1278,7 +1354,7 @@ fun box ge_unsafe(
 ---
 
 ### gt_unsafe
-<span class="source-link">[[Source]](src/builtin/real.md#L550)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L651)</span>
 
 
 ```pony
@@ -1297,7 +1373,7 @@ fun box gt_unsafe(
 ---
 
 ### string
-<span class="source-link">[[Source]](src/builtin/real.md#L610)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L711)</span>
 
 
 ```pony
@@ -1388,7 +1464,7 @@ fun box div(
 ---
 
 ### divrem
-<span class="source-link">[[Source]](src/builtin/real.md#L145)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L150)</span>
 
 
 ```pony
@@ -1407,7 +1483,7 @@ fun box divrem(
 ---
 
 ### rem
-<span class="source-link">[[Source]](src/builtin/real.md#L146)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L151)</span>
 
 
 ```pony
@@ -1426,7 +1502,7 @@ fun box rem(
 ---
 
 ### neg
-<span class="source-link">[[Source]](src/builtin/real.md#L147)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L159)</span>
 
 
 ```pony
@@ -1441,7 +1517,7 @@ fun box neg()
 ---
 
 ### eq
-<span class="source-link">[[Source]](src/builtin/real.md#L149)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L172)</span>
 
 
 ```pony
@@ -1460,7 +1536,7 @@ fun box eq(
 ---
 
 ### ne
-<span class="source-link">[[Source]](src/builtin/real.md#L150)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L173)</span>
 
 
 ```pony
@@ -1479,7 +1555,7 @@ fun box ne(
 ---
 
 ### lt
-<span class="source-link">[[Source]](src/builtin/real.md#L151)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L174)</span>
 
 
 ```pony
@@ -1498,7 +1574,7 @@ fun box lt(
 ---
 
 ### le
-<span class="source-link">[[Source]](src/builtin/real.md#L152)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L175)</span>
 
 
 ```pony
@@ -1517,7 +1593,7 @@ fun box le(
 ---
 
 ### ge
-<span class="source-link">[[Source]](src/builtin/real.md#L153)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L176)</span>
 
 
 ```pony
@@ -1536,7 +1612,7 @@ fun box ge(
 ---
 
 ### gt
-<span class="source-link">[[Source]](src/builtin/real.md#L154)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L177)</span>
 
 
 ```pony
@@ -1996,7 +2072,7 @@ fun box compare(
 ## Private Functions
 
 ### _value
-<span class="source-link">[[Source]](src/builtin/real.md#L188)</span>
+<span class="source-link">[[Source]](src/builtin/real.md#L211)</span>
 
 
 ```pony

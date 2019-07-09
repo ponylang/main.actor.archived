@@ -546,6 +546,158 @@ fun box shr(
 
 ---
 
+### fld
+
+
+
+```pony
+fun box fld(
+  y: U8 val)
+: U8 val
+```
+#### Parameters
+
+*   y: [U8](builtin-U8.md) val
+
+#### Returns
+
+* [U8](builtin-U8.md) val
+
+---
+
+### fldc
+
+
+
+```pony
+fun box fldc(
+  y: U8 val)
+: (U8 val , Bool val)
+```
+#### Parameters
+
+*   y: [U8](builtin-U8.md) val
+
+#### Returns
+
+* ([U8](builtin-U8.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### fld_partial
+
+
+
+```pony
+fun box fld_partial(
+  y: U8 val)
+: U8 val ?
+```
+#### Parameters
+
+*   y: [U8](builtin-U8.md) val
+
+#### Returns
+
+* [U8](builtin-U8.md) val ?
+
+---
+
+### fld_unsafe
+
+
+
+```pony
+fun box fld_unsafe(
+  y: U8 val)
+: U8 val
+```
+#### Parameters
+
+*   y: [U8](builtin-U8.md) val
+
+#### Returns
+
+* [U8](builtin-U8.md) val
+
+---
+
+### mod
+
+
+
+```pony
+fun box mod(
+  y: U8 val)
+: U8 val
+```
+#### Parameters
+
+*   y: [U8](builtin-U8.md) val
+
+#### Returns
+
+* [U8](builtin-U8.md) val
+
+---
+
+### modc
+
+
+
+```pony
+fun box modc(
+  y: U8 val)
+: (U8 val , Bool val)
+```
+#### Parameters
+
+*   y: [U8](builtin-U8.md) val
+
+#### Returns
+
+* ([U8](builtin-U8.md) val , [Bool](builtin-Bool.md) val)
+
+---
+
+### mod_partial
+
+
+
+```pony
+fun box mod_partial(
+  y: U8 val)
+: U8 val ?
+```
+#### Parameters
+
+*   y: [U8](builtin-U8.md) val
+
+#### Returns
+
+* [U8](builtin-U8.md) val ?
+
+---
+
+### mod_unsafe
+
+
+
+```pony
+fun box mod_unsafe(
+  y: U8 val)
+: U8 val
+```
+#### Parameters
+
+*   y: [U8](builtin-U8.md) val
+
+#### Returns
+
+* [U8](builtin-U8.md) val
+
+---
+
 ### shl_unsafe
 
 

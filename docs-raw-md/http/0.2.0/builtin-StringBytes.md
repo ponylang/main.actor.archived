@@ -1,5 +1,5 @@
 # StringBytes
-<span class="source-link">[[Source]](src/builtin/string.md#L1526)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1642)</span>
 ```pony
 class ref StringBytes is
   Iterator[U8 val] ref
@@ -14,7 +14,7 @@ class ref StringBytes is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/builtin/string.md#L1530)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1646)</span>
 
 
 ```pony
@@ -35,7 +35,7 @@ new ref create(
 ## Public Functions
 
 ### has_next
-<span class="source-link">[[Source]](src/builtin/string.md#L1534)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1650)</span>
 
 
 ```pony
@@ -50,7 +50,7 @@ fun box has_next()
 ---
 
 ### next
-<span class="source-link">[[Source]](src/builtin/string.md#L1537)</span>
+<span class="source-link">[[Source]](src/builtin/string.md#L1653)</span>
 
 
 ```pony

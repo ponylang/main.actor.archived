@@ -46,7 +46,7 @@ fun box encode(
   from: String val,
   part: (URLPartUser val | URLPartPassword val | URLPartHost val | 
     URLPartPath val | URLPartQuery val | URLPartFragment val),
-  percent_encoded: Bool val = seq)
+  percent_encoded: Bool val = true)
 : String val ?
 ```
 #### Parameters
@@ -54,7 +54,7 @@ fun box encode(
 *   from: [String](builtin-String.md) val
 *   part: ([URLPartUser](http-URLPartUser.md) val | [URLPartPassword](http-URLPartPassword.md) val | [URLPartHost](http-URLPartHost.md) val | 
     [URLPartPath](http-URLPartPath.md) val | [URLPartQuery](http-URLPartQuery.md) val | [URLPartFragment](http-URLPartFragment.md) val)
-*   percent_encoded: [Bool](builtin-Bool.md) val = seq
+*   percent_encoded: [Bool](builtin-Bool.md) val = true
 
 #### Returns
 

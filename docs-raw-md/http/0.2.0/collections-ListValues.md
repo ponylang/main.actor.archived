@@ -1,5 +1,5 @@
 # ListValues\[A: A, N: [ListNode](collections-ListNode.md)\[A\] #read\]
-<span class="source-link">[[Source]](src/collections/list.md#L600)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L714)</span>
 
 Iterate over the values in a list.
 
@@ -18,7 +18,7 @@ class ref ListValues[A: A, N: ListNode[A] #read] is
 ## Constructors
 
 ### create
-<span class="source-link">[[Source]](src/collections/list.md#L607)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L721)</span>
 
 
 Keep the next list node to be examined.
@@ -27,13 +27,13 @@ Keep the next list node to be examined.
 ```pony
 new ref create(
   head: (N | None val),
-  reverse: Bool val = seq)
+  reverse: Bool val = false)
 : ListValues[A, N] ref^
 ```
 #### Parameters
 
 *   head: (N | [None](builtin-None.md) val)
-*   reverse: [Bool](builtin-Bool.md) val = seq
+*   reverse: [Bool](builtin-Bool.md) val = false
 
 #### Returns
 
@@ -44,7 +44,7 @@ new ref create(
 ## Public Functions
 
 ### has_next
-<span class="source-link">[[Source]](src/collections/list.md#L614)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L728)</span>
 
 
 If we have a list node, we have more values.
@@ -62,7 +62,7 @@ fun box has_next()
 ---
 
 ### next
-<span class="source-link">[[Source]](src/collections/list.md#L620)</span>
+<span class="source-link">[[Source]](src/collections/list.md#L734)</span>
 
 
 Get the value of the list node and replace it with the next one.

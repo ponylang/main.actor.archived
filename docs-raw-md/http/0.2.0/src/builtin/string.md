@@ -2,8 +2,10 @@
 use @memcmp[I32](dst: Pointer[U8] box, src: Pointer[U8] box, len: USize)
 use @memset[Pointer[None]](dst: Pointer[None], set: U32, len: USize)
 use @memmove[Pointer[None]](dst: Pointer[None], src: Pointer[None], len: USize)
-use @strtof[F32](nptr: Pointer[U8] box, endptr: USize)
-use @strtod[F64](nptr: Pointer[U8] box, endptr: USize)
+use @strtof[F32](nptr: Pointer[U8] box, endptr: Pointer[Pointer[U8] box] ref)
+use @strtod[F64](nptr: Pointer[U8] box, endptr: Pointer[Pointer[U8] box] ref)
+use @pony_os_clear_errno[None]()
+use @pony_os_errno[I32]()
 
 class val String is (Seq[U8] & Comparable[String box] & Stringable)
   """
@@ -409,19 +411,19 @@ actor Main
     """
     Chops the string in half at the split point requested and returns both
     the left and right portions. The original string is trimmed in place and
-    returned as the right portion. If the split point is larger than the
+    returned as the left portion. If the split point is larger than the
     string, the left portion is the original string and the right portion
     is a new empty string.
     Both strings are isolated and mutable, as they do not share memory.
     The operation does not allocate a new string pointer nor copy elements.
     """
-    let start_ptr = _ptr
-    let size' = _size.min(split_point)
-    let alloc = if size' == _size then _alloc else split_point end
+    let start_ptr = cpointer(split_point)
+    let size' = _size - _size.min(split_point)
+    let alloc = _alloc - _size.min(split_point)
 
-    trim_in_place(split_point)
+    trim_in_place(0, split_point)
 
-    let left = recover
+    let right = recover
       if size' > 0 then
         from_cpointer(start_ptr._unsafe(), size', alloc)
       else
@@ -429,7 +431,49 @@ actor Main
       end
     end
 
-    (consume left, consume this)
+    (consume this, consume right)
+
+  fun iso unchop(b: String iso): ((String iso^, String iso^) | String iso^) =>
+    """
+    Unchops two iso strings to return the original string they were chopped
+    from. Both input strings are isolated and mutable and were originally
+    chopped from a single string. This function checks that they are indeed two
+    strings chopped from the same original string and can be unchopped before
+    doing the unchopping and returning the unchopped string. If the two strings
+    cannot be unchopped it returns both strings without modifying them.
+    The operation does not allocate a new string pointer nor copy elements.
+    """
+    if _size == 0 then
+      return consume b
+    end
+
+    if b.size() == 0 then
+      return consume this
+    end
+
+    (let unchoppable, let a_left) =
+      if (_size == _alloc) and (cpointer(_size) == b.cpointer()) then
+        (true, true)
+      elseif (b.size() == b.space()) and (b.cpointer(b.size()) == cpointer())
+        then
+        (true, false)
+      else
+        (false, false)
+      end
+
+    if not unchoppable then
+      return (consume this, consume b)
+    end
+
+    if a_left then
+      _alloc = _alloc + b._alloc
+      _size = _size + b._size
+      consume this
+    else
+      b._alloc = b._alloc + _alloc
+      b._size = b._size + _size
+      consume b
+    end
 
   fun is_null_terminated(): Bool =>
     """
@@ -569,6 +613,30 @@ actor Main
     str._size = len
     str._set(len, 0)
     str
+
+  fun repeat_str(num: USize = 1, sep: String = ""): String iso^ =>
+    """
+    Returns a copy of the string repeated `num` times with an optional
+    separator added inbetween repeats.
+    """
+    var c = num
+    var str = recover String((_size + sep.size()) * c) end
+
+    while c > 0 do
+      c = c - 1
+      str = (consume str)._append(this)
+      if (sep.size() > 0) and (c != 0) then
+        str = (consume str)._append(sep)
+      end
+    end
+
+    consume str
+
+  fun mul(num: USize): String iso^ =>
+    """
+    Returns a copy of the string repeated `num` times.
+    """
+    repeat_str(num)
 
   fun find(s: String box, offset: ISize = 0, nth: USize = 0): ISize ? =>
     """
@@ -1479,22 +1547,70 @@ actor Main
     // No base specified, default to decimal
     (10, 0)
 
-  fun f32(offset: ISize = 0): F32 =>
-    let index = offset_to_index(offset)
+  fun f32(offset: ISize = 0): F32 ? =>
+    """
+    Convert this string starting at the given offset
+    to a 32-bit floating point number ([F32](builtin-F32.md)).
 
+    This method errors if this string cannot be parsed to a float,
+    if the result would over- or underflow,
+    the offset exceeds the size of this string or
+    there are leftover characters in the string after conversion.
+
+    Examples:
+
+    ```pony
+    "1.5".f32()? == F32(1.5)
+    "1.19208e-07".f32()? == F32(1.19208e-07)
+    "NaN".f32()?.nan() == true
+    ```
+    """
+    let index = offset_to_index(offset)
     if index < _size then
-      @strtof(_ptr._offset(index), 0)
+      @pony_os_clear_errno()
+      var endp: Pointer[U8] box = Pointer[U8]
+      let res = @strtof(_ptr._offset(index), addressof endp)
+      let errno: I32 = @pony_os_errno()
+      if (errno != 0) or (endp != _ptr._offset(_size)) then
+        error
+      else
+        res
+      end
     else
-      F32(0)
+      error
     end
 
-  fun f64(offset: ISize = 0): F64 =>
-    let index = offset_to_index(offset)
+  fun f64(offset: ISize = 0): F64 ? =>
+    """
+    Convert this string starting at the given offset
+    to a 64-bit floating point number ([F64](builtin-F64.md)).
 
+    This method errors if this string cannot be parsed to a float,
+    if the result would over- or underflow,
+    the offset exceeds the size of this string or
+    there are leftover characters in the string after conversion.
+
+    Examples:
+
+    ```pony
+    "1.5".f64()? == F64(1.5)
+    "1.19208e-07".f64()? == F64(1.19208e-07)
+    "Inf".f64()?.infinite() == true
+    ```
+    """
+    let index = offset_to_index(offset)
     if index < _size then
-      @strtod(_ptr._offset(index), 0)
+      @pony_os_clear_errno()
+      var endp: Pointer[U8] box = Pointer[U8]
+      let res = @strtod(_ptr._offset(index), addressof endp)
+      let errno: I32 = @pony_os_errno()
+      if (errno != 0) or (endp != _ptr._offset(_size)) then
+        error
+      else
+        res
+      end
     else
-      F64(0)
+      error
     end
 
   fun hash(): USize =>
