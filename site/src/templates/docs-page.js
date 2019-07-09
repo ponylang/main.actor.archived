@@ -31,6 +31,7 @@ export default ({ data, location }) => {
 
         if(codeLanguage !== null) {
           try {
+            // if we haven't loaded the language, highlightjs will throw
                     const codeString = hljs.highlight(codeLanguage[1], codeElement.props.children.toString()).value
                     return <pre {...props}>
                       <code dangerouslySetInnerHTML={{__html: codeString}}></code>
