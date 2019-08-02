@@ -44,7 +44,7 @@ for manifest in $(find manifests -type f); do
   # Print the name of the package we're about to scan.
   echo "- ${name} (github:${github})"
 
-  # Loop over each tag for that repository on github.
+  # Loop over each tag for that repository github.
   while read -r tag tarball_url; do
     # TODO: include only tags that match some regular expression in the manifest
 
@@ -72,10 +72,14 @@ for manifest in $(find manifests -type f); do
 
       # Call the next script, responsible for building the docs.
       mkdir -p $docs_dir
-      ./build-docs.sh $code_dir $docs_dir
-      git add .
-      git commit -m "Add docs for ${name} version ${tag}"
-      git push "https://${PUSH_TOKEN}@github.com/ponylang/main.actor"
+      if bash build-docs.sh $code_dir $docs_dir
+      then
+        git add .
+        git commit -m "Add docs for ${name} version ${tag}"
+        git push "https://${PUSH_TOKEN}@github.com/ponylang/main.actor"
+      else
+        echo "Failed to build docs for ${name}:${tag}"
+      fi
     fi
   done< <(
     curl -fsS -H "${GITHUB_API_AUTH}" "${GITHUB_API}/repos/${github}/tags?per_page=${MAX_RELEASES}" |
