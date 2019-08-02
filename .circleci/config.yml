@@ -1,4 +1,8 @@
-version: 2
+version: 2.1
+
+orbs:
+  zulip: ponylang/zulip@1
+
 jobs:
   build-missing-docs:
     docker:
@@ -6,11 +10,15 @@ jobs:
     steps:
       - checkout
       - run: bash build-missing-docs.sh
+      - zulip/status
+
 workflows:
-  version: 2
+  version: 2.1
   commit:
     jobs:
-      - build-missing-docs
+      - build-missing-docs:
+          context: org-global
+
   nightly:
     triggers:
       - schedule:
@@ -19,4 +27,6 @@ workflows:
             branches:
               only: master
     jobs:
-      - build-missing-docs
+      - build-missing-docs:
+          context: org-global
+
