@@ -1,14 +1,17 @@
 FROM ponylang/ponyc:latest
 
 RUN  apt-get update && \
-  apt-get -y --force-yes install curl \
+  apt-get -y --force-yes install \
+  curl \
   git \
   jq \
   python \
   python-dev \
   python-pip \
   vim \
-  wget
+  wget \
+  libpcre2-dev \
+  libssl-dev
 
 RUN pip install --upgrade pip
 RUN pip install mkdocs
