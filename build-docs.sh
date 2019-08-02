@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-# Abort when a command fails.
-set -e
+set -eu
+
+function error-alert() {
+  bash .ci-scripts/notify-zulip.bash notifications \
+    "Main Actor Package Build Error" \
+    "Error encountered building ${PKG_NAME} in ${DOCS_DIR}"
+}
 
 # Gather expected arguments.
 CODE_DIR=$1
@@ -18,16 +23,27 @@ if ! [ -d "${DOCS_DIR}" ]; then
 fi
 
 # Package name from CODE_DIR
-PKG_NAME=$(basename $CODE_DIR)
+PKG_NAME=$(basename "$CODE_DIR")
 # Install packages dependencies
-make install-main-actor-deps
+if ! make install-main-actor-deps
+then
+  error-alert
+  exit 1
+fi
+
 # Build the docs
-make main-actor-docs
+if ! make main-actor-docs
+then
+  error-alert
+  exit 1
+fi
+
 # We now have a directory call "$(PKG_NAME)-docs" in our directory.
 # "$(PKG_NAME)-docs" contains the raw generated markdown for our documentation
 pushd "$PKG_NAME-docs" || exit 1
 # We now have our built mkdocs site in `site` directory in our current directory
-cp -r site/* $DOCS_DIR/
-cp -r mkdocs.yml $DOCS_DIR
+cp -r site/* "$DOCS_DIR"/
+cp -r mkdocs.yml "$DOCS_DIR"
+
 #
 popd || exit 1
