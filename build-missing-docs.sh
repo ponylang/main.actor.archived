@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Move to the base project directory if not there already.
-cd "$(dirname "$0")"
-
 # Abort when a command fails.
 set -e
+
+# Move to the base project directory if not there already.
+cd "$(dirname "$0")"
 
 # Base URL of the GitHub API.
 # TODO: Allow using optional GitHub API token to avoid rate limiting.
@@ -20,15 +20,13 @@ else
   GITHUB_API_AUTH='X-No-Auth-Token-Used: x'
 fi
 
-
 # The maximum number of latest releases to download for a given library.
 # The maximum possible number we could specify here is 100, until we implement
 # something more sophisticated that simply reading one page of GitHub results.
-MAX_RELEASES='20'
+MAX_RELEASES='5'
 
 # Create a temporary directory that we can download source repositories into.
 TMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'tmp.XXXXXX')
-
 
 # Who we are for git
 git config --global user.email "main@ponylang.io"
@@ -54,7 +52,7 @@ for manifest in $(find manifests -type f); do
     tar_file="${TMPDIR}/${name}.${tag}.tar.gz"
     root_dir="${TMPDIR}/${name}/${tag}"
     code_dir="${TMPDIR}/${name}/${tag}/${subdir}"
-    docs_dir="$(pwd)/docs/${name}/${tag}"
+    docs_dir="$(pwd)/docs-raw-md/${name}/${tag}"
 
     if [ -d "${docs_dir}" ] && ! [ -z "$(ls -A ${docs_dir})" ]; then
       # Print the name of the tag that we've determined we already have.

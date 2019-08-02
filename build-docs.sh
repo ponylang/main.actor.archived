@@ -19,16 +19,15 @@ fi
 
 # Package name from CODE_DIR
 PKG_NAME=$(basename $CODE_DIR)
-# Create a temporary directory to do our work in
-TMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'tmp.XXXXXX')
-# Go to the desired documentation directory and build the docs.
-cd $TMPDIR
-echo $TMPDIR
-# This is a little janky. Right now
-stable fetch
-stable env ponyc --docs=${PKG_NAME} --pass=docs $CODE_DIR
-# We now have a directory call "PKG_NAME-docs" in our temporary directory
-cd "$PKG_NAME-docs"
-mkdocs build
+# Install packages dependencies
+make install-main-actor-deps
+# Build the docs
+make main-actor-docs
+# We now have a directory call "$(PKG_NAME)-docs" in our directory.
+# "$(PKG_NAME)-docs" contains the raw generated markdown for our documentation
+pushd "$PKG_NAME-docs" || exit 1
 # We now have our built mkdocs site in `site` directory in our current directory
 cp -r site/* $DOCS_DIR/
+cp -r mkdocs.yml $DOCS_DIR
+#
+popd || exit 1
