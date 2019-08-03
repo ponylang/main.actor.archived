@@ -52,7 +52,7 @@ for manifest in $(find manifests -type f); do
     tar_file="${TMPDIR}/${name}.${tag}.tar.gz"
     root_dir="${TMPDIR}/${name}/${tag}"
     code_dir="${TMPDIR}/${name}/${tag}/${subdir}"
-    docs_dir="$(pwd)/docs-raw-md/${name}/${tag}"
+    docs_dir="$(pwd)/docs/${name}/${tag}"
 
     if [ -d "${docs_dir}" ] && ! [ -z "$(ls -A ${docs_dir})" ]; then
       # Print the name of the tag that we've determined we already have.
