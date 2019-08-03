@@ -3,6 +3,21 @@
 # Abort when a command fails.
 set -e
 
+# Semver library
+source semver.sh
+
+# Zulip
+source zulip.sh
+
+# zulip notify
+function error-alert {
+  message=$1
+
+  zulip-alert notifications \
+    "main.actor package build error" \
+    "${message}"
+}
+
 # Move to the base project directory if not there already.
 cd "$(dirname "$0")"
 
@@ -40,46 +55,53 @@ for manifest in $(find manifests -type f); do
   name=$(basename $manifest | cut -d. -f1)
   github=$(jq -r '.github' $manifest)
   subdir=$(jq -r '.subdir // "'$name'"' $manifest)
+  minimal_version=$(jq -r '.minimal_version' $manifest)
 
   # Print the name of the package we're about to scan.
   echo "- ${name} (github:${github})"
 
   # Loop over each tag for that repository github.
   while read -r tag tarball_url; do
-    # TODO: include only tags that match some regular expression in the manifest
+    if ! semverLT "${tag}" "${minimal_version}"
+    then
+      # Construct the filenames and directory names we'll need.
+      tar_file="${TMPDIR}/${name}.${tag}.tar.gz"
+      root_dir="${TMPDIR}/${name}/${tag}"
+      code_dir="${TMPDIR}/${name}/${tag}/${subdir}"
+      docs_dir="$(pwd)/docs/${name}/${tag}"
 
-    # Construct the filenames and directory names we'll need.
-    tar_file="${TMPDIR}/${name}.${tag}.tar.gz"
-    root_dir="${TMPDIR}/${name}/${tag}"
-    code_dir="${TMPDIR}/${name}/${tag}/${subdir}"
-    docs_dir="$(pwd)/docs/${name}/${tag}"
-
-    if [ -d "${docs_dir}" ] && ! [ -z "$(ls -A ${docs_dir})" ]; then
-      # Print the name of the tag that we've determined we already have.
-      echo "  - ${tag} ✓"
-    else
-      # Print the name of the tag we're about to download and build.
-      echo "  - ${tag}"
-
-      # HACK: Don't use the GitHub API - less likely to hit rate limiting.
-      tarball_url="https://github.com/${github}/archive/${tag}.tar.gz"
-
-      # Download the source code tarball and extract it to the desired root dir.
-      wget -q -O $tar_file $tarball_url
-      mkdir -p $root_dir
-      tar -C $root_dir --strip-components=1 -xf $tar_file
-      rm $tar_file
-
-      # Call the next script, responsible for building the docs.
-      mkdir -p $docs_dir
-      if bash build-docs.sh $code_dir $docs_dir
-      then
-        git add .
-        git commit -m "Add docs for ${name} version ${tag}"
-        git push "https://${PUSH_TOKEN}@github.com/ponylang/main.actor"
+      if [ -d "${docs_dir}" ] && ! [ -z "$(ls -A ${docs_dir})" ]; then
+        # Print the name of the tag that we've determined we already have.
+        echo "  - ${tag} ✓"
       else
-        echo "Failed to build docs for ${name}:${tag}"
+        # Print the name of the tag we're about to download and build.
+        echo "  - ${tag}"
+
+        # HACK: Don't use the GitHub API - less likely to hit rate limiting.
+        tarball_url="https://github.com/${github}/archive/${tag}.tar.gz"
+
+        # Download the source code tarball and extract it to the desired root dir.
+        wget -q -O $tar_file $tarball_url
+        mkdir -p $root_dir
+        tar -C $root_dir --strip-components=1 -xf $tar_file
+        rm $tar_file
+
+        # Call the next script, responsible for building the docs.
+        mkdir -p $docs_dir
+        if bash build-docs.sh $code_dir $docs_dir
+        then
+          git add .
+          git commit -m "Add docs for ${name} version ${tag}"
+          git push "https://${PUSH_TOKEN}@github.com/ponylang/main.actor"
+        else
+          errmsg="Failed to build docs for ${name}:${tag}"
+          echo "${errmsg}"
+          error-alert "${errmsg}"
+        fi
       fi
+    else
+      # version is less than the minimal-version
+      echo "  - ${tag} minimal version not matched: skipping"
     fi
   done< <(
     curl -fsS -H "${GITHUB_API_AUTH}" "${GITHUB_API}/repos/${github}/tags?per_page=${MAX_RELEASES}" |

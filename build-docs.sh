@@ -2,12 +2,6 @@
 
 set -eu
 
-function error-alert() {
-  bash .ci-scripts/notify-zulip.bash notifications \
-    "main.actor package build error" \
-    "Error encountered building ${PKG_NAME} in ${DOCS_DIR}"
-}
-
 # Gather expected arguments.
 CODE_DIR=$1
 DOCS_DIR=$2
@@ -27,14 +21,12 @@ PKG_NAME=$(basename "$CODE_DIR")
 # Install packages dependencies
 if ! make install-main-actor-deps
 then
-  error-alert
   exit 1
 fi
 
 # Build the docs
 if ! make main-actor-docs
 then
-  error-alert
   exit 1
 fi
 

@@ -1,4 +1,5 @@
 {
     "github": "seantallen/pony-msgpack",
-    "subdir": "msgpack"
+    "subdir": "msgpack",
+    "minimal_version": "0.2.1"
 }
