@@ -18,6 +18,13 @@ function error-alert {
     "${message}"
 }
 
+# Generated markdown repo
+GEN_MD="$(mktemp -d)"
+echo "Cloning main.actor-package-markdown repo into ${GEN_MD}"
+git clone \
+  "https://${GENERATED_MD_TOKEN}@github.com/ponylang/main.actor-package-markdown.git" \
+  "${GEN_MD}"
+
 # Move to the base project directory if not there already.
 cd "$(dirname "$0")"
 
@@ -68,7 +75,7 @@ for manifest in $(find manifests -type f); do
       tar_file="${TMPDIR}/${name}.${tag}.tar.gz"
       root_dir="${TMPDIR}/${name}/${tag}"
       code_dir="${TMPDIR}/${name}/${tag}/${subdir}"
-      docs_dir="$(pwd)/docs/${name}/${tag}"
+      docs_dir="${GEN_MD}/${name}/${tag}"
 
       if [ -d "${docs_dir}" ] && ! [ -z "$(ls -A ${docs_dir})" ]; then
         # Print the name of the tag that we've determined we already have.
@@ -90,9 +97,11 @@ for manifest in $(find manifests -type f); do
         mkdir -p $docs_dir
         if bash build-docs.sh $code_dir $docs_dir
         then
+          echo "Generated docs for ${name}:${tag}"
+          pushd "${GEN_MD}" || exit 1
           git add .
-          git commit -m "Add docs for ${name} version ${tag}"
-          git push "https://${PUSH_TOKEN}@github.com/ponylang/main.actor"
+          git commit -m "Add docs for package: ${name} version: ${tag}"
+          popd || exit 1
         else
           errmsg="Failed to build docs for ${name}:${tag}"
           echo "${errmsg}"
@@ -108,6 +117,14 @@ for manifest in $(find manifests -type f); do
     jq -r '.[] | "\(.name) \(.tarball_url)"'
   )
 done
+
+# Upload any new documentation
+echo "Preparing to upload generated markdown content from ${GEN_MD}"
+pushd "${GEN_MD}" || exit 1
+echo "Uploading new generated markdown content..."
+git push
+echo "Generated markdown content has been uploaded!"
+popd || exit 1
 
 # Clean up temporary directory, assuming we got here and everything went okay.
 rm -r $TMPDIR
