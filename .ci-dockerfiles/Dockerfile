@@ -24,5 +24,4 @@ RUN curl -O 'https://dl.cloudsmith.io/public/main-pony/pony-nightlies/raw/versio
 && rm -rf nightly-* *.tar.gz
 
 RUN pip install --upgrade pip
-RUN pip install mkdocs
-RUN pip install mkdocs mkdocs-ponylang
+RUN pip install ghp-import
