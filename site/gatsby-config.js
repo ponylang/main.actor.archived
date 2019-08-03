@@ -18,7 +18,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `docs`,
-        path: `../docs-raw-md`,
+        path: `../docs`,
       },
     },
     `gatsby-transformer-remark`,
