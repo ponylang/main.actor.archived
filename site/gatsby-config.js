@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Main Actor`,
+    title: `main.actor`,
     description: `Package documentation for ponylang`,
     author: `Chris Biscardi`,
   },

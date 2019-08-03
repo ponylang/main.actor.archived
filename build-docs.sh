@@ -4,7 +4,7 @@ set -eu
 
 function error-alert() {
   bash .ci-scripts/notify-zulip.bash notifications \
-    "Main Actor Package Build Error" \
+    "main.actor package build error" \
     "Error encountered building ${PKG_NAME} in ${DOCS_DIR}"
 }
 
