@@ -9,11 +9,10 @@ echo "Preparing to install dependencies..."
 pushd site || exit 1
 
 echo "Installing dependencies..."
-npm install -g gatsby-cli
 npm install
 
 echo "Building with `gatsby build`..."
-gatsby build
+npm run build
 
 echo "Build completed!"
 
