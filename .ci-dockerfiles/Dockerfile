@@ -1,4 +1,8 @@
+FROM ponylang/changelog-tool:0.3.0 AS changelog-tool
+
 FROM ponylang/ponyc:latest
+
+COPY --from=changelog-tool /usr/local/bin/changelog-tool /usr/local/bin/changelog-tool
 
 RUN  apt-get update && \
   apt-get -y install \
