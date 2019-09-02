@@ -25,3 +25,8 @@ npm run build
 echo "Build completed!"
 
 popd || exit 1
+
+# Clear out the cloned `docs` directory so it doesn't get cached
+echo "Removing `docs` now that we are done with it..."
+rm -rf docs
+
