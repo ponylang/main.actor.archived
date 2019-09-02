@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# This is temporary and should be removed once the non-existent yet
-# there it is `docs` directory is removed. I think its a Netlify caching
-# issue. I've reached out to them for support.
-echo "What's here?"
-ls -al
-echo "Remove 'ghost' directory..."
+# Remove docs directory IF it exists. It shouldn't as we remove it
+# to make sure Netlify doesn't cache it, however, in case something
+# went hairwire, let's do it just in case
+echo "Just in case removal of 'docs'..."
 rm -rf docs
 
 echo "Fetching latest documentation markdown..."
