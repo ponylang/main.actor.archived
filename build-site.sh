@@ -3,6 +3,8 @@
 # This is temporary and should be removed once the non-existent yet
 # there it is `docs` directory is removed. I think its a Netlify caching
 # issue. I've reached out to them for support.
+echo "What's here?"
+ls -al
 echo "Remove 'ghost' directory..."
 rm -rf docs
 
