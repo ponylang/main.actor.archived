@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import { sortBy } from 'lodash'
 
 import Layout from "../components/layout"
 
@@ -9,7 +10,7 @@ export default ({ data, pageContext }) => {
       <div>
         <h1>{pageContext.package}</h1>
         <ul>
-          {data.versions.group.map(({ version }) => (
+          {sortBy(data.versions.group, 'version').reverse().map(({ version }) => (
             <li key={version}>
               <Link to={`/packages/${pageContext.package}/${version}`}>
                 {version}
